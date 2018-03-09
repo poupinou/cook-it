@@ -12,11 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20180309134355) do
 
-  create_table "frigos", force: :cascade do |t|
+  create_table "fridges", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_frigos_on_user_id"
+    t.index ["user_id"], name: "index_fridges_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -28,15 +28,15 @@ ActiveRecord::Schema.define(version: 20180309134355) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "listes", force: :cascade do |t|
+  create_table "lists", force: :cascade do |t|
     t.integer "user_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_listes_on_user_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
-  create_table "recettes", force: :cascade do |t|
+  create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.string "picture"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180309134355) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_recettes_on_user_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,6 +1,6 @@
-class CreateListes < ActiveRecord::Migration[5.1]
+class CreateLists < ActiveRecord::Migration[5.1]
   def change
-    create_table :listes do |t|
+    create_table :lists do |t|
       t.references :user, foreign_key: true
       t.integer :price
 
