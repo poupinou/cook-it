@@ -1,8 +1,7 @@
 FactoryBot.define do
-  factory :ingredient do
+  factory :recipe do
     name "MyString"
-    type ""
+    description "MyString"
     picture "MyString"
-    price 1
   end
 end
