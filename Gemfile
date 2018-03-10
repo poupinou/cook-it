@@ -38,7 +38,6 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'
   gem 'poltergeist'
   gem 'shoulda-matchers'
 end

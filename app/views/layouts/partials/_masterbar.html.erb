@@ -6,14 +6,14 @@
 	<hr style="width: 90%">
 	<div class="masterbar-navigation">
 		<ul>
-			<li><a><%= link_to 'Admin', admin_path %></a></li>
+			<li><%= link_to 'Admin', admin_path %></li>
 			<li><a>profil</a></li>
 			<li><a>edit profile</a></li>
 			<li><a>mon frigo</a></li>
 			<li><a>ma liste</a></li>
-			<li><a>login</a></li>
+			<li><%= link_to 'login', new_user_session_path %></li>
 			<li><a>logout</a></li>
-			<li><a>signup</a></li>
+			<li><a><%= link_to 'sign up', new_user_registration_path %></a></li>
 		</ul>
 	<hr style="width: 90%">
 		<ul>

@@ -1,7 +1,11 @@
-<div>
 
-  <h1>ADMIN</h1>
-  
-  <p><%= link_to 'Recettes', recipes_path %></p>
-  <p><%= link_to 'Ingrédients', ingredients_path %></p>
+<div class="admin-g">
+  <center>
+  	<h1>ADMIN</h1>
+  	<p>quel coté choissira tu ? la pilule bleu est parfaite ou alors prefèrera tu la pilule rouge</p>
+  </center>
+  <div class="admin-onglet">
+  	<p><%= link_to 'Recettes', recipes_path , class:"link-control r"%></p>
+  	<p><%= link_to 'Ingrédients', ingredients_path , class:"link-control g"%></p>
+  </div>
 </div>

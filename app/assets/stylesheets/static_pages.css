@@ -1,0 +1,59 @@
+/*Disposition de la page admin*/
+
+.admin-g , .recettes-g
+{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.admin-g center , .recettes-g center
+{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #EA8D01;
+	box-shadow: 0px 5px 5px grey; 
+}
+.admin-onglet , .recettes-onglet
+{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+
+.link-control
+{
+	display: inline-block;
+	color: lightblue;
+	font-weight: bold;
+	font-size: 150%;
+	background-color: #EA8D01;
+	text-decoration: none;
+	padding: 10%;
+	border-color: lightgrey;
+	border-style: solid;
+	border-radius: 0px 0px 30px 30px;
+	border-width: 2px;
+	border-top-style:none;
+}
+.link-control:hover
+{
+	cursor:pointer;
+	color: lightblue;
+	text-decoration: none;
+	background-color: #569800;
+}
+
+.r:hover
+{
+	background-color: #569800;
+}
+
+.g:hover
+{
+	background-color: #B73D00;
+}
+/*****************************/
