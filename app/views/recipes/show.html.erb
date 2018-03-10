@@ -1,0 +1,9 @@
+<div>
+  <h1><%= @recipe.name %></h1>
+  <p><%= @recipe.time %> min - <%= @recipe.price / 100 %>€</p>
+
+  <p><img src='<%= @recipe.picture %>'></img></p>
+  <p><%= @recipe.description %></p>
+
+  <p><%= link_to 'Retour aux recettes', recipes_path %></p>
+</div>
