@@ -1,13 +1,34 @@
 <div class="recettes-g">
-  <center>
-	<h1>recettes</h1>
+  <center class="recette-head">
+	<h1>RECETTES</h1>
   	<input placeholder="Rechercher">
   </center>
   <div class="recettes-onglet">
+  	<p><%= link_to 'retour', admin_path , class:"link-control" %></p>
   	<p><%= link_to "Ajouter", new_recipe_path, class:"link-control" %></p>
   </div>
-
-  <% @recipes.each do |recipe| %>
-    <p><%= recipe.name %> - <%= recipe.time %> min - <%= (recipe.price) / 100 %> € - <%= link_to 'Show', recipe_path(recipe.id) %> - <%= link_to 'Edit', edit_recipe_path(recipe.id) %> - <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Certain ?' } %></p>
-  <% end %>
+  <center>
+    <% @recipes.each do |recipe| %>
+    
+    <a href=<%= recipe_path(recipe.id) %>>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+   		<h5 class="card-title"><%= recipe.name %></h5>
+    	<p class="card-text"><%= recipe.description %></p>
+  	  </div>
+  		<ul class="list-group list-group-flush">
+    	  <li class="list-group-item"><%= recipe.time %></li>
+    	  <li class="list-group-item"><%= (recipe.price) / 100 %> €</li>
+    	  <li class="list-group-item">...</li>
+  		</ul>
+  		<div class="card-body">
+    	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id) %></a>
+    	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
+  		</div>
+	  </div>
+	  </a>
+	  <hr class="split">
+	  <% end %>
+  </center>
 </div>

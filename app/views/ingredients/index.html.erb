@@ -1,8 +1,12 @@
-<div>
-  <h1>Tous les ingrédients</h1>
-
-  <p><%= link_to 'Ajouter un ingrédient', new_ingredient_path %></p>
-
+<div class="ingredients-g">
+  <center>
+  	<h1>INGREDIENTS</h1>
+  	<input type="" name="" placeholder="rechercher">
+  </center>
+  <div class="ingredients-onglet">
+  	  <p><%= link_to 'Ajouter', new_ingredient_path , class:"link-control" %></p>
+  	  <p><%= link_to 'retour', admin_path , class:"link-control" %></p>
+  </div>
   <% @ingredients.each do |ingredient| %>
     <p><%= ingredient.name %> - <%= ingredient.family %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
   <% end %>

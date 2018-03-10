@@ -1,14 +1,19 @@
 /*Disposition de la page admin*/
 
-.admin-g , .recettes-g
+.admin-g , .recettes-g , .ingredients-g
 {
+	border-style: ridge;
+	border-top-style: none; 
+	border-bottom-style: none; 
+	border-width: 3px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
-.admin-g center , .recettes-g center
+.admin-g center , .recette-head , .ingredients-g center
 {
+	padding-bottom: 2%;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -16,7 +21,8 @@
 	background-color: #EA8D01;
 	box-shadow: 0px 5px 5px grey; 
 }
-.admin-onglet , .recettes-onglet
+
+.admin-onglet , .recettes-onglet , .ingredients-onglet
 {
 	width: 100%;
 	display: flex;
@@ -47,13 +53,13 @@
 	background-color: #569800;
 }
 
-.r:hover
+.b:hover
 {
-	background-color: #569800;
+	background-color: #00A48E;
 }
 
-.g:hover
+.r:hover
 {
-	background-color: #B73D00;
+	background-color: #EC5454;
 }
 /*****************************/
