@@ -1,26 +1,26 @@
 class IngredientsController < ApplicationController
 
 	def index
-		@ingredients = Ingredients.all
+		@ingredients = Ingredient.all
 	end
 
 	def new
-		@ingredient = Ingredients.new
+		@ingredient = Ingredient.new
 	end
 
 	def create
-		@ingredient = Ingredients.new(ingredients_params)
+		@ingredient = Ingredient.new(ingredients_params)
 	end
 
 	def edit
-		@ingredient = Ingredients.find(params[:id])
+		@ingredient = Ingredient.find(params[:id])
 	end
 
 	def destroy
-		Ingredients.destroy(params[:id])
+		Ingredient.destroy(params[:id])
 	end
 
 	def ingredients_params
-		params.require(:ingredient).permit(:name, :type, :photo, :prix)
+		params.require(:ingredient).permit(:name, :type, :picture, :price)
 	end
 end
