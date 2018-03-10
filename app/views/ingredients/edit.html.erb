@@ -1,0 +1,15 @@
+<div>
+  <h1>Editer l'ingrédient <%= @ingredient.name %> </h1>
+
+  <%= form_for @ingredient do |ing| %>
+    <p><%= ing.text_field :name, placeholder: 'Nom de l\'ingrédient' %></p>
+    <p><%= ing.text_field :family, placeholder: 'Type de l\'ingrédient' %></p>
+    <p><%= ing.text_field :picture, placeholder: 'URL de l\'ingrédient' %></p>
+    <p><%= ing.text_field :price, placeholder: 'Prix de l\'ingrédient' %></p>
+
+    <p><%= ing.submit 'Modifier cet ingrédient' %></p>
+  <% end %>
+
+  <p><%= link_to 'Retour aux ingrédients', ingredients_path %></p>
+
+</div>

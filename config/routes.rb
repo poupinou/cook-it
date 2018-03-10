@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#home'
 	resources :recipes
+	resources :ingredients
 
 	get '/admin', to: 'static_pages#admin', as: 'admin'
 

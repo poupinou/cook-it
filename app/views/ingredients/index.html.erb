@@ -1,0 +1,9 @@
+<div>
+  <h1>Tous les ingrédients</h1>
+
+  <p><%= link_to 'Ajouter un ingrédient', new_ingredient_path %></p>
+
+  <% @ingredients.each do |ingredient| %>
+    <p><%= ingredient.name %> - <%= ingredient.family %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
+  <% end %>
+</div>

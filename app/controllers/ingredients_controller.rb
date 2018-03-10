@@ -10,17 +10,32 @@ class IngredientsController < ApplicationController
 
 	def create
 		@ingredient = Ingredient.new(ingredients_params)
+		if @ingredient.save
+			redirect_to ingredients_path
+		else
+			render 'new'
+		end
 	end
 
 	def edit
 		@ingredient = Ingredient.find(params[:id])
 	end
 
-	def destroy
-		Ingredient.destroy(params[:id])
+	def update
+		@ingredient = Ingredient.find(params[:id])
+		@ingredient.update(ingredients_params)
+		redirect_to ingredients_path
 	end
 
+	def destroy
+		Ingredient.destroy(params[:id])
+		redirect_to ingredients_path
+	end
+
+
+	private
+
 	def ingredients_params
-		params.require(:ingredient).permit(:name, :type, :picture, :price)
+		params.require(:ingredient).permit(:name, :family, :picture, :price)
 	end
 end
