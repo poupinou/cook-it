@@ -1,2 +1,9 @@
-Index recettes
-  
+<div>
+  <h1>Index recettes</h1>
+
+  <p><%= link_to 'Ajouter une recette', new_recipe_path %>
+
+  <% @recipes.each do |recipe| %>
+    <p><%= recipe.name %> - <%= recipe.time %> min - <%= (recipe.price) / 100 %> € - <%= link_to 'Edit', edit_recipe_path(recipe.id) %> - <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Certain ?' } %></p>
+  <% end %>
+</div>
