@@ -1,6 +1,6 @@
 /*Disposition de la page admin*/
 
-.admin-g , .recettes-g , .ingredients-g, .profil-g
+.admin-g , .recettes-g , .ingredients-g, .profil-g, .about-g
 {
 	border-style: ridge;
 	border-top-style: none; 
@@ -11,7 +11,7 @@
 	flex-direction: column;
 }
 
-.admin-head , .recettes-head , .ingredients-head , .profil-head
+.admin-head , .recettes-head , .ingredients-head , .profil-head , .about-head
 {
 	padding-bottom: 2%;
 	display: flex;
@@ -41,11 +41,17 @@
 	margin-bottom: 3px;
 }
 
-.profil-corps
+.profil-corps , .about-corps
 {
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
+}
+
+.about-corps center
+{
+	display: flex;
+	flex-direction: column;
 }
 
 .frigo , .liste

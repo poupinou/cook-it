@@ -1,7 +1,9 @@
 <div class="ingredients-g">
   <center class="ingredients-head">
   	<h1>INGREDIENTS</h1>
-  	<input type="" name="" placeholder="rechercher">
+  	<form id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
+      <input id='nom' name="nom" value="<%= @value %>" placeholder="Rechercher" onkeydown="return testSaisie(document.getElementById('nom'));selection();" onkeyup="selection()" >
+    </form>
   </center>
   <div class="ingredients-onglet">
   	  <p><%= link_to 'Ajouter', new_ingredient_path , class:"link-control" %></p>
@@ -11,3 +13,15 @@
     <p><%= ingredient.id %>. <%= ingredient.name %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
   <% end %>
 </div>
+
+<script type="text/javascript">
+function selection()
+{
+  document.getElementById("form1").submit();
+}
+
+function testSaisie(champ)
+{   
+   return champ.value;
+}
+</script>
