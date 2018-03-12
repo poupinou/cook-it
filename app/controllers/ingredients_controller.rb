@@ -2,6 +2,16 @@ class IngredientsController < ApplicationController
 
 	def index
 		@ingredients = Ingredient.all
+		if params[:nom]
+			tab = []
+			@ingredients.each do |i|
+				if i.name.include?(params[:nom])
+					tab << i
+				end
+			end
+			@ingredients = tab
+		end
+		@value = params[:nom]
 	end
 
 	def new

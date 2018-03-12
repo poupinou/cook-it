@@ -1,7 +1,9 @@
 <div class="recettes-g">
   <center class="recettes-head">
 	<h1>RECETTES</h1>
-  	<input placeholder="Rechercher">
+  <form id="form1" action='<%= recipes_path %>' data-remote="true" accept-charset="UTF-8" method="get">
+  	<input placeholder="Rechercher" id='name' data-remote="true" onkeypress="filtre()">
+  </form>
   </center>
   <div class="recettes-onglet">
   	<p><%= link_to 'retour', admin_path , class:"link-control" %></p>
@@ -34,3 +36,10 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+function filtre()
+{
+   document.getElementById("form1").submit();
+}
+</script>
