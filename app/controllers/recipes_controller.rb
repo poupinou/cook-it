@@ -36,14 +36,14 @@ class RecipesController < ApplicationController
 
 	def add_ing_recipe
 		@recipe = Recipe.find(params[:recipe])
-		@recipe_ing = @recipe.ingredients
+		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
+
 		@ingredients = Ingredient.all
 	end
 
 	def post_add_ing_recipe
 		@recipe = Recipe.find(params[:recipe])
-		@recipe_ing = @recipe.ingredients
-		@recipe_ing << Ingredient.find(params[:ingredient])
+		IngredientToRecipe.create(recipe_id: params[:recipe], ingredient_id: params[:ingredient], quantity: params[:quantity])
 	end
 
 	def destroy_ing_recipe
