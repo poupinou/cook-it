@@ -34,6 +34,21 @@ class RecipesController < ApplicationController
 		redirect_to recipes_path
 	end
 
+	def add_ing_recipe
+		@recipe = Recipe.find(params[:recipe])
+		@recipe_ing = @recipe.ingredients
+		@ingredients = Ingredient.all
+	end
+
+	def post_add_ing_recipe
+		@recipe = Recipe.find(params[:recipe])
+		@recipe_ing = @recipe.ingredients
+		@recipe_ing << Ingredient.find(params[:ingredient])
+	end
+
+
+	private
+
 	def recipes_params
 		params.require(:recipe).permit(:name, :description, :picture, :time, :price)
 	end
