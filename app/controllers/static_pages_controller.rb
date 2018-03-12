@@ -7,5 +7,10 @@ class StaticPagesController < ApplicationController
 
   def about
   end
-  
+
+  def liste
+  end
+
+  def frigo
+  end
 end
