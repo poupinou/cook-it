@@ -8,6 +8,6 @@
   	  <p><%= link_to 'retour', admin_path , class:"link-control" %></p>
   </div>
   <% @ingredients.each do |ingredient| %>
-    <p><%= ingredient.name %> - <%= ingredient.family %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
+    <p><%= ingredient.id %>. <%= ingredient.name %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
   <% end %>
 </div>
