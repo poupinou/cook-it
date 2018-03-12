@@ -8,7 +8,7 @@
 
     <%= form_tag add_ing_recipe_path, method: 'get' do %>
       <%= hidden_field_tag(:recipe, @recipe.id) %>
-    <p><%= submit_tag('Ajouter un ingrédient à la recette') %></p>
+    <p><%= submit_tag('Modifier les ingrédients') %></p>
     <% end %>
 
   <% @recipe.ingredients.each do |ing| %>

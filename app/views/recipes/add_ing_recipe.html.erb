@@ -2,14 +2,19 @@
   <h1>Ajouter un ingrédient à la recette <%= @recipe.name %></h1>
 
   <p>Ingrédients déjà présent(s)<p>
-    <% @recipe.ingredients.each do |ing| %>
-      <p><%= ing.name %> -
+    <% @recipe_ing.each do |ing| %>
+      <p><%= Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %> -
         <%= form_tag delete_ing_recipe_path, method: 'delete' do %>
           <%= hidden_field_tag(:recipe, @recipe.id) %>
-          <%= hidden_field_tag(:ingredient, ing.id) %>
+          <%= hidden_field_tag(:ingredient, ing.ingredient_id) %>
           <%= submit_tag('Supprimer') %></p>
         <% end %>
     <% end %>
+
+
+
+
+
 
   <p>Ajouter un ingrédient</p>
 
@@ -18,7 +23,9 @@
       <%= form_tag post_add_ing_recipe_path, method: 'post' do %>
         <%= hidden_field_tag(:recipe, @recipe.id) %>
         <%= hidden_field_tag(:ingredient, ing.id) %>
-      <p><%= ing.id %> - <%= ing.name %> - <%= submit_tag('Ajouter') %></p>
+      <p><%= ing.id %> - <%= ing.name %> -
+         <%= text_field_tag(:quantity) %>
+         <%= submit_tag('Ajouter') %></p>
       <% end %>
 
     <% end %>
