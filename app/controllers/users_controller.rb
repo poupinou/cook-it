@@ -12,4 +12,9 @@ class UsersController < ApplicationController
 
   def index
   end
+
+  def new
+    @list = List.new(lists_params)
+  end
+  
 end
