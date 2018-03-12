@@ -14,6 +14,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'devise'
+gem 'carrierwave'
+gem "mini_magick"
 
 group :development, :test do
   gem 'sqlite3'

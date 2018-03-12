@@ -12,14 +12,14 @@
     
     <a href=<%= recipe_path(recipe.id) %>>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
+      <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 10rem;">
       <div class="card-body">
    		<h5 class="card-title"><%= recipe.name %></h5>
     	<p class="card-text"><%= recipe.description %></p>
   	  </div>
   		<ul class="list-group list-group-flush">
     	  <li class="list-group-item"><%= recipe.time %></li>
-    	  <li class="list-group-item"><%= (recipe.price) / 100 %> €</li>
+    	  <% if recipe.price %><li class="list-group-item"><%= (recipe.price) / 100 %> €</li><% end %>
     	  <li class="list-group-item">...</li>
   		</ul>
   		<div class="card-body">
