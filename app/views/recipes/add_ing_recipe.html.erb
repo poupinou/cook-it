@@ -3,7 +3,12 @@
 
   <p>Ingrédients déjà présent(s)<p>
     <% @recipe.ingredients.each do |ing| %>
-      <p><%= ing.name %></p>
+      <p><%= ing.name %> -
+        <%= form_tag delete_ing_recipe_path, method: 'delete' do %>
+          <%= hidden_field_tag(:recipe, @recipe.id) %>
+          <%= hidden_field_tag(:ingredient, ing.id) %>
+          <%= submit_tag('Supprimer') %></p>
+        <% end %>
     <% end %>
 
   <p>Ajouter un ingrédient</p>
@@ -20,15 +25,3 @@
 
 
 </div>
-
-
-
-<!--
-
-<%= form_tag add_ing_recipe_path, method: 'get' do %>
-  <%= hidden_field_tag(:recipe, @recipe.id) %>
-<p><%= submit_tag('Ajouter un ingrédient à la recette') %></p>
-<% end %>
-
-
--->

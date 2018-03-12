@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 	get '/users/:id/liste', to: 'static_pages#liste', as: 'liste'
 	get '/users/:id/frigo', to: 'static_pages#frigo', as: 'frigo'
   get '/add_ing_recipe', to: 'recipes#add_ing_recipe', as: 'add_ing_recipe'
-  post 'add_ing_recipe', to: 'recipes#post_add_ing_recipe', as: 'post_add_ing_recipe' 
+  post '/add_ing_recipe', to: 'recipes#post_add_ing_recipe', as: 'post_add_ing_recipe'
+	delete 'delete_ing_recipe', to: 'recipes#destroy_ing_recipe', as: 'delete_ing_recipe'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

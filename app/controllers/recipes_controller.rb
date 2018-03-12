@@ -46,6 +46,12 @@ class RecipesController < ApplicationController
 		@recipe_ing << Ingredient.find(params[:ingredient])
 	end
 
+	def destroy_ing_recipe
+		@recipe = Recipe.find(params[:recipe])
+		@ingredient = Ingredient.find(params[:ingredient])
+		@recipe.ingredients.delete(params[:ingredient])
+	end
+
 
 	private
 
