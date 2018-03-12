@@ -9,9 +9,9 @@
 			<% if user_signed_in? %>
 				<li><%= link_to 'Admin', admin_path %></li>
 				<li><%= link_to 'profil', profil_path(current_user.id) %></li>
-				<li><a>edit profile</a></li>
-				<li><a>mon frigo</a></li>
-				<li><a>ma liste</a></li>
+				<li><%= link_to 'edit profil', edit_user_registration_path(current_user.id) %></li> 
+				<li><%= link_to 'mon frigo', frigo_path(current_user.id) %></li>
+				<li><%= link_to 'ma liste', liste_path(current_user.id) %></li>
 				<li><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
 			<% else %>	
 				<li><%= link_to 'login', new_user_session_path %></li>
@@ -20,8 +20,8 @@
 		</ul>
 	<hr class="split">
 		<ul>
-			<li>recette</li>
-			<li></li>
+			<li><%= link_to 'Recette', recipes_path %></li>
+			<li><%= link_to 'Ingrédient', ingredients_path %></li>
 			<li></li>
 		</ul>
 	</div>
