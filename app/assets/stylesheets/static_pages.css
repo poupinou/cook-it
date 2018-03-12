@@ -28,6 +28,18 @@
 	display: flex;
 	justify-content: space-around;
 }
+.recettes-corps
+{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1%;
+}
+
+.recette
+{
+	margin: 1%;
+	margin-bottom: 3px;
+}
 
 .profil-corps
 {

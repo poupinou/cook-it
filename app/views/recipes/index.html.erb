@@ -7,28 +7,30 @@
   	<p><%= link_to 'retour', admin_path , class:"link-control" %></p>
   	<p><%= link_to "Ajouter", new_recipe_path, class:"link-control" %></p>
   </div>
-  <center>
-    <% @recipes.each do |recipe| %>
-
-    <a href=<%= recipe_path(recipe.id) %>>
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 10rem;">
-      <div class="card-body">
-   		<h5 class="card-title"><%= recipe.name %></h5>
-    	<p class="card-text"><%= recipe.description %></p>
-  	  </div>
-  		<ul class="list-group list-group-flush">
-    	  <li class="list-group-item"><%= recipe.time %></li>
-    	  <% if recipe.price %><li class="list-group-item"><%= (recipe.price) / 100 %> €</li><% end %>
-    	  <li class="list-group-item">...</li>
-  		</ul>
-  		<div class="card-body">
-    	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id) %></a>
-    	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
-  		</div>
-	  </div>
-	  </a>
-	  <hr class="split">
-	  <% end %>
-  </center>
+  <div>
+    <div class="recettes-corps">
+      <% @recipes.each do |recipe| %>
+        <div class="recette">
+          <a href=<%= recipe_path(recipe.id) %>>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 10rem;">
+              <div class="card-body">
+           		<h5 class="card-title"><%= recipe.name %></h5>
+            	<p class="card-text"><%= recipe.description %></p>
+          	  </div>
+          		<ul class="list-group list-group-flush">
+            	  <li class="list-group-item"><%= recipe.time %></li>
+            	  <% if recipe.price %><li class="list-group-item"><%= (recipe.price) / 100 %> €</li><% end %>
+            	  <li class="list-group-item">...</li>
+          		</ul>
+          		<div class="card-body">
+            	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id) %></a>
+            	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
+          		</div>
+        	  </div>
+      	  </a>
+        </div>
+  	  <% end %>
+    </div>
+  </div>
 </div>
