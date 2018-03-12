@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 	root 'static_pages#home'
-  
+
   devise_for :users
 	resources :recipes
 	resources :ingredients
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
 	get '/users/:id/liste', to: 'static_pages#liste', as: 'liste'
 	get '/users/:id/frigo', to: 'static_pages#frigo', as: 'frigo'
+  get '/add_ing_recipe', to: 'recipes#add_ing_recipe', as: 'add_ing_recipe'
+  get 'add_ing_recipe', to: 'recipes#post_add_ing_recipe', as: 'post_add_ing_recipe' 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
