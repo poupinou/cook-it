@@ -7,6 +7,13 @@
   <div class="profil-corps">
   	<center class="liste">
   		<h1>Ma Liste</h1>
+
+      <% @list_user.each do |recipe| %>
+        <% (IngredientToRecipe.where(recipe_id: Recipe.find(recipe.recipe_id))).each do |ing| %>
+          <p><%= (Ingredient.find(ing.ingredient_id)).name %> - <%= ing.quantity %></p>
+        <% end %>
+      <% end %>
+
   	</center>
   </div>
 </div>

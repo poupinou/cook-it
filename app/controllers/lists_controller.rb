@@ -1,5 +1,17 @@
 class ListsController < ApplicationController
 
+	def add_to_list
+		@user = current_user
+		@recipe = Recipe.find(params[:recipe_id])
+
+		List.create(user_id: @user.id, recipe_id: @recipe.id)
+	end
+
+
+
+
+=begin
+
 	def index
 		@lists = List.find(user_id)
 	end
@@ -21,5 +33,7 @@ class ListsController < ApplicationController
 	def lists_params
 		params.require(:list).permit(:price)
 	end
+
+=end
 
 end

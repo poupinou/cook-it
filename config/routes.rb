@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-resources :recipes do 
+resources :recipes do
   member do
     put "like", to: "recipes#upvote"
     put "dislike", to: "recipes#downvote"
@@ -23,6 +23,8 @@ end
   get '/add_ing_recipe', to: 'recipes#add_ing_recipe', as: 'add_ing_recipe'
   post '/add_ing_recipe', to: 'recipes#post_add_ing_recipe', as: 'post_add_ing_recipe'
 	delete 'delete_ing_recipe', to: 'recipes#destroy_ing_recipe', as: 'delete_ing_recipe'
+
+  post '/', to: 'lists#add_to_list', as: 'add_to_list'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
