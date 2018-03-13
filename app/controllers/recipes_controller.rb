@@ -5,10 +5,12 @@ class RecipesController < ApplicationController
 	end
 
 	def new
+		@user = current_user
 		@recipe = Recipe.new
 	end
 
 	def create
+		@user = current_user
 		@recipe = Recipe.new(recipes_params)
 		if @recipe.save
 			redirect_to recipes_path
@@ -16,10 +18,12 @@ class RecipesController < ApplicationController
 	end
 
 	def edit
+		@user = current_user
 		@recipe = Recipe.find(params[:id])
 	end
 
 	def update
+		@user = current_user
 		@recipe = Recipe.find(params[:id])
 		@recipe.update(recipes_params)
 		redirect_to recipes_path
@@ -30,7 +34,8 @@ class RecipesController < ApplicationController
 	end
 
 	def destroy
-		Recipe.destroy(params[:id])
+		recipe = Recipe.find(params[:id])
+		recipe.destroy
 		redirect_to recipes_path
 	end
 
@@ -52,11 +57,11 @@ class RecipesController < ApplicationController
 		@recipe.ingredients.delete(params[:ingredient])
 	end
 
-	 def upvote 
+	 def upvote
   @recipe = Recipe.find(params[:id])
   @recipe.upvote_by current_user
   redirect_to root_path
-	end  
+	end
 
 	def downvote
   @recipe = Recipe.find(params[:id])
@@ -68,7 +73,7 @@ class RecipesController < ApplicationController
 	private
 
 	def recipes_params
-		params.require(:recipe).permit(:name, :description, :picture, :time, :price)
+		params.require(:recipe).permit(:name, :description, :picture, :time, :price, :user_id)
 	end
 
 end
