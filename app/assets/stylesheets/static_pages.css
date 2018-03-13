@@ -41,10 +41,11 @@
 	margin-bottom: 3px;
 }
 
-.profil-corps , .about-corps
+.profil-corps , .about-corps, .ingredients-corps
 {
 	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
 }
 
