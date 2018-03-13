@@ -41,7 +41,7 @@
 	margin-bottom: 3px;
 }
 
-.profil-corps , .about-corps, .ingredients-corps
+.profil-corps , .about-corps, .ingredients-corps, .ingredients-recipe
 {
 	width: 100%;
 	display: flex;
@@ -82,6 +82,12 @@
 	border-width: 2px;
 	border-top-style:none;
 }
+
+.controlw
+{
+	width: 50%;
+}
+
 .link-control:hover
 {
 	cursor:pointer;

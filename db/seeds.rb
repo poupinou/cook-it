@@ -24,7 +24,7 @@ Ingredient.create(name: 'avocat', family: 'légume', remote_picture_url:'https:/
 Ingredient.create(name: 'butternut', family: 'légume', remote_picture_url:'https://i.ytimg.com/vi/AyPC8U4v59c/maxresdefault.jpg', price: 2)
 Ingredient.create(name: 'epinard', family: 'légume', remote_picture_url:'http://www.femmeactuelle.fr/var/femmeactuelle/storage/images/cuisine/guides-cuisine/les-epinards-recettes-epinards-01871/7606890-4-fre-FR/les-epinards.jpg', price: 2)
 Ingredient.create(name: 'patate', family: 'légume', remote_picture_url:'http://www.niffylux.com/components/com_virtuemart/shop_image/product/Pomme_de_terre___4b731f2ae278c.jpg', price: 2)
-Ingredient.create(name: 'champignon', family: 'légume', remote_picture_url:'http://www.voedingswaardetabel.nl/_lib/img/prod/big/champignons.jpg', price: 2)
+Ingredient.create(name: 'champignon', family: 'légume', remote_picture_url:'http://bodysano.adsyme.netdna-cdn.com/wp-content/uploads/2016/05/champignon-minceur-BodySano.jpg', price: 2)
 Ingredient.create(name: 'aubergine', family: 'légume', remote_picture_url:'http://2.bp.blogspot.com/_-IE4plYWsN4/TRInTAXUrMI/AAAAAAAAAHM/WGc9r04bcNg/s1600/Eggplant.jpg', price: 2)
 
 #fruit
@@ -36,7 +36,7 @@ Ingredient.create(name: 'framboise', family: 'fruit', remote_picture_url:'http:/
 Ingredient.create(name: 'orange', family: 'fruit', remote_picture_url:'http://images6.fanpop.com/image/photos/34500000/Orange-Fruit-orange-34512922-2738-1825.jpg', price: 1)
 Ingredient.create(name: 'grenade', family: 'fruit', remote_picture_url:'http://workouttrends.com/wp-content/uploads/2014/08/Secret-Benefits-Of-The-Red-Fruit.jpg', price: 1)
 Ingredient.create(name: 'cerise', family: 'fruit', remote_picture_url:'http://media02.hongkiat.com/fruits-vege-stock-photos/highres/fruitsvege-stock04.jpg', price: 1)
-Ingredient.create(name: 'kiwi', family: 'fruit', remote_picture_url:'http://insideiim.com/wp-content/uploads/2013/10/KIIII.jpg', price: 1)
+Ingredient.create(name: 'kiwi', family: 'fruit', remote_picture_url:'https://statics.monoprix.fr/course/g_2412310_kiwi-variete-vert-hayward-categorie-1.jpg?t=20150925021954', price: 1)
 Ingredient.create(name: 'mangue', family: 'fruit', remote_picture_url:'https://www.hd-wallpapersdownload.com/script/mango-wallpaper/mango-images-fruit-wallpaper.jpg', price: 1)
 
 #viande
@@ -53,7 +53,7 @@ Ingredient.create(name: 'riz', family: 'féculent', remote_picture_url:'http://i
 Ingredient.create(name: 'pates', family: 'féculent', remote_picture_url:'http://www.minceurmoinscher.com/ori-tagliolini-lineadiet-x-7-139.jpg', price: 3)
 Ingredient.create(name: 'vermicelle', family: 'féculent', remote_picture_url:'http://files.kitchenbowl.com/recipe/LgfwvOznK9/step-4/soak-rice-vermicelli-till-soft-about-15--thumb.jpg', price: 3)
 Ingredient.create(name: 'epices', family: 'epices', remote_picture_url:'http://media-cache-ec0.pinimg.com/736x/6a/44/79/6a447915f86669f587b073752650c299.jpg', price: 3)
-Ingredient.create(name: 'algue', family: 'féculent', remote_picture_url:'http://www.crifck.org/docs/environnement/algue_verte.jpg', price: 3)
+Ingredient.create(name: 'algue', family: 'féculent', remote_picture_url:'https://www.acteurdurable.org/wp-content/uploads/2009/06/wakame.jpg', price: 3)
 Ingredient.create(name: 'creme fraiche', family: 'laitier', remote_picture_url:'https://www.dairygoodness.ca/var/ezflow_site/storage/images/dairy-goodness/home/recipes/creme-fraiche/8183566-13-eng-CA/creme-fraiche.jpg', price: 3)
 
 Ingredient.create(name: 'lait', family: 'laitier', remote_picture_url:'http://static.produits-laitiers.com/wp-content/uploads/2013/05/bouteille.jpg', price: 3)
@@ -66,3 +66,11 @@ Ingredient.create(name: 'fromage', family: 'laitier', remote_picture_url:'https:
  User.create!(email:'b@b.b', username: 'utilisateur2', password:'qwerty', password_confirmation:'qwerty')
  User.create!(email:'c@c.c', username: 'utilisateur3', password:'azerty', password_confirmation:'azerty')
  User.create!(email:'d@d.d', username: 'utilisateur4', password:'qwerty', password_confirmation:'qwerty')
+
+
+Recipe.create(name:'hachis parmentier', description:"Plat composé de purée de pommes de terre à laquelle on mélange de la viande hachée (du boeuf). Il est très apprécié pour sa simplicité et parce qu'il permet d'utiliser les restes de boeuf d'un autre plat, comme le pot-au-feu par exemple.", remote_picture_url:'https://img2.topsante.com/var/topsante/storage/images/nutrition-et-recettes/recettes/hachis-parmentier/48692-2-fre-FR/Hachis-Parmentier_exact1024x768_l.jpg', time:"45",price: 7 , user_id:1)
+Recipe.create(name:'Tiramisu', description:"Le tiramisu (de l'italien « tiramisù » [ˌtiramiˈsu], littéralement « tire-moi vers le haut », « remonte-moi le moral », « redonne-moi des forces ») est une pâtisserie et un dessert traditionnel de la cuisine italienne.", remote_picture_url:'http://3.bp.blogspot.com/-VUkiGGOcsIs/UWE2oPW4YjI/AAAAAAAABrk/od-a2eOdLaM/s1600/tiramisu.jpg', time:"50",price: 12 , user_id:2)
+Recipe.create(name:'croissant', description:"Un croissant est une viennoiserie à base d'une pâte levée feuilletée spécifique, la pâte à croissant, qui comporte de la levure et une proportion importante de beurre.", remote_picture_url:'https://bridor.com/wp-content/uploads/product-images/59101-11.png', time:"30",price: 4 , user_id:3)
+Recipe.create(name:'bo-bun', description:"Le terme « bobun » n’est cependant pas vietnamien, probablement emprunté et modifié par les voisins cambodgiens ou laotiens. Le terme exact est bún bò car en vietnamien, le terme désignant le plat principal doit précéder l’accompagnement. Les plats principaux sont : le riz, les vermicelles de riz, les nouilles. Les accompagnements constituant les variantes sont les types de viandes, poissons, légumes. =Ainsi par exemple pour désigner les nouilles au poulet en vietnamien mì gà, littéralement (« nouilles poulet »).", remote_picture_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Bun_Bo_Nam_Bo.jpg/800px-Bun_Bo_Nam_Bo.jpg', time:"45",price: 7 , user_id:4)
+Recipe.create(name:'fondu', description:"Une fondue est une spécialité culinaire suisse à base de fromage1.", remote_picture_url:'https://image.afcdn.com/recipe/20161130/59380_w420h344c1cx2808cy1872.jpg', time:"25",price: 14 , user_id:1)
+Recipe.create(name:'raclette', description:"La raclette (Bratchäs, « fromage » rôti, en suisse allemand) est d'une part un fromage (le ou la raclette) originaire du canton du Valais en Suisse1, et d'autre part, une recette de cuisine traditionnelle et emblématique de la cuisine suisse, connue dans le monde entier, variante des fondues au fromage, à base de ce fromage fondu, raclé au fur et à mesure qu’il fond2, et servie traditionnellement avec des pommes de terre en robe des champs et accompagnée de légumes au vinaigre (cornichons, oignons)3.", remote_picture_url:'https://image.afcdn.com/recipe/20160920/1030_w420h344c1cx1824cy1368.jpg', time:"45",price: 15 , user_id:4)
