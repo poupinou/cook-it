@@ -9,6 +9,8 @@ class StaticPagesController < ApplicationController
   end
 
   def liste
+    @user = current_user
+    @list_user = List.where(user_id: @user.id)
   end
 
   def frigo

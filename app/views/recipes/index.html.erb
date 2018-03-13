@@ -15,10 +15,11 @@
         <div class="recette">
           <a href=<%= recipe_path(recipe.id) %>>
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 10rem;">
+              <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 10rem;"></img>
               <div class="card-body">
            		<h5 class="card-title"><%= recipe.name %></h5>
-              <p class="card-text">crée par <%= %>
+          </a>
+              <p class="card-text">crée par <%= User.find(recipe.user_id).username %>
             	<p class="card-text"><%= recipe.description %></p>
           	  </div>
           		<ul class="list-group list-group-flush">
@@ -27,11 +28,16 @@
             	  <li class="list-group-item">...</li>
           		</ul>
           		<div class="card-body">
+
+                <%= form_tag add_to_list_path, method: 'post' do %>
+                  <%= hidden_field_tag(:recipe_id, recipe.id) %>
+                  <%= submit_tag('Ajouter à ma liste') %>
+                <% end %>
+
             	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id) %></a>
             	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
           		</div>
         	  </div>
-      	  </a>
         </div>
   	  <% end %>
     </div>
