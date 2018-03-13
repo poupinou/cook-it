@@ -2,8 +2,8 @@ class Recipe < ApplicationRecord
 
 	mount_uploader :picture, ImageUploader
 
-  has_many :ingredient_to_recipe
-  has_many :ingredients, through: :ingredient_to_recipe
+  has_many :ingredient_to_recipes
+  has_many :ingredients, through: :ingredient_to_recipes
 
   validates :name, presence: true, uniqueness: true
 
