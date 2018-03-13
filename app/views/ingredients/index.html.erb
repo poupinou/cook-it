@@ -2,7 +2,7 @@
   <center class="ingredients-head">
   	<h1>INGREDIENTS</h1>
   	<form  data-remote="true" id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
-      <input id='nom' name="nom" placeholder="Rechercher" onkeypress="selection()">
+      <input id='nom' name="nom" placeholder="Rechercher">
       <input type="submit" value="Rechercher">
     </form>
   </center>
@@ -17,8 +17,5 @@
 </div>
 
 <script type="text/javascript">
-function selection()
-{
-  document.getElementById("form1").submit();
-}
+  document.getElementById("nom").focus();
 </script>

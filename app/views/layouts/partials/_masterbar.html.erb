@@ -22,6 +22,8 @@
 		<ul>
 			<li><%= link_to 'Recette', recipes_path %></li>
 			<li><%= link_to 'Ingrédient', ingredients_path %></li>
+			<% r = Recipe.all.shuffle.first %>
+			<% if r %><li><%= link_to 'Donne moi une recette',recipe_path(r.id)%></li><% end %>
 			<li></li>
 		</ul>
 	</div>

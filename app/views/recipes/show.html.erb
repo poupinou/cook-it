@@ -2,7 +2,7 @@
   <h1><%= @recipe.name %></h1>
   <p><%= @recipe.time %> min - <%= @recipe.price  / 100 %>€</p>
 
-  <p><img src='<%= @recipe.picture %>'></img></p>
+  <p><img src='<%= @recipe.picture_url(:poster) %>'></img></p>
 
   <p>Ingrédients nécessaire</p>
 

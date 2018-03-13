@@ -1,3 +1,4 @@
-  <% @ingredients.each do |ingredient| %>
+ <% @ingredients.each do |ingredient| %>
     <p><%= ingredient.id %>. <%= ingredient.name %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
   <% end %>
+
