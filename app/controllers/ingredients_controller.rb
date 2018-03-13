@@ -11,8 +11,6 @@ class IngredientsController < ApplicationController
 			end
 			@ingredients = tab
 		end
-		@value = params[:nom]
-
 		
     respond_to do |f|
       f.js

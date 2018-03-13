@@ -68,14 +68,4 @@ Ingredient.create(name: 'fromage', family: 'laitier', remote_picture_url:'https:
  User.create!(email:'d@d.d', username: 'utilisateur4', password:'qwerty', password_confirmation:'qwerty')
 
 
-=begin 
-Ingredient.create(name: 'Beurre', family: 'Produit laitier', picture: 'https://www.labellevie.com/produit/15129/beurre-artisanal-doux-la-ferme-de-viltain-250-g', price: '5')
-Ingredient.create(name: 'Farine', family: 'Produit de base', picture: 'https://www.academiedugout.fr/ingredients/farine-integrale_937', price: '2')
-Ingredient.create(name: 'Sucre', family: 'Produit de base', picture: 'http://www.levif.be/actualite/sante/le-sucre-un-danger-public/article-normal-21821.html', price: '3')
-Ingredient.create(name: 'Oeuf', family: 'Produit animal', picture: 'https://www.nutreatif.com/oeuf/', price: '4')
-Ingredient.create(name: 'Chocolat', family: 'Produit de base', picture: 'https://www.albert-chocolatier.com/produit/nos-tablettes-et-les-minis', price: '7')
-Recipe.create(name: 'Burger', description: 'Un steack, deux buns, un régale', picture: 'http://bk-ca-prd.s3.amazonaws.com/sites/burgerking.ca/files/THMB-QUAD%20Stacker_0.png', time: '30', price: '7')
-Recipe.create(name: 'Blanquette de veau', description: 'Du veau qui fond dans la bouche', picture: 'https://fr.rc-cdn.community.thermomix.com/recipeimage/dbnhdu68-4181a-586204-cfcd2-cdj1rjk9/607eaa98-582a-440a-9585-b9a71c9bdf98/main/blanquette-de-veau.png', time: '120', price: '9')
-Recipe.create(name: 'Poulet aux morilles', description: 'Du poulet, de la crème et des champignons', picture: 'https://www.academiedugout.fr/images/7981/948-580/fricasse-de-volaille-final.jpg?poix=50&poiy=50', time: '180', price: '10')
-Recipe.create(name: 'Fondant au chocolat', description: 'Beaucoup de beurre et beaucoup de chocolat', picture: 'https://www.atelierdeschefs.com/media/recette-e6493-fondant-au-chocolat-creme-anglaise-au-pamplemousse.jpg', time: '60', price: '5')
-=end 
+

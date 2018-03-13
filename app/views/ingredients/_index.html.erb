@@ -1,4 +1,12 @@
- <% @ingredients.each do |ingredient| %>
-    <p><%= ingredient.id %>. <%= ingredient.name %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
-  <% end %>
-
+<% @ingredients.each do |ingredient| %>
+  <div class="card" style="width: 150px;height:150px">
+    <img class="card-img-top" src=<%= ingredient.picture_url(:mini) %> alt="Card image cap" style="position: absolute; z-index: 1">
+    <center class="card-body" style="z-index:2">
+    <h5 class="card-title"><%= ingredient.name %></h5>
+    </center>
+    <div style="z-index:2 ; display: flex; justify-content: center;opacity: 0.5; align-items: end;">
+      <%= link_to 'Edit', edit_ingredient_path(ingredient.id), class:"btn btn-secondary card-link" %>
+      <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'}, class:"btn btn-primary card-link" %>
+    </div>
+  </div>
+<% end %>
