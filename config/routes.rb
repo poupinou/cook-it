@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+resources :recipes do 
+  member do
+    put "like", to: "recipes#upvote"
+    put "dislike", to: "recipes#downvote"
+  end
+end
 	root 'static_pages#home'
 
   devise_for :users

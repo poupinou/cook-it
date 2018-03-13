@@ -52,6 +52,18 @@ class RecipesController < ApplicationController
 		@recipe.ingredients.delete(params[:ingredient])
 	end
 
+	 def upvote 
+  @recipe = Recipe.find(params[:id])
+  @recipe.upvote_by current_user
+  redirect_to root_path
+	end  
+
+	def downvote
+  @recipe = Recipe.find(params[:id])
+  @recipe.downvote_by current_user
+  redirect_to root_path
+	end
+
 
 	private
 

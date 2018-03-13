@@ -17,6 +17,16 @@
 
   <p>Description</p>
 
+  <%= link_to like_recipe_path(@recipe), method: :put do %>
+  Upvote
+  <%= @recipe.get_upvotes.size %>
+<% end %>
+
+<%= link_to dislike_recipe_path(@recipe), method: :put do %>
+  Downvote
+  <%= @recipe.get_downvotes.size %>
+<% end %>
+
   <p><%= @recipe.description %></p>
 
   <p><%= link_to 'Retour aux recettes', recipes_path %></p>
