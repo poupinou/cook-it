@@ -1,14 +1,16 @@
 <div class="ingredients-g">
   <center class="ingredients-head">
   	<h1>INGREDIENTS</h1>
-  	<form id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
-      <input id='nom' name="nom" value="<%= @value %>" placeholder="Rechercher" onkeydown="return testSaisie(document.getElementById('nom'));selection();" onkeyup="selection()" >
+  	<form  data-remote="true" id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
+      <input id='nom' name="nom" placeholder="Rechercher" onkeypress="selection()">
+      <input type="submit" value="Rechercher">
     </form>
   </center>
   <div class="ingredients-onglet">
   	  <p><%= link_to 'Ajouter', new_ingredient_path , class:"link-control" %></p>
   	  <p><%= link_to 'retour', admin_path , class:"link-control" %></p>
   </div>
+  <div class="ingredients-corps"
   <% @ingredients.each do |ingredient| %>
     <p><%= ingredient.id %>. <%= ingredient.name %> - <%= link_to 'Edit', edit_ingredient_path(ingredient.id) %> - <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Certain ?'} %>
   <% end %>
@@ -17,11 +19,6 @@
 <script type="text/javascript">
 function selection()
 {
-  document.getElementById("form1").submit();
-}
-
-function testSaisie(champ)
-{   
-   return champ.value;
+  document.getElementById("nom").submit();
 }
 </script>

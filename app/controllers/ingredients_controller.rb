@@ -12,6 +12,12 @@ class IngredientsController < ApplicationController
 			@ingredients = tab
 		end
 		@value = params[:nom]
+
+		
+    respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def new
