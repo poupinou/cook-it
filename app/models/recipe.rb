@@ -5,6 +5,9 @@ class Recipe < ApplicationRecord
   has_many :ingredient_to_recipes
   has_many :ingredients, through: :ingredient_to_recipes
 
+  belongs_to :user
+  acts_as_votable
+
   validates :name, presence: true, uniqueness: true
 
   validates :description, presence: true
