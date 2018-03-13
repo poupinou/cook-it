@@ -16,6 +16,7 @@ gem 'jbuilder'
 gem 'devise'
 gem 'carrierwave'
 gem "mini_magick"
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'sqlite3'
