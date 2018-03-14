@@ -1,55 +1,19 @@
 class ListsController < ApplicationController
 
-	def add_to_list
-		@user = current_user
-		@recipe = Recipe.find(params[:recipe_id])
+	def add_to_list #permet d'ajouter à sa liste de course
+		@user = current_user #on viens recupéré le user connété
+		@recipe = Recipe.find(params[:recipe_id]) #on viens récupéré la recette ciblé par l'événement
 
-		List.create(user_id: @user.id, recipe_id: @recipe.id)
+		List.create(user_id: @user.id, recipe_id: @recipe.id) #on crée un liste de recette
 
-		IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing|
-			if ListIng.exists?(user_id: @user.id, ingredient_id: ing.ingredient_id)
-				list = ListIng.find_by(user_id: @user.id, ingredient_id: ing.ingredient_id)
-				list.quantity += ing.quantity
+		IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| #on viens boucler sur tous les ingrédient de nôtre recette
+			if ListIng.exists?(user_id: @user.id, ingredient_id: ing.ingredient_id) #si  l'élément existe déja dans notre liste?
+				list = ListIng.find_by(user_id: @user.id, ingredient_id: ing.ingredient_id) #on pointe dessus
+				list.quantity += ing.quantity # et on augmente la quantité
 				list.save
 			else
-				ListIng.create(user_id: @user.id, ingredient_id: ing.ingredient_id, quantity: ing.quantity)
+				ListIng.create(user_id: @user.id, ingredient_id: ing.ingredient_id, quantity: ing.quantity) # sinon n la créer
 			end
 		end
 	end
-
-	private
-
-	def list_ings_params
-		params.permit(:list_ing).permit(:quantity)
-	end
-
-
-
-
-=begin
-
-	def index
-		@lists = List.find(user_id)
-	end
-
-	def new
-		@list = List.where(user_id: params[:user_id], recipe_id: params[:recipe_id])
-			@list.ingredient << Recipe.find(recipe_id).ingredients
-			@list.save
-	end
-
-	def create
-		@lists = List.new(params[:id])
-	end
-
-	def destroy
-		List.destroy(params[:id])
-	end
-
-	def lists_params
-		params.require(:list).permit(:price)
-	end
-
-=end
-
 end

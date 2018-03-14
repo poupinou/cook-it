@@ -2,22 +2,39 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def admin
+  def admin #AJAX
+    respond_to do |f|
+      f.js
+      f.html 
+    end
   end
 
-  def about
+  def about #AJAX
+    respond_to do |f|
+      f.js
+      f.html 
+    end
   end
 
-  def liste
-    @user = current_user
-    @list_user = List.where(user_id: @user.id)
-    @list_ing_user = ListIng.where(user_id: @user.id)
+  def liste #AJAX
+    @user = current_user #user actuel
+    @list_user = List.where(user_id: @user.id) #pointe sur les recettes de notre utilisateur
+    @list_ing_user = ListIng.where(user_id: @user.id) #pointe sur les ingrédient présent dans la liste de notre utilisateur
+
+    respond_to do |f|
+      f.js
+      f.html 
+    end
   end
 
-  def frigo
+  def frigo #AJAX
+    respond_to do |f|
+      f.js
+      f.html 
+    end
   end
 
-    def send_sms
+    def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
       @list_ing_user.each do |ing| 
       @ingre = Ingredient.find(ing.ingredient_id).name 
       @qte = ing.quantity 

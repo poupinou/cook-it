@@ -1,8 +1,11 @@
 class IngredientsController < ApplicationController
 
-	def index
+	def index #AJAX
+
 		@ingredients = Ingredient.all
 		@value = ""
+
+		###sert pour le système de filtrage par nom###
 		if params[:nom]
 			tab = []
 			@ingredients.each do |i|
@@ -13,29 +16,15 @@ class IngredientsController < ApplicationController
 			@ingredients = tab
 			@value = params[:nom]
 		end
-		
+		##############################################
     respond_to do |f|
       f.js
       f.html 
     end
 	end
 
-	def new
-		@ingredient = Ingredient.new
-	end
-
-	def create
-		@ingredient = Ingredient.new(ingredients_params)
-		@ingredient.save
-		@ingredients = Ingredient.all
-		respond_to do |f|
-      f.js
-      f.html 
-    end
-	end
-
-	def edit
-		@ingredient = Ingredient.find(params[:id])
+	def new #AJAX
+		@ingredient = Ingredient.new #génération d'un ingrédient pour le form for
 
 		respond_to do |f|
       f.js
@@ -43,10 +32,32 @@ class IngredientsController < ApplicationController
     end
 	end
 
-	def update
-		@ingredient = Ingredient.find(params[:id])
-		@ingredient.update(ingredients_params)
-		@ingredients = Ingredient.all
+	def create #AJAX
+
+		@ingredient = Ingredient.new(ingredients_params) #génération avec les paramètre autorisé
+		@ingredient.save #on sauvegarde
+
+		@ingredients = Ingredient.all #besoin pour le fonctionnement e AJAX
+		respond_to do |f|
+      f.js
+      f.html 
+    end
+	end
+
+	def edit #AJAX
+		@ingredient = Ingredient.find(params[:id]) #on viens chercher l'élement à modifier
+
+		respond_to do |f|
+      f.js
+      f.html 
+    end
+	end
+
+	def update #AJAX
+		@ingredient = Ingredient.find(params[:id]) #on viens chercher l'élement à modifier
+		@ingredient.update(ingredients_params) #on sauve
+
+		@ingredients = Ingredient.all #besoin pour le fonctionnement e AJAX
 		respond_to do |f|
       f.js
       f.html 
@@ -54,18 +65,12 @@ class IngredientsController < ApplicationController
 	end
 
 	def destroy
-		Ingredient.destroy(params[:id])
-		@ingredients = Ingredient.all
+		Ingredient.destroy(params[:id]) #on viens detruire l'élément selectionné
+
+		@ingredients = Ingredient.all #besoin pour le fonctionnement e AJAX
 		respond_to do |f|
       f.js
       f.html 
     end
-	end
-
-
-	private
-
-	def ingredients_params
-		params.require(:ingredient).permit(:name, :family, :picture, :price)
 	end
 end

@@ -30,14 +30,14 @@
 	display: flex;
 	justify-content: space-around;
 }
-.recettes-corps
+.recipes-corps
 {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 1%;
 }
 
-.recette
+.recipe
 {
 	margin: 1%;
 	margin-bottom: 3px;

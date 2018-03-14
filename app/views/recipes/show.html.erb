@@ -11,25 +11,32 @@
         <%= hidden_field_tag(:recipe, @recipe.id) %>
       <p><%= submit_tag('Modifier les ingrédients') %></p>
       <% end %>
+      <%= form_tag add_to_list_path, method: 'post' do %>
+        <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+        <%= submit_tag('Ajouter à ma liste') %>
+      <% end %>
 
     <% @recipe.ingredients.each do |ing| %>
       <p><%= ing.name %></p>
     <% end %>
 
     <p>Description</p>
+    <div class="vote">
+      <% if user_signed_in? %>
+        <%= link_to like_recipe_path(@recipe), method: :put, remote:true do %>
+          Upvote
+          <%= @recipe.get_upvotes.size %>
+        <% end %>
 
-    <%= link_to like_recipe_path(@recipe), method: :put do %>
-    Upvote
-    <%= @recipe.get_upvotes.size %>
-  <% end %>
-
-  <%= link_to dislike_recipe_path(@recipe), method: :put do %>
-    Downvote
-    <%= @recipe.get_downvotes.size %>
-  <% end %>
-
+        <%= link_to dislike_recipe_path(@recipe), method: :put, remote:true do %>
+          Downvote
+          <%= @recipe.get_downvotes.size %>
+        <% end %>
+      <% end %>
+    </div>
     <p><%= @recipe.description %></p>
-
+    <%= link_to 'Edit', edit_recipe_path(@recipe.id), remote:true %>
+    <%= link_to 'Delete', @recipe, remote:true,method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %>
     <p><%= link_to 'Retour aux recettes', recipes_path, remote:true %></p>
   </div>
 </div>

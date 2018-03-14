@@ -13,9 +13,9 @@
     </form>
   </center>
   <div>
-    <div class="recettes-corps">
+    <div class="recipes-corps">
       <% @recipes.each do |recipe| %>
-        <div class="recette">
+        <div class="recipe">
           <a href=<%= recipe_path(recipe.id) %>>
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 10rem;"></img>
@@ -37,7 +37,7 @@
                   <%= submit_tag('Ajouter à ma liste') %>
                 <% end %>
 
-            	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id) %></a>
+            	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id), remote:true %></a>
             	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, remote:true,method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
           		</div>
         	  </div>

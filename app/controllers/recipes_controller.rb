@@ -1,45 +1,49 @@
 class RecipesController < ApplicationController
 
-	def index
-		@recipes = Recipe.all
-	end
+	def index #AJAX
+		@recipes = Recipe.all #permet une vision total sur tous les ingrédients
 
-	def new
-		@user = current_user
-		@recipe = Recipe.new
-	end
-
-	def create
-		@user = current_user
-		@recipe = Recipe.new(recipes_params)
-		@recipe.save
-		@recipes = Recipe.all
-    respond_to do |f|
+		###sert pour le système de filtrage par nom###
+		@value = ""
+		if params[:nom]
+			tab = []
+			@recipes.each do |i|
+				if i.name.include?(params[:nom])
+					tab << i
+				end
+			end
+			@recipes = tab
+			@value = params[:nom]
+		end
+		##############################################
+		
+		respond_to do |f|#AJAX mon ami
       f.js
       f.html 
     end
 	end
 
-	def edit
-		@user = current_user
-		@recipe = Recipe.find(params[:id])
+	def new #AJAX
+		@user = current_user # on pointe
+		@recipe = Recipe.new #on prépare la création
 	end
 
-	def update
-		@user = current_user
-		@recipe = Recipe.find(params[:id])
-		@recipe.update(recipes_params)
-		redirect_to recipes_path
+	def create #AJAX
+		@user = current_user #on pointe
+		@recipe = Recipe.new(recipes_params)# on crée avec les paramètre rentré
+		@recipe.save #on sauve
+
+		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
+
+    respond_to do |f| #AJAX mon ami
+      f.js
+      f.html 
+    end
 	end
 
-	def show
-		@recipe = Recipe.find(params[:id])
-	end
-
-	def destroy
-		recipe = Recipe.find(params[:id])
-		@recipes = Recipe.all
-		recipe.destroy
+	def edit #AJAX
+		@user = current_user #on pointe
+		@recipe = Recipe.find(params[:id]) #on pointe
 
 		respond_to do |f|
       f.js
@@ -47,11 +51,41 @@ class RecipesController < ApplicationController
     end
 	end
 
-	def add_ing_recipe
-		@recipe = Recipe.find(params[:recipe])
-		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
-		@ingredients = Ingredient.all
-		@value = ""
+	def update #AJAX
+		@user = current_user #on pointe
+		@recipe = Recipe.find(params[:id]) #on pointe
+		@recipe.update(recipes_params) #on met à jour
+		
+		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
+		respond_to do |f|
+      f.js
+      f.html 
+    end
+	end
+
+	def show
+		@recipe = Recipe.find(params[:id]) #permet la vision total sur une recette
+	end
+
+	def destroy #AJAX
+		recipe = Recipe.find(params[:id]) #on pointe 
+		recipe.destroy
+
+		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
+		
+		respond_to do |f|#AJAX mon ami
+      f.js
+      f.html 
+    end
+	end
+
+	def add_ing_recipe #AJAX
+		@recipe = Recipe.find(params[:recipe]) #on viens réupéré la recette ciblé
+		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id) #ainsi que tous les ingrédient de cette recette
+		
+		@ingredients = Ingredient.all #besoin pour le fonctionnement en AJAX
+		@value = "" #valeur par default (importante)
+		###sert pour le système de filtrage par nom###
 		if params[:nom]
 			tab = []
 			@ingredients.each do |i|
@@ -62,14 +96,14 @@ class RecipesController < ApplicationController
 			@ingredients = tab
 			@value = params[:nom]
 		end
-		
+		##############################################
     respond_to do |f|
       f.js
       f.html 
     end
 	end
 
-	def post_add_ing_recipe
+	def post_add_ing_recipe #AJAX
 		@recipe = Recipe.find(params[:recipe])
 		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
 		IngredientToRecipe.create(recipe_id: params[:recipe], ingredient_id: params[:ingredient], quantity: params[:quantity])
@@ -80,7 +114,7 @@ class RecipesController < ApplicationController
     end
 	end
 
-	def destroy_ing_recipe
+	def destroy_ing_recipe #AJAX
 		@recipe = Recipe.find(params[:recipe])
 		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
 		@ingredient = Ingredient.find(params[:ingredient])
@@ -92,23 +126,23 @@ class RecipesController < ApplicationController
     end
 	end
 
-	 def upvote
-  @recipe = Recipe.find(params[:id])
-  @recipe.upvote_by current_user
-  redirect_to root_path
+	 def upvote #AJAX permet de voter positif 
+  @recipe = Recipe.find(params[:id]) #on récupère la recette ciblé
+  @recipe.upvote_by current_user #on applique la fonction magique sur la recette
+
+  	respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
-	def downvote
-  @recipe = Recipe.find(params[:id])
-  @recipe.downvote_by current_user
-  redirect_to root_path
+	def downvote #AJAX permet de voter negatif 
+  @recipe = Recipe.find(params[:id])  #on récupère la recette ciblé
+  @recipe.downvote_by current_user#on applique la fonction magique sur la recette
+
+  	respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
-
-
-	private
-
-	def recipes_params
-		params.require(:recipe).permit(:name, :description, :picture, :time, :price, :user_id)
-	end
-
 end
