@@ -1,15 +1,17 @@
 <div class="recettes-g">
-  <center class="recettes-head">
-	<h1>RECETTES</h1>
+  <center class="recipes-head">
+    <div class="recipe-titre">
+        <h3>Recettes</h3>
+      <div class="recipe-link">
+        <p><%= link_to 'Ajouter', new_recipe_path, remote:true %></p>
+        <p><%= link_to 'retour', admin_path, remote:true  %></p>
+      </div>
+    </div>
     <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
       <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
-      <input id='sub' style='display: none' type="submit">
+      <input id='sub' style="display: none" type="submit">
     </form>
   </center>
-  <div class="recettes-onglet">
-  	<p><%= link_to 'retour', admin_path , class:"link-control" %></p>
-  	<p><%= link_to "Ajouter", new_recipe_path, class:"link-control" %></p>
-  </div>
   <div>
     <div class="recettes-corps">
       <% @recipes.each do |recipe| %>
@@ -36,7 +38,7 @@
                 <% end %>
 
             	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id) %></a>
-            	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
+            	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, remote:true,method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
           		</div>
         	  </div>
         </div>
@@ -46,7 +48,7 @@
 </div>
 
 <script type="text/javascript">
- 
+document.getElementById('nom').focus();
 function su()
 {
   document.getElementById('sub').click();

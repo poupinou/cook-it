@@ -3,7 +3,7 @@
 <div>
   <h1>Ajouter une recette</h1>
 
-  <%= form_for @recipe do |rec| %>
+  <%= form_for @recipe, remote:true do |rec| %>
        <%= rec.hidden_field :user_id, value: @user.id %>
     <p><%= rec.text_field :name, placeholder: 'Nom de la recette' %></p>
     <p><%= rec.text_area :description, placeholder: 'Description de la recette' %></p>
@@ -13,7 +13,7 @@
 
     <p><%= rec.submit 'Ajouter cette recette' %></p>
   <% end %>
-
+   <p><%= link_to 'Retour aux recettes', recipes_path ,remote:true %></p>
 </div>
 
 <% else %>

@@ -1,4 +1,8 @@
 /*Disposition de la page admin*/
+.home
+{
+	width: 100%;
+}
 
 .admin-g , .recettes-g , .ingredients-g, .profil-g, .about-g
 {
@@ -7,9 +11,8 @@
 	flex-direction: column;
 }
 
-.admin-head , .recettes-head , .ingredients-head , .profil-head , .about-head
+.admin-head , .recipes-head , .ingredients-head , .profil-head , .about-head
 {
-	padding-bottom: 2%;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -17,12 +20,12 @@
 	background-color: #FFEFEF;
 	box-shadow: 0px 5px 5px grey; 
 }
-.ingredient-titre
+.ingredient-titre , .recipe-titre, .admin-titre
 {
 	display: flex;
 	flex-direction: column;
 }
-.ingredient-link 
+.ingredient-link , .recipe-link, .admin-link
 {
 	display: flex;
 	justify-content: space-around;

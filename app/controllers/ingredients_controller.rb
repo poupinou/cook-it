@@ -2,6 +2,7 @@ class IngredientsController < ApplicationController
 
 	def index
 		@ingredients = Ingredient.all
+		@value = ""
 		if params[:nom]
 			tab = []
 			@ingredients.each do |i|
@@ -10,6 +11,7 @@ class IngredientsController < ApplicationController
 				end
 			end
 			@ingredients = tab
+			@value = params[:nom]
 		end
 		
     respond_to do |f|
@@ -24,26 +26,40 @@ class IngredientsController < ApplicationController
 
 	def create
 		@ingredient = Ingredient.new(ingredients_params)
-		if @ingredient.save
-			redirect_to ingredients_path
-		else
-			render 'new'
-		end
+		@ingredient.save
+		@ingredients = Ingredient.all
+		respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def edit
 		@ingredient = Ingredient.find(params[:id])
+
+		respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def update
 		@ingredient = Ingredient.find(params[:id])
 		@ingredient.update(ingredients_params)
-		redirect_to ingredients_path
+		@ingredients = Ingredient.all
+		respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def destroy
 		Ingredient.destroy(params[:id])
-		redirect_to ingredients_path
+		@ingredients = Ingredient.all
+		respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 
