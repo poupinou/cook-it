@@ -1,15 +1,17 @@
 <div class="ingredients-g">
   <center class="ingredients-head">
-  	<h1>INGREDIENTS</h1>
+    <div class="ingredient-titre">
+        <h3>Ingredients</h3>
+      <div class="ingredient-link">
+        <p><%= link_to 'Ajouter', new_ingredient_path %></p>
+        <p><%= link_to 'retour', admin_path  %></p>
+      </div>
+    </div>
   	<form  data-remote="true" id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
       <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
       <input id='sub' style="display: none" type="submit">
     </form>
   </center>
-  <div class="ingredients-onglet">
-  	  <p><%= link_to 'Ajouter', new_ingredient_path , class:"link-control" %></p>
-  	  <p><%= link_to 'retour', admin_path , class:"link-control" %></p>
-  </div>
   <div class="ingredients-corps">
     <% @ingredients.each do |ingredient| %>
       <div class="card" style="width: 150px;height:150px">
