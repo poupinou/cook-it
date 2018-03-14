@@ -1,0 +1,16 @@
+<% @ingredients.each do |ing| %>
+  <%= form_tag post_add_ing_recipe_path, method: 'post', remote:true do %>
+    <div class="card" style="width: 150px;height:150px">
+      <img class="card-img-top" src=<%= ing.picture_url(:mini) %> alt="Card image cap" style="position: absolute; z-index: 1">
+      <center class="card-body" style="z-index:2">
+      <h5 class="card-title"><%= ing.name %></h5>
+      </center>
+      <div style="z-index:2 ; display: flex; justify-content: center;opacity: 0.9; align-items: end;">
+        <%= hidden_field_tag(:recipe, @recipe.id) %>
+        <%= hidden_field_tag(:ingredient, ing.id) %>
+        <%= text_field_tag(:quantity,'' ,class:"controlw") %>
+        <%= submit_tag('Ajouter',class:"btn-primary card-link")%>
+      </div>
+    </div>
+  <% end %>
+<% end %>

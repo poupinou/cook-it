@@ -1,0 +1,13 @@
+<div>
+  <h1>Ajouter un ingrédient</h1>
+
+  <%= form_for @ingredient,remote:true do |ing| %>
+    <p><%= ing.text_field :name, placeholder: 'Nom de l\'ingrédient' %></p>
+    <p><%= ing.text_field :family, placeholder: 'Famille de l\'ingrédient' %></p>
+    <p><%= ing.file_field :picture, placeholder: 'URL de l\'ingrédient' %></p>
+    <p><%= ing.text_field :price, placeholder: 'Prix de l\'ingrédient' %></p>
+
+    <p><%= ing.submit 'Ajouter cet ingrédient' %></p>
+  <% end %>
+  <p><%= link_to 'Retour aux ingrédients', ingredients_path ,remote:true %></p>
+</div>

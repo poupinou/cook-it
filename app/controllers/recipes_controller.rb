@@ -12,9 +12,12 @@ class RecipesController < ApplicationController
 	def create
 		@user = current_user
 		@recipe = Recipe.new(recipes_params)
-		if @recipe.save
-			redirect_to recipes_path
-		end
+		@recipe.save
+		@recipes = Recipe.all
+    respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def edit
@@ -35,15 +38,20 @@ class RecipesController < ApplicationController
 
 	def destroy
 		recipe = Recipe.find(params[:id])
+		@recipes = Recipe.all
 		recipe.destroy
-		redirect_to recipes_path
+
+		respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def add_ing_recipe
 		@recipe = Recipe.find(params[:recipe])
 		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
 		@ingredients = Ingredient.all
-
+		@value = ""
 		if params[:nom]
 			tab = []
 			@ingredients.each do |i|
@@ -52,6 +60,7 @@ class RecipesController < ApplicationController
 				end
 			end
 			@ingredients = tab
+			@value = params[:nom]
 		end
 		
     respond_to do |f|

@@ -8,11 +8,11 @@
 	<div id="masterbar-navigation">
 		<ul>
 			<% if user_signed_in? %>
-				<li><%= link_to 'Admin', admin_path ,class:"masterbar-link" %></li>
-				<li><%= link_to 'profil', profil_path(current_user.id) ,class:"masterbar-link"%></li>
-				<li><%= link_to 'edit profil', edit_user_registration_path(current_user.id) ,class:"masterbar-link"%></li> 
-				<li><%= link_to 'mon frigo', frigo_path(current_user.id),class:"masterbar-link" %></li>
-				<li><%= link_to 'ma liste', liste_path(current_user.id),class:"masterbar-link" %></li>
+				<li><%= link_to 'Admin', admin_path ,remote:true,class:"masterbar-link" %></li>
+				<li><%= link_to 'profil', profil_path(current_user.id),class:"masterbar-link"%></li>
+				<li><%= link_to 'edit profil', edit_user_registration_path(current_user.id),class:"masterbar-link"%></li> 
+				<li><%= link_to 'mon frigo', frigo_path(current_user.id),remote:true,class:"masterbar-link" %></li>
+				<li><%= link_to 'ma liste', liste_path(current_user.id),remote:true,class:"masterbar-link" %></li>
 				<li><%= link_to 'logout', destroy_user_session_path, method: :delete,class:"masterbar-link" %></li>
 			<% else %>	
 				<li><%= link_to 'login', new_user_session_path,class:"masterbar-link" %></li>
@@ -21,8 +21,8 @@
 		</ul>
 	<hr class="split">
 		<ul>
-			<li><%= link_to 'Recette', recipes_path,class:"masterbar-link" %></li>
-			<li><%= link_to 'Ingrédient', ingredients_path,class:"masterbar-link" %></li>
+			<li><%= link_to 'Recette', recipes_path,remote:true,class:"masterbar-link" %></li>
+			<li><%= link_to 'Ingrédient', ingredients_path,remote:true,class:"masterbar-link" %></li>
 			<% r = Recipe.all.shuffle.first %>
 			<% if r %><li><%= link_to 'Donne moi une recette',recipe_path(r.id),class:"masterbar-link"%></li><% end %>
 			<li></li>
@@ -30,7 +30,7 @@
 	</div>
 	<hr class="split">
 	<div id="masterbar-footer">
-		<span><%= link_to 'About', about_path,class:"masterbar-link" %><span>
+		<span><%= link_to 'About', about_path,remote:true,class:"masterbar-link" %><span>
 	</div>
 </div>
 
