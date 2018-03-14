@@ -14,9 +14,11 @@
         <% end %>
       <h4>Mes ingrédients à acheter</h4>
         <% @list_ing_user.each do |ing| %>
-          <p><%= Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
+          <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
         <% end %>
 
   	</center>
+          <%= link_to 'send', send_path %>
+
   </div>
 </div>
