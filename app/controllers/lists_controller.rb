@@ -5,6 +5,22 @@ class ListsController < ApplicationController
 		@recipe = Recipe.find(params[:recipe_id])
 
 		List.create(user_id: @user.id, recipe_id: @recipe.id)
+
+		IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing|
+			if ListIng.exists?(user_id: @user.id, ingredient_id: ing.ingredient_id)
+				list = ListIng.find_by(user_id: @user.id, ingredient_id: ing.ingredient_id)
+				list.quantity += ing.quantity
+				list.save
+			else
+				ListIng.create(user_id: @user.id, ingredient_id: ing.ingredient_id, quantity: ing.quantity)
+			end
+		end
+	end
+
+	private
+
+	def list_ings_params
+		params.permit(:list_ing).permit(:quantity)
 	end
 
 

@@ -42,19 +42,45 @@ class RecipesController < ApplicationController
 	def add_ing_recipe
 		@recipe = Recipe.find(params[:recipe])
 		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
-
 		@ingredients = Ingredient.all
+
+		if params[:nom]
+			tab = []
+			@ingredients.each do |i|
+				if i.name.include?(params[:nom])
+					tab << i
+				end
+			end
+			@ingredients = tab
+		end
+		
+    respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def post_add_ing_recipe
 		@recipe = Recipe.find(params[:recipe])
+		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
 		IngredientToRecipe.create(recipe_id: params[:recipe], ingredient_id: params[:ingredient], quantity: params[:quantity])
+
+		respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	def destroy_ing_recipe
 		@recipe = Recipe.find(params[:recipe])
+		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
 		@ingredient = Ingredient.find(params[:ingredient])
 		@recipe.ingredients.delete(params[:ingredient])
+
+		respond_to do |f|
+      f.js
+      f.html 
+    end
 	end
 
 	 def upvote

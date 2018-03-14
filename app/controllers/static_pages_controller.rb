@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
   def liste
     @user = current_user
     @list_user = List.where(user_id: @user.id)
+    @list_ing_user = ListIng.where(user_id: @user.id)
   end
 
   def frigo

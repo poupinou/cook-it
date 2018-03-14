@@ -4,7 +4,7 @@
   <%= form_for @ingredient do |ing| %>
     <p><%= ing.text_field :name, placeholder: 'Nom de l\'ingrédient' %></p>
     <p><%= ing.text_field :family, placeholder: 'Type de l\'ingrédient' %></p>
-    <p><%= ing.text_field :picture, placeholder: 'URL de l\'ingrédient' %></p>
+    <p><%= ing.file_field :picture, placeholder: 'URL de l\'ingrédient' %></p>
     <p><%= ing.text_field :price, placeholder: 'Prix de l\'ingrédient' %></p>
 
     <p><%= ing.submit 'Modifier cet ingrédient' %></p>

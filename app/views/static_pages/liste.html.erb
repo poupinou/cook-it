@@ -8,13 +8,14 @@
   	<center class="liste">
   		<h1>Ma Liste</h1>
 
-      <% @list_user.each do |recipe| %>
-        <% (IngredientToRecipe.where(recipe_id: Recipe.find(recipe.recipe_id))).each do |ing| %>
-
-      
-          <p><%= (Ingredient.find(ing.ingredient_id)).name %> - <%= ing.quantity %></p>
+      <h4>Mes recettes sélectionnées</h4>
+        <% @list_user.each do |recipe| %>
+          <p><%= Recipe.find(recipe.recipe_id).name %></p>
         <% end %>
-      <% end %>
+      <h4>Mes ingrédients à acheter</h4>
+        <% @list_ing_user.each do |ing| %>
+          <p><%= Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
+        <% end %>
 
   	</center>
   </div>
