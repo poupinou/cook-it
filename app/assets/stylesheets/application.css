@@ -25,56 +25,48 @@ a
 #masterbar
 {
 	height: 100%;
-	border-style: ridge;
-	border-bottom-style: none; 
-	border-width: 3px;
-	background-color: #EA8D01;
-	box-shadow: 8px 0px 5px grey; 
+	background-color: #344C87;
 }
 
  /* Tete */
-.masterbar-head
+#masterbar-head
 {
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
-}
-
-.mb1
-{	flex:1;
-	max-width: 50%;
-	min-width: 40%;
-}
-
-.mb2
-{
-		align-self: center;
-		color: grey;
-		font-weight: bold;
-		font-size: 150%;
+	height: 30%;
 }
 
 .logo
 {
-	max-width: 100%;
+	height: 100%;
+	width: auto;
 }
  /* Corps */
-.masterbar-navigation ul li
-{	
-	display: inline-block;
-	min-width: 150px;
-	list-style-type: none;
-	font-size: 130%;
-}
- /* footer */
-
-.masterbar-footer
+#masterbar-navigation 
 {
-	position: relative;
-	bottom: 2%;
-	width: 100%;
-	font-size: 150%;
-	font-weight: bold;
+	height: 55%;
+}
+
+#masterbar-navigation ul li
+{	
+	list-style-type: none;
+}
+.masterbar-link
+{
+ text-decoration: none;
+ color:lightgrey;
+}
+.masterbar-link:hover
+{
+	text-decoration: none;
+	color:grey;
+}
+
+/* footer */
+#masterbar-footer
+{
+	display: flex;
+	justify-content: center;
 }
 
 .split
@@ -86,26 +78,35 @@ a
  /* Element CSS pour Le site complet */
 html
 {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
 	height: 100%;
 }
 
 body
 {
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
 	height: 100%;
 }
 
 .masterbar-yield
 {
+	align-self: start;
+	height: 100%;
 	flex:1;
-	align-self: stretch;
 }
 
 .yield
 {
-	background-color: lightgrey;
+	background-color: #FFEFEF;
 	display: flex;
 	justify-content: center;
 	align-content: center;

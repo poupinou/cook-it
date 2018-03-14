@@ -2,10 +2,6 @@
 
 .admin-g , .recettes-g , .ingredients-g, .profil-g, .about-g
 {
-	border-style: ridge;
-	border-top-style: none; 
-	border-bottom-style: none; 
-	border-width: 3px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -18,13 +14,16 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-around;
-	background-color: #EA8D01;
+	background-color: #FFEFEF;
 	box-shadow: 0px 5px 5px grey; 
 }
-
-.admin-onglet , .recettes-onglet , .ingredients-onglet
+.ingredient-titre
 {
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.ingredient-link 
+{
 	display: flex;
 	justify-content: space-around;
 }
