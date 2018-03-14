@@ -39,7 +39,6 @@ Ingredient.create(name: 'framboise', family: 'fruit', remote_picture_url:'http:/
 Ingredient.create(name: 'orange', family: 'fruit', remote_picture_url:'http://images6.fanpop.com/image/photos/34500000/Orange-Fruit-orange-34512922-2738-1825.jpg', price: 1)
 Ingredient.create(name: 'grenade', family: 'fruit', remote_picture_url:'http://workouttrends.com/wp-content/uploads/2014/08/Secret-Benefits-Of-The-Red-Fruit.jpg', price: 1)
 Ingredient.create(name: 'cerise', family: 'fruit', remote_picture_url:'http://media02.hongkiat.com/fruits-vege-stock-photos/highres/fruitsvege-stock04.jpg', price: 1)
-Ingredient.create(name: 'kiwi', family: 'fruit', remote_picture_url:'https://statics.monoprix.fr/course/g_2412310_kiwi-variete-vert-hayward-categorie-1.jpg?t=20150925021954', price: 1)
 
 Ingredient.create(name: 'mangue', family: 'fruit', remote_picture_url:'https://www.hd-wallpapersdownload.com/script/mango-wallpaper/mango-images-fruit-wallpaper.jpg', price: 1)
 
