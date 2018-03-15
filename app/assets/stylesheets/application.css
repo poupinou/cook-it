@@ -24,8 +24,9 @@ a
  /* General */
 #masterbar
 {
+	display: fixed;
 	height: 100%;
-	max-width: 200px;
+	width: 200px;
 	background-color: #344C87;
 }
 
@@ -93,20 +94,19 @@ body
 
 .masterbar-yield
 {
-	align-self: start;
+	position: fixed;
 	height: 100%;
-	flex:1;
 }
 
 .yield
 {
+		margin-left: 200px;
 	background-color: #FFEFEF;
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	min-height: 100%;
-	min-width: 85%;
-	flex:1;
+	flex:10;
 }
 /***************************************************************/
 
