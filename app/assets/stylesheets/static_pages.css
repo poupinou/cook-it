@@ -16,14 +16,35 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	background-color: #FFEFEF;
-	box-shadow: 0px 5px 5px grey; 
+	box-shadow: 0px 5px 5px lightgrey;
 }
+
+#form1 {
+		margin-right: 35px;
+}
+
+h3 {
+	font-size: 3em;
+}
+
+.btn-submit {
+	font-size: 10px;
+	margin-right: 10%;
+}
+
+.btn-edit-delete {
+	display: flex;
+	justify-content: center;
+	padding-top: 5px;
+}
+
 .ingredient-titre , .recipe-titre, .admin-titre
 {
 	display: flex;
 	flex-direction: column;
+	margin-left: 35px;
 }
 .ingredient-link , .recipe-link, .admin-link
 {
@@ -63,7 +84,7 @@
 	width: 30%;
 	border:solid;
 	border-width: 1px;
-	box-shadow: 0px 5px 5px grey;  
+	box-shadow: 0px 5px 5px grey;
 	background-color: #EEEEEE;
 	border-radius: 30%;
 	min-height: 400px;
