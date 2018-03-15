@@ -1,43 +1,77 @@
-<div class="home">
-  <div>
-    <h1><%= @recipe.name %></h1>
-    <p><%= @recipe.time %> min - <%= @recipe.price  / 100 %>€</p>
+<div id="home">
+  <div class='recipe-show'>
+    <div class='recipe-show-left'>
 
-    <p><img src='<%= @recipe.picture_url(:poster) %>'></img></p>
+      <div class='recipe-show-head'>
+        <%= @recipe.name.capitalize %>
+        <span class='recipe-show-info'><%= @recipe.time %> min - <%= @recipe.price  / 100 %>€</span>
+      </div>
 
-    <p>Ingrédients nécessaire</p>
+      <div class='recipe-show-ing'>
+        <div class='recipe-show-list-ing'>
+          <h4>Ingrédients</h4>
+            <% IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| %>
+              <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
+            <% end %>
 
-      <%= form_tag add_ing_recipe_path,remote:true, method: 'get' do %>
-        <%= hidden_field_tag(:recipe, @recipe.id) %>
-      <p><%= submit_tag('Modifier les ingrédients') %></p>
-      <% end %>
-      <%= form_tag add_to_list_path, method: 'post' do %>
-        <%= hidden_field_tag(:recipe_id, @recipe.id) %>
-        <%= submit_tag('Ajouter à ma liste') %>
-      <% end %>
+            <%= form_tag add_ing_recipe_path,remote:true, method: 'get' do %>
+              <%= hidden_field_tag(:recipe, @recipe.id) %>
+            <p><%= submit_tag('Modifier les ingrédients', class: 'btn btn-secondary') %></p>
+            <% end %>
+        </div>
+        <div class='recipe-show-list-btn-add'>
+          <div class="vote">
+            <% if user_signed_in? %>
+              <%= link_to like_recipe_path(@recipe), method: :put, remote:true do %>
+                <%= image_tag 'thumbs_up-64.png' %>
+                <%= @recipe.get_upvotes.size %>
+              <% end %>
 
-    <% @recipe.ingredients.each do |ing| %>
-      <p><%= ing.name %></p>
-    <% end %>
+              <%= link_to dislike_recipe_path(@recipe), method: :put, remote:true do %>
+                <%= image_tag 'thumbs_down-64.png' %>
+                <%= @recipe.get_downvotes.size %>
+              <% end %>
+            <% end %>
+          </div>
 
-    <p>Description</p>
-    <div class="vote">
-      <% if user_signed_in? %>
-        <%= link_to like_recipe_path(@recipe), method: :put, remote:true do %>
-          <%= image_tag 'thumbs_up-64.png' %>
-          <%= @recipe.get_upvotes.size %>
-        <% end %>
+          <div class='recipe-show-btn'>
+            <div style='margin-bottom:10px;'>
+              <%= form_tag add_to_list_path, method: 'post' do %>
+                <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+                <%= submit_tag('Ajouter à ma liste', class: 'btn btn-primary') %>
+              <% end %>
+            </div>
 
-        <%= link_to dislike_recipe_path(@recipe), method: :put, remote:true do %>
-          <%= image_tag 'thumbs_down-64.png' %>
-          <%= @recipe.get_downvotes.size %>
-        <% end %>
-      <% end %>
+            <div class='btn-edit-delete'>
+              <div style='margin-right:20px'>
+                <%= button_to 'Edit', edit_recipe_path(@recipe.id), class: 'btn btn-warning', remote:true %>
+              </div>
+              <div>
+                <%= link_to 'Delete', @recipe, class: 'btn btn-danger', remote:true,method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class='recipe-show-description'>
+        <%= @recipe.description %>
+      </div>
     </div>
-    <p><%= @recipe.description %></p>
-    <%= link_to 'Edit', edit_recipe_path(@recipe.id), remote:true %>
-    <%= link_to 'Delete', @recipe, remote:true,method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %>
-    <p><%= link_to 'Retour aux recettes', recipes_path, remote:true %></p>
+
+    <div class='recipe-show-right'>
+      <img src='<%= @recipe.picture_url(:poster) %>' class='recipe-show-picture'></img>
+    </div>
+</div>
+
+
+
+
+  </div>
+
+
+
+
   </div>
 </div>
 <!--<div id='calendar-container'>

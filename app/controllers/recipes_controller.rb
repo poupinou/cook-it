@@ -16,10 +16,10 @@ class RecipesController < ApplicationController
 			@value = params[:nom]
 		end
 		##############################################
-		
+
 		respond_to do |f|#AJAX mon ami
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
 
     respond_to do |f| #AJAX mon ami
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -47,7 +47,7 @@ class RecipesController < ApplicationController
 
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -55,11 +55,11 @@ class RecipesController < ApplicationController
 		@user = current_user #on pointe
 		@recipe = Recipe.find(params[:id]) #on pointe
 		@recipe.update(recipes_params) #on met à jour
-		
+
 		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -68,21 +68,21 @@ class RecipesController < ApplicationController
 	end
 
 	def destroy #AJAX
-		recipe = Recipe.find(params[:id]) #on pointe 
+		recipe = Recipe.find(params[:id]) #on pointe
 		recipe.destroy
 
 		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
-		
+
 		respond_to do |f|#AJAX mon ami
       f.js
-      f.html 
+      f.html
     end
 	end
 
 	def add_ing_recipe #AJAX
 		@recipe = Recipe.find(params[:recipe]) #on viens réupéré la recette ciblé
 		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id) #ainsi que tous les ingrédient de cette recette
-		
+
 		@ingredients = Ingredient.all #besoin pour le fonctionnement en AJAX
 		@value = "" #valeur par default (importante)
 		###sert pour le système de filtrage par nom###
@@ -99,7 +99,7 @@ class RecipesController < ApplicationController
 		##############################################
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -110,7 +110,7 @@ class RecipesController < ApplicationController
 
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -122,27 +122,27 @@ class RecipesController < ApplicationController
 
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
-	 def upvote #AJAX permet de voter positif 
+	 def upvote #AJAX permet de voter positif
   @recipe = Recipe.find(params[:id]) #on récupère la recette ciblé
   @recipe.upvote_by current_user #on applique la fonction magique sur la recette
 
   	respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
-	def downvote #AJAX permet de voter negatif 
+	def downvote #AJAX permet de voter negatif
   @recipe = Recipe.find(params[:id])  #on récupère la recette ciblé
   @recipe.downvote_by current_user#on applique la fonction magique sur la recette
 
   	respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 end
