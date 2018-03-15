@@ -1,5 +1,5 @@
 <% if @value == ""%>
-	$('.home').html("<%= j render 'recipes/partials/add_ing_recipe' %>");
+	$('#home').html("<%= j render 'recipes/partials/add_ing_recipe' %>");
 <% else %>
 	$('.ingredients-corps').html("<%= j render 'recipes/partials/add_ing_recipe_search' %>");
 <% end %>

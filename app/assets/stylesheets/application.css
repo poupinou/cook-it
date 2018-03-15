@@ -14,7 +14,7 @@
  *= require_self
  */
 
-a
+a , button
 {
 	cursor: pointer;
 	text-decoration: none;
@@ -40,8 +40,15 @@ a
 
 .logo
 {
-	height: 100%;
-	width: auto;
+	height: auto;
+	width: 100%;
+}
+
+.logo-back
+{
+	cursor: pointer;
+	position: absolute;
+	right: 0;
 }
  /* Corps */
 #masterbar-navigation
@@ -92,15 +99,14 @@ body
 	height: 100%;
 }
 
-.masterbar-yield
+#masterbar-yield
 {
 	position: fixed;
 	height: 100%;
 }
 
-.yield
+#yield
 {
-		margin-left: 200px;
 	background-color: #FFEFEF;
 	display: flex;
 	justify-content: center;
