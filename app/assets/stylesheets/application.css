@@ -25,7 +25,6 @@ a
 #masterbar
 {
 	height: 100%;
-	max-width: 200px;
 	background-color: #344C87;
 }
 
@@ -43,13 +42,13 @@ a
 	width: auto;
 }
  /* Corps */
-#masterbar-navigation 
+#masterbar-navigation
 {
 	height: 55%;
 }
 
 #masterbar-navigation ul li
-{	
+{
 	list-style-type: none;
 }
 .masterbar-link
@@ -72,7 +71,7 @@ a
 
 .split
 {
-	width: 90%;	
+	width: 90%;
 }
 /***************************************************************/
 
@@ -105,7 +104,7 @@ body
 	justify-content: center;
 	align-content: center;
 	min-height: 100%;
-	min-width: 85%;
+	min-width: 78%;
 	flex:1;
 }
 /***************************************************************/
@@ -122,7 +121,7 @@ body
 	min-width: 150px;
 	border-style: inset;
 	background-color: #EEEEEE;
-	box-shadow: 5px 2px 2px lightgrey; 
+	box-shadow: 5px 2px 2px lightgrey;
 	border-width: 1px;
 	padding: 2%;
 }
@@ -132,5 +131,5 @@ body
 	border-style: ridge;
 	border-radius: 5px;
 	border-width: 1px;
-	box-shadow: 5px 2px 2px lightgrey; 
+	box-shadow: 5px 2px 2px lightgrey;
 }
