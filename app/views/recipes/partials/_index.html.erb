@@ -1,10 +1,9 @@
 <div class="recettes-g">
   <center class="recipes-head">
     <div class="recipe-titre">
-        <h3>Recettes</h3>
+        <h3>Toutes nos recettes</h3>
       <div class="recipe-link">
-        <p><%= link_to 'Ajouter', new_recipe_path, remote:true %></p>
-        <p><%= link_to 'retour', admin_path, remote:true  %></p>
+        <p><%= link_to 'Créer une recette', new_recipe_path, remote:true %></p>
       </div>
     </div>
     <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
@@ -18,28 +17,23 @@
         <div class="recipe">
           <a href=<%= recipe_path(recipe.id) %>>
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 10rem;"></img>
+              <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 100%;"></img>
               <div class="card-body">
-           		<h5 class="card-title"><%= recipe.name %></h5>
+           		    <h5 class="card-title"><%= recipe.name.capitalize %></h5>
           </a>
-              <p class="card-text">crée par <%= User.find(recipe.user_id).username %>
-            	<p class="card-text"><%= recipe.description %></p>
-          	  </div>
-          		<ul class="list-group list-group-flush">
-            	  <li class="list-group-item"><%= recipe.time %></li>
-            	  <% if recipe.price %><li class="list-group-item"><%= (recipe.price) / 100 %> €</li><% end %>
-            	  <li class="list-group-item">...</li>
-          		</ul>
-          		<div class="card-body">
+                  <span><%= recipe.time %> min - <% if recipe.price %><%= (recipe.price) / 100 %> €<% end %></span>
+                <div class='btn-recipe'>
+                  <%= form_tag add_to_list_path, method: 'post' do %>
+                    <%= hidden_field_tag(:recipe_id, recipe.id) %>
+                    <%= submit_tag('Ajouter à ma liste', class: 'btn-submit btn btn-primary') %>
+                  <% end %>
+                </div>
 
-                <%= form_tag add_to_list_path, method: 'post' do %>
-                  <%= hidden_field_tag(:recipe_id, recipe.id) %>
-                  <%= submit_tag('Ajouter à ma liste') %>
-                <% end %>
-
-            	  <a href="#" class="card-link"><%= link_to 'Edit', edit_recipe_path(recipe.id), remote:true %></a>
-            	  <a href="#" class="card-link"><%= link_to 'Delete', recipe, remote:true,method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %></a>
-          		</div>
+                <div class='btn-edit-delete'>
+                  <%= button_to 'Edit', edit_recipe_path(recipe.id), class: 'btn-submit2 btn btn-warning', remote:true %>
+                  <%= button_to 'Delete', recipe, remote:true,method: :delete, class: 'btn-submit2 btn btn-danger', data: { confirm: 'Non sérieux elle te plait pas ?' } %>
+                </div>
+              </div>
         	  </div>
         </div>
   	  <% end %>
