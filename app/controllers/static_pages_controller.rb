@@ -43,8 +43,9 @@ class StaticPagesController < ApplicationController
       @arr << Ingredient.find(ing.ingredient_id).name 
       @arr << ing.quantity 
         end 
-    account_sid = 'AC7b38087ce45776fe47fb15cadd51d5fb'
-    auth_token = '0e5deabaf78053226dd2553055f23be7'
+    account_sid = ENV['twilio.account_sid']
+
+    auth_token = ENV['twilio.auth_token']
 
     client = Twilio::REST::Client.new account_sid, auth_token
     client.api.account.messages.create(
