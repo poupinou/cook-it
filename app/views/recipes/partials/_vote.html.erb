@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
   <%= link_to like_recipe_path(@recipe), method: :put, remote:true do %>
-    Upvote
+    <%= image_tag 'thumbs_up-64.png' %>
     <%= @recipe.get_upvotes.size %>
   <% end %>
 
   <%= link_to dislike_recipe_path(@recipe), method: :put, remote:true do %>
-    Downvote
+    <%= image_tag 'thumbs_down-64.png' %>
     <%= @recipe.get_downvotes.size %>
   <% end %>
 <% end %>

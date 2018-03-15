@@ -13,9 +13,4 @@ class UsersController < ApplicationController
 
   def index #on sais pas encore ce que c'est mais c'est là au cas ou =)
   end
-
-  def new #??????
-    @list = List.new(lists_params)
-  end
-  
 end

@@ -18,7 +18,7 @@
 	align-items: center;
 	justify-content: space-around;
 	background-color: #FFEFEF;
-	box-shadow: 0px 5px 5px grey; 
+	box-shadow: 0px 5px 5px lightgrey; 
 }
 .ingredient-titre , .recipe-titre, .admin-titre
 {

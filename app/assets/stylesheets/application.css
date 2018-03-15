@@ -25,6 +25,7 @@ a
 #masterbar
 {
 	height: 100%;
+	max-width: 200px;
 	background-color: #344C87;
 }
 
@@ -104,7 +105,7 @@ body
 	justify-content: center;
 	align-content: center;
 	min-height: 100%;
-	min-width: 78%;
+	min-width: 85%;
 	flex:1;
 }
 /***************************************************************/
