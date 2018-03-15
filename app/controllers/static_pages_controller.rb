@@ -35,20 +35,28 @@ class StaticPagesController < ApplicationController
   end
 
     def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
-      @list_ing_user.each do |ing| 
-      @ingre = Ingredient.find(ing.ingredient_id).name 
-      @qte = ing.quantity 
+      @num = params[:phone_number]
+      @user = current_user
+    @list_ing_user = ListIng.where(user_id: @user.id)
+    @arr = []
+    @list_ing_user.each do |ing|
+      @arr << Ingredient.find(ing.ingredient_id).name 
+      @arr << ing.quantity 
         end 
-
-
     account_sid = 'AC7b38087ce45776fe47fb15cadd51d5fb'
     auth_token = '0e5deabaf78053226dd2553055f23be7'
 
     client = Twilio::REST::Client.new account_sid, auth_token
     client.api.account.messages.create(
   from: '+33644602942',
-  to: '+33631956743',
-  body: "#{@ingre} - #{@qte}")
+  to: "#{@num}",
+  body: "#{@arr}")
   redirect_to root_path
   end
+
+  def send_mail
+    UserMailer.list_email(current_user).deliver_now
+    redirect_to root_path
+  end
+
 end

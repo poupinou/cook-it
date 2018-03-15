@@ -19,6 +19,7 @@ gem "mini_magick"
 gem 'acts_as_votable'
 gem 'fullcalendar-rails'
 gem 'twilio-ruby'
+gem 'mailjet'
 
 
 group :development, :test do

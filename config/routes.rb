@@ -26,7 +26,10 @@ end
 
   post '/', to: 'lists#add_to_list', as: 'add_to_list'
 
-    get '/liste', to: 'static_pages#send_sms', as: 'send'
+  post '/liste2', to: 'static_pages#send_sms', as: 'send_sms'
+
+  get '/liste', to: 'static_pages#send_mail', as: 'send_mail'
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour <%= @user.username %></h1>
+    <p>
+      Voici ta liste de courses du <%= Date.today.strftime("%a, %e %b %Y") %><br>
+    </p>
+    <p>
+     <h4>Ma liste de courses</h4>
+     		<% @list_ing_user = ListIng.where(user_id: @user.id) %>
+        <% @list_ing_user.each do |ing| %>
+          <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
+        <% end %>
+    </p>
+    <p>bon appetit!!!</p>
+  </body>
+</html>

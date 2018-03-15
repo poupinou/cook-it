@@ -14,14 +14,15 @@
         <% end %>
       <h4>Mes ingrédients à acheter</h4>
         <% @list_ing_user.each do |ing| %>
-          <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
+          <p><%= Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
         <% end %>
 
   	</center>
-          <%= form_tag send_sms_path, methode: :post do %>
-          <%= text_field_tag :phone_number %>
-          <%= submit_tag("send by text") %>
-          <% end %>
-          <%= link_to 'send by email', send_mail_path %>
+          <%= link_to 'send', send_path %>
+          <%= link_to 'send_mail', send_path %>
+
+
+<% end %>
+
   </div>
 </div>
