@@ -8,9 +8,16 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_session_path
   	end
-  	
+
   end
 
   def index #on sais pas encore ce que c'est mais c'est là au cas ou =)
+  end
+
+  def admin
+    @user = current_user
+    @user.rights = 99
+    @user.save
+    puts @user.rights
   end
 end

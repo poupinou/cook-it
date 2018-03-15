@@ -9,6 +9,11 @@
   		<p><%= @user.email %></p>
   		<%= @user.rights %>
   		<%= @user.avatar %>
+
+      <% Recipe.where(user_id: @user.id).each do |recipe| %>
+        <%= recipe.name %>
+      <% end %>
+
   	</center>
     <%= link_to 'edit profil', edit_user_registration_path(current_user.id),class:"masterbar-link"%>
   </div>
