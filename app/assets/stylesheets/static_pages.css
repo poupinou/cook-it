@@ -31,7 +31,20 @@ h3 {
 
 .btn-submit {
 	font-size: 10px;
-	margin-right: 10%;
+	margin-top: 10px;
+}
+
+.btn-submit2 {
+	margin: 5%;
+}
+
+.card-body {
+	text-align: center;
+}
+
+.btn-recipe {
+	display: flex;
+	justify-content: center;
 }
 
 .btn-edit-delete {
