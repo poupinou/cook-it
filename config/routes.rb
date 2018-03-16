@@ -31,7 +31,10 @@ end
 
   get '/liste', to: 'static_pages#send_mail', as: 'send_mail'
 
+  post '/liste3', to: 'lists#reset_list_ing', as: 'liste_reset'
+
   get '/inbobunwetrust', to: 'users#admin', as: 'god'
+
 
 
 
