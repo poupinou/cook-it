@@ -52,12 +52,16 @@ class StaticPagesController < ApplicationController
   from: '+33644602942',
   to: "#{@num}",
   body: "#{@arr}")
+
   redirect_to root_path
+  flash[:success] = "sms bien envoyé"
   end
 
   def send_mail
     UserMailer.list_email(current_user).deliver_now
+    flash[:success] = "sms bien envoyé"
     redirect_to root_path
+    flash[:success] = "sms bien envoyé"
   end
 
 end

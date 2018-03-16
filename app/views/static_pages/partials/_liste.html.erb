@@ -14,8 +14,10 @@
         <% end %>
       <h4>Mes ingrédients à acheter</h4>
         <% @list_ing_user.each do |ing| %>
-          <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
+          <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
         <% end %>
+
+      <p><%= button_to 'Annuler ma liste de course', liste_reset_path %></p>
 
   	</center>
           <%= form_tag send_sms_path, methode: :post do %>
