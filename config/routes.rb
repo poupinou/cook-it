@@ -26,9 +26,9 @@ end
 
   post '/', to: 'lists#add_to_list', as: 'add_to_list'
 
-  post '/liste2', to: 'static_pages#send_sms', as: 'send_sms'
+  post 'liste2', to: 'static_pages#send_sms', as: 'send_sms'
 
-  get '/liste', to: 'static_pages#send_mail', as: 'send_mail'
+  get 'liste', to: 'static_pages#send_mail', as: 'send_mail'
 
 
 
