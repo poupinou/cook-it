@@ -11,7 +11,8 @@
 		<ul>
 			<% if user_signed_in? %>
 				<li><%= link_to 'Mon profil', profil_path(current_user.id),class:"masterbar-link"%></li>
-				<li><%= link_to 'Ma liste de course', liste_path(current_user.id),remote:true,class:"masterbar-link" %></li>
+				<li><%= link_to 'Ma liste de course', liste_path(current_user.id), remote:true, class:"masterbar-link" %></li>
+				<li><%= link_to 'Mon frigo', frigo_path(current_user.id), remote:true, class:"masterbar-link" %></li>
 				<li><%= link_to 'Logout', destroy_user_session_path, method: :delete,class:"masterbar-link" %></li>
 			<% else %>
 				<li><%= link_to 'LOGIN', new_user_session_path,class:"masterbar-link" %></li>

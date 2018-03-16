@@ -5,14 +5,14 @@ class StaticPagesController < ApplicationController
   def admin #AJAX
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
   end
 
   def about #AJAX
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
   end
 
@@ -23,15 +23,39 @@ class StaticPagesController < ApplicationController
 
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
   end
 
-  def frigo #AJAX
+  def frigo
+    @ingredients = Ingredient.all
+
+    #AJAX
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
+  end
+
+  def add_fridge
+    ing_id = params[:ingredient_id]
+    Fridge.create(user_id: current_user.id, ingredient_id: ing_id)
+    redirect_to root_path
+  end
+
+  def find_recipe
+    user = current_user
+    fridge_user = Fridge.where(user_id: user.id)
+    @recipe_find = []
+
+    fridge_user.each do |ing|
+      IngredientToRecipe.where(ingredient_id: ing.ingredient_id).each do |recipe|
+        @recipe_find << recipe.recipe_id
+      end
+    end
+
+
+
   end
 
     def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
@@ -40,9 +64,9 @@ class StaticPagesController < ApplicationController
     @list_ing_user = ListIng.where(user_id: @user.id)
     @arr = []
     @list_ing_user.each do |ing|
-      @arr << Ingredient.find(ing.ingredient_id).name 
-      @arr << ing.quantity 
-        end 
+      @arr << Ingredient.find(ing.ingredient_id).name
+      @arr << ing.quantity
+        end
     account_sid = ENV['TWILIO_ACCOUNT_SID']
 
     auth_token = ENV['TWILIO_AUTH_TOKEN']

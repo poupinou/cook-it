@@ -7,6 +7,37 @@
   <div class="profil-corps">
   	<center class="frigo">
   		<h1>Mon Frigo</h1>
+
+      <div>
+        <% Fridge.where(user_id: current_user.id).each do |ing| %>
+          <p><%= Ingredient.find(ing.ingredient_id).name %></p>
+        <% end %>
+      </div>
+
+      <div>
+        <%= button_to 'Trouver des recettes', find_recipe_path %>
+      </div>
   	</center>
+  </div>
+
+  <div style='margin-top:100px'>
+    <h3>Ajouter un ingédient</h3>
+  </div>
+
+  <div class="ingredients-corps">
+    <% @ingredients.each do |ingredient| %>
+      <div class="card" style="width: 150px;height:150px">
+        <img class="card-img-top" src=<%= ingredient.picture_url(:mini) %> alt="Card image cap" style="position: absolute; z-index: 1"></img>
+        <center class="card-body" style="z-index:2">
+          <h5 class="card-title"><%= ingredient.name %></h5>
+
+          <%= form_tag add_fridge_path, method: 'post' do %>
+            <%= hidden_field_tag :ingredient_id, ingredient.id %>
+            <%= submit_tag('Ajouter') %>
+          <% end %>
+
+        </center>
+      </div>
+    <% end %>
   </div>
 </div>
