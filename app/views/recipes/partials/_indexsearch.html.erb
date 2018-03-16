@@ -3,20 +3,27 @@
     <div class="card">
       <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 100%;"/>
       <div class="card-body">
-          <h5 class="card-title"><%= recipe.name.capitalize %></h5>
-          <span><%= recipe.time %> min - <% if recipe.price %><%= (recipe.price) / 100 %> €<% end %></span>
-        <div class='btn-recipe'>
-          <%= form_tag add_to_list_path, method: 'post' do %>
-            <%= hidden_field_tag(:recipe_id, recipe.id) %>
-            <%= submit_tag('Ajouter à ma liste', class: 'btn-submit btn btn-primary') %>
-          <% end %>
-        </div>
+       <h5 class="card-title"><%= recipe.name.capitalize %></h5>
+        <span><%= recipe.time %> min - <% if recipe.price %><%= (recipe.price) / 100 %> €<% end %></span>
       </div>
       <div class="card-hover">
         <div class="card-hover-background"></div>
+        <span class='recipe-show-info btn-info' style="margin-left: 40%;z-index: 5; width: 60%"><h6><%= recipe.time %> min - <%= recipe.price  / 100 %>€</h6></span>
         <h3 class="card-hover-info"><%= recipe.name %></h3>
         <div class="card-hover-info">
-
+          <div class='recipe-show-head'>
+            <div>
+            <% a = 0 %>
+              <% IngredientToRecipe.where(recipe_id: recipe.id).each do |ing| %>
+                <% a+= 1 %>
+                <% if a <= 3 %>
+                  <%= image_tag Ingredient.find(ing.ingredient_id).picture_url, class:"image-mini" %>
+                <% else %>
+                  <% break %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
         <div class="card-hover-link">
           <% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && recipe.user_id == current_user.id ) %>
@@ -25,6 +32,12 @@
               <%= button_to 'Delete', recipe, remote:true,method: :delete, class: 'btn-submit2 btn btn-danger', data: { confirm: 'Non sérieux elle te plait pas ?' } %>
             </div>
           <% end %>
+          <div class='btn-recipe'>
+            <%= form_tag add_to_list_path, method: 'post' do %>
+              <%= hidden_field_tag(:recipe_id, recipe.id) %>
+              <%= submit_tag('Ajouter à ma liste', class: 'btn-submit btn btn-primary') %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

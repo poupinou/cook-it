@@ -18,14 +18,8 @@
           <div class="card">
             <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap" style="width: 100%;"/>
             <div class="card-body">
-         		    <h5 class="card-title"><%= recipe.name.capitalize %></h5>
-                <span><%= recipe.time %> min - <% if recipe.price %><%= (recipe.price) / 100 %> €<% end %></span>
-              <div class='btn-recipe'>
-                <%= form_tag add_to_list_path, method: 'post' do %>
-                  <%= hidden_field_tag(:recipe_id, recipe.id) %>
-                  <%= submit_tag('Ajouter à ma liste', class: 'btn-submit btn btn-primary') %>
-                <% end %>
-              </div>
+         		 <h5 class="card-title"><%= recipe.name.capitalize %></h5>
+              <span><%= recipe.time %> min - <% if recipe.price %><%= (recipe.price) / 100 %> €<% end %></span>
             </div>
             <div class="card-hover">
               <div class="card-hover-background"></div>
@@ -40,7 +34,6 @@
                       <% if a <= 3 %>
                         <%= image_tag Ingredient.find(ing.ingredient_id).picture_url, class:"image-mini" %>
                       <% else %>
-                        <%= image_tag 'etc-32.png', class:"image"%>
                         <% break %>
                       <% end %>
                     <% end %>
@@ -54,6 +47,12 @@
                     <%= button_to 'Delete', recipe, remote:true,method: :delete, class: 'btn-submit2 btn btn-danger', data: { confirm: 'Non sérieux elle te plait pas ?' } %>
                   </div>
                 <% end %>
+                <div class='btn-recipe'>
+                  <%= form_tag add_to_list_path, method: 'post' do %>
+                    <%= hidden_field_tag(:recipe_id, recipe.id) %>
+                    <%= submit_tag('Ajouter à ma liste', class: 'btn-submit btn btn-primary') %>
+                  <% end %>
+                </div>
               </div>
             </div>
       	  </div>
