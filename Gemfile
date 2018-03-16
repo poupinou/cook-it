@@ -20,8 +20,7 @@ gem 'acts_as_votable'
 gem 'fullcalendar-rails'
 gem 'twilio-ruby'
 gem 'mailjet'
-gem 'dotenv'
-
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3'
