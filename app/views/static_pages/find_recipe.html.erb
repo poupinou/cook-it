@@ -1,0 +1,9 @@
+<div>
+  <h1>Les recettes que je peux faire</h1>
+
+  <div>
+    <% @recipe_find.each do |r| %>
+      <p><%= link_to Recipe.find(r).name, recipe_path(r) %></p>
+    <% end %>
+  </div>
+</div>
