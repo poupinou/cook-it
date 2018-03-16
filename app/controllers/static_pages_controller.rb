@@ -57,6 +57,7 @@ class StaticPagesController < ApplicationController
 
   def send_mail
     UserMailer.list_email(current_user).deliver_now
+
     redirect_to root_path
   end
 
