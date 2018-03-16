@@ -146,6 +146,53 @@ h3 {
 	justify-content: space-around;
 }
 
+/*Les cartes au survol*/
+.card-hover
+{
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	color: white;
+	width: 100%;
+	height: 100%; 
+	opacity: 0;
+	z-index: 4;
+}
+
+.card-hover-background
+{
+	z-index: 4;
+	position: absolute; 
+	background-color: black;
+	width: 100%;
+	height:100%;
+	opacity: 0.7
+}
+
+.card-hover-link
+{
+	z-index:5 ;
+	display: flex;
+	justify-content: center;
+}
+
+.card-hover-info
+{
+	z-index: 5;
+}
+
+.card-hover:hover
+{
+	transition: 0.3s;
+	opacity: 1;
+}
+
+.card-content:hover .card .card-body
+{
+	display: none;
+}
+/****************************************/
+
 .about-corps center
 {
 	display: flex;
@@ -191,15 +238,5 @@ h3 {
 	color: lightblue;
 	text-decoration: none;
 	background-color: #569800;
-}
-
-.b:hover
-{
-	background-color: #00A48E;
-}
-
-.r:hover
-{
-	background-color: #EC5454;
 }
 /*****************************/
