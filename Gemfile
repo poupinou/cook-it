@@ -20,6 +20,7 @@ gem 'acts_as_votable'
 gem 'fullcalendar-rails'
 gem 'twilio-ruby'
 gem 'mailjet'
+gem 'dotenv'
 
 
 group :development, :test do
