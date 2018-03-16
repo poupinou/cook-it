@@ -43,9 +43,9 @@ class StaticPagesController < ApplicationController
       @arr << Ingredient.find(ing.ingredient_id).name 
       @arr << ing.quantity 
         end 
-    account_sid = ENV['twilio.account_sid']
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
 
-    auth_token = ENV['twilio.auth_token']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
 
     client = Twilio::REST::Client.new account_sid, auth_token
     client.api.account.messages.create(
@@ -57,6 +57,7 @@ class StaticPagesController < ApplicationController
 
   def send_mail
     UserMailer.list_email(current_user).deliver_now
+
     redirect_to root_path
   end
 
