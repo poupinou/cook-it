@@ -1,0 +1,14 @@
+<center class="frigo">
+	<h1>Mon Frigo</h1>
+
+  <div>
+    <% Fridge.where(user_id: current_user.id).each do |ing| %>
+      <p><%= Ingredient.find(ing.ingredient_id).name %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= button_to 'Trouver des recettes', find_recipe_path %>
+    <%= button_to 'Vider mon frigo', cancel_fridge_path %>
+  </div>
+</center>

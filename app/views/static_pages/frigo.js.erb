@@ -1,1 +1,5 @@
-$('#home').html("<%= j render 'static_pages/partials/frigo' %>");
+<% if @value == "" %>
+	$('#home').html("<%= j render 'static_pages/partials/frigo' %>");
+<% else %>
+	$('.ingredients-corps').html("<%= j render 'static_pages/partials/frigosearch' %>");
+<% end %>

@@ -30,6 +30,20 @@ class StaticPagesController < ApplicationController
   def frigo
     @ingredients = Ingredient.all
 
+    @value = ""
+
+    ###sert pour le système de filtrage par nom###
+    if params[:nom]
+      tab = []
+      @ingredients.each do |i|
+        if i.name.include?(params[:nom])
+          tab << i
+        end
+      end
+      @ingredients = tab
+      @value = params[:nom]
+    end
+
     #AJAX
     respond_to do |f|
       f.js
@@ -38,9 +52,16 @@ class StaticPagesController < ApplicationController
   end
 
   def add_fridge
+    
+    @ingredients = Ingredient.all
     ing_id = params[:ingredient_id]
     Fridge.create(user_id: current_user.id, ingredient_id: ing_id)
-    redirect_to root_path
+    
+    #AJAX
+    respond_to do |f|
+      f.js
+      f.html
+    end
   end
 
   def find_recipe

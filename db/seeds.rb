@@ -8,26 +8,6 @@
 # cette version est une version de gros batards du seed
 Ingredient.destroy_all
 
-#légume
-Ingredient.create(name: 'salade', family: 'légume', remote_picture_url:'https://www.academiedugout.fr/images/16397/370-274/ffffff/salade-laitue.jpg?poix=50&poiy=50', price: 1)
-Ingredient.create(name: 'tomate', family: 'légume', remote_picture_url:'https://www.lesfruitsetlegumesfrais.com/_upload/cache/ressources/produits/tomate/tomate_-_copie_346_346_filled.jpg', price: 1)
-Ingredient.create(name: 'oignon', family: 'légume', remote_picture_url:'http://www.rvprimeurs.fr/images/Image/oignon-rouge.jpg', price: 1)
-Ingredient.create(name: 'comcombre', family: 'légume', remote_picture_url:'https://fridg-front.s3.amazonaws.com/media/products/451.jpg', price: 1)
-Ingredient.create(name: 'piment', family: 'légume', remote_picture_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/France-Piment_d%27Espelette-2005-08-05.jpg/1200px-France-Piment_d%27Espelette-2005-08-05.jpg', price: 2)
-
-Ingredient.create(name: 'poivron', family: 'légume', remote_picture_url:'https://glossnroses.files.wordpress.com/2013/01/poivron.jpg', price: 2)
-Ingredient.create(name: 'carotte', family: 'légume', remote_picture_url:'https://www.passeportsante.net/DocumentsProteus/images/legume-avril-carotte.jpg', price: 2)
-Ingredient.create(name: 'poireau', family: 'légume', remote_picture_url:'https://www.saisons-fruits-legumes.fr/www/img/fruitsandvegetables/poireau.jpeg', price: 2)
-Ingredient.create(name: 'asperge', family: 'légume', remote_picture_url:'https://www.consoglobe.com/wp-content/uploads/2013/05/asperge-legume-detox-printemps-04.jpg', price: 2)
-Ingredient.create(name: 'petit pois', family: 'légume', remote_picture_url:'https://www.natureo-bio.fr/wp-content/uploads/2017/07/FLEG-Laqualite-min.jpg', price: 2)
-
-Ingredient.create(name: 'avocat', family: 'légume', remote_picture_url:'https://www.natureo-bio.fr/wp-content/uploads/2017/07/Avocat-Detoure-min.jpg', price: 2)
-Ingredient.create(name: 'butternut', family: 'légume', remote_picture_url:'https://i.ytimg.com/vi/AyPC8U4v59c/maxresdefault.jpg', price: 2)
-Ingredient.create(name: 'epinard', family: 'légume', remote_picture_url:'http://www.femmeactuelle.fr/var/femmeactuelle/storage/images/cuisine/guides-cuisine/les-epinards-recettes-epinards-01871/7606890-4-fre-FR/les-epinards.jpg', price: 2)
-Ingredient.create(name: 'patate', family: 'légume', remote_picture_url:'http://www.niffylux.com/components/com_virtuemart/shop_image/product/Pomme_de_terre___4b731f2ae278c.jpg', price: 2)
-Ingredient.create(name: 'champignon', family: 'légume', remote_picture_url:'http://bodysano.adsyme.netdna-cdn.com/wp-content/uploads/2016/05/champignon-minceur-BodySano.jpg', price: 2)
-
-Ingredient.create(name: 'aubergine', family: 'légume', remote_picture_url:'http://2.bp.blogspot.com/_-IE4plYWsN4/TRInTAXUrMI/AAAAAAAAAHM/WGc9r04bcNg/s1600/Eggplant.jpg', price: 2)
 #####
 Ingredient.create(name: 'Ail', family: 'légume', remote_picture_url:'https://www.fruits-legumes.org/fruits-legumes-images/ail.jpg', price: 2)
 Ingredient.create(name: 'Abricot', family: 'fruit', remote_picture_url:'https://www.fruits-legumes.org/fruits-legumes-images/abricot.jpg', price: 2)
@@ -147,8 +127,6 @@ Ingredient.create(name: 'Rhubarbe', family: 'legume', remote_picture_url:'https:
 Ingredient.create(name: 'Salsifis', family: 'legume', remote_picture_url:'https://www.fruits-legumes.org/fruits-legumes-images/salsifis.jpg', price: 2)
 Ingredient.create(name: 'Tomate', family: 'fruit', remote_picture_url:'https://www.fruits-legumes.org/fruits-legumes-images/tomate.jpg', price: 2)
 Ingredient.create(name: 'Topinambour', family: 'legume', remote_picture_url:'https://www.fruits-legumes.org/fruits-legumes-images/topinambour.jpg', price: 2)
-
-#fruit
 
 #viande
 Ingredient.create(name: 'jambon', family: 'viande', remote_picture_url:'http://www.hotel-r.net/im/hotel/nl/jambon.jpg', price: 4)
