@@ -16,6 +16,7 @@
 
       <div>
         <%= button_to 'Trouver des recettes', find_recipe_path %>
+        <%= button_to 'Vider mon frigo', cancel_fridge_path %>
       </div>
   	</center>
   </div>
@@ -35,7 +36,6 @@
             <%= hidden_field_tag :ingredient_id, ingredient.id %>
             <%= submit_tag('Ajouter') %>
           <% end %>
-
         </center>
       </div>
     <% end %>

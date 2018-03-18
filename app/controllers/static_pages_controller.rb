@@ -53,10 +53,16 @@ class StaticPagesController < ApplicationController
         @recipe_find << recipe.recipe_id
       end
     end
-
-
-
   end
+
+  def cancel_fridge
+    @user = current_user
+    @user_fridge = Fridge.where(user_id: @user.id)
+
+    Fridge.destroy(@user_fridge.ids)
+    redirect_to root_path
+  end
+
 
     def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
       @num = params[:phone_number]
