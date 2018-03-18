@@ -65,13 +65,14 @@ class StaticPagesController < ApplicationController
   end
 
   def find_recipe
-    user = current_user
-    fridge_user = Fridge.where(user_id: user.id)
+    @user = current_user
+    @fridge = Fridge.where(user_id: @user.id)
     @recipe_find = []
 
-    fridge_user.each do |ing|
-      IngredientToRecipe.where(ingredient_id: ing.ingredient_id).each do |recipe|
-        @recipe_find << recipe.recipe_id
+    # On cherche toutes les recettes qui ont au moins un ingredient
+    @fridge.each do |id_ing|
+      IngredientToRecipe.where(ingredient_id: id_ing).each do |id_recipe|
+          @recipe_find << id_recipe.recipe_id
       end
     end
   end
