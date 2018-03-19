@@ -3,7 +3,7 @@
     <h1>Ma Liste de Course</h1>
     <p>cette page , c'est la tienne prend en soin ;)</p>
   </center>
-  <div class="profil-corps">
+  <div class="liste-corps">
   	<center class="liste">
   		<h1>Ma Liste de course</h1>
 
@@ -17,15 +17,9 @@
           <%= form_tag send_sms_path, methode: :post do %>
           <%= text_field_tag :phone_number %>
           <%= submit_tag("send by text") %>
+          <% end %>
     <div class="liste-container">
 
-        <div class="liste">
-          <div class="titre", style="background-color: #FF63FF;"><h4>Mes ingrédients à acheter</h4>
-          </div>
-            <% @list_ing_user.each do |ing| %>
-              <p><%= Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
-            <% end %>
-        </div>
     <div class="envoie">
           <%= link_to 'send', send_sms_path %>
           <%= link_to 'send_mail', send_mail_path %>

@@ -284,7 +284,11 @@ h3 {
 	text-decoration: none;
 	background-color: #569800;
 }
-/*****************************/
+/**********************liste*******/
 
+.liste-corps{
+	display: flex;
+	flex-direction: column;
+}
 
 
