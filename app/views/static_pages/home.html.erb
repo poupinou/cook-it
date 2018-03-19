@@ -23,7 +23,7 @@
 					<% else %>
 						recettes.
 					<% end %>
-				Libère ta créativité en <%= link_to 'créant une nouvelle recette.', new_recipe_path, class: 'btn btn-info' %>
+				Libère ta créativité en <%= link_to 'créant une nouvelle recette.', new_recipe_path, remote:true, class: 'btn btn-info' %>
 			</div>
 		<% end %>
 	</div>
