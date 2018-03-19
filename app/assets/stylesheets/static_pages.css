@@ -81,10 +81,8 @@
 .admin-head , .recipes-head , .ingredients-head , .profil-head , .about-head
 {
 	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	background-color: #FFEFEF;
+	flex-direction: column;
+	background-color: #5177D3;
 	box-shadow: 0px 5px 5px lightgrey;
 }
 
@@ -214,16 +212,20 @@ h3 {
 
 .frigo
 {
+	margin-top: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	max-height: 20%;
-	min-width: 300px;
-	border:solid;
-	border-width: 1px;
-	box-shadow: 0px 5px 5px grey;
-	background-color: #EEEEEE;
-	min-height: 400px;
+
+	height: 600px;
+	width: 40%;
+	box-shadow: 6px 6px 6px #996752;
+	background-image: url("frigo.jpg");
+	border-radius: 5px;
+	padding-top: 11%;
+	padding-left: 5%;
+	padding-right: 5%;
+	margin-bottom: 10px;
 }
 .ingredient-hover:hover .ingredient-hover-img
 {
@@ -288,6 +290,30 @@ h3 {
 .liste-corps{
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
+.liste{
+	margin-top: 100px;
+	background-color: white;
+	box-shadow: 6px 6px 6px #996752;
+	margin-bottom: 50px;
+	border-radius: 5px;
+	width: 20%;
 
+}
+
+.envoie{
+	background-color: white;
+	box-shadow: 6px 6px 6px #996752;
+	border-radius: 5px;
+	width: 20%;
+
+}
+
+.liste-head{
+	display: flex;
+	flex-direction: column;
+	background-color: #5177D3;
+	box-shadow: 0px 5px 5px lightgrey;
+}

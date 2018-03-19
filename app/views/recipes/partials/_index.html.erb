@@ -2,16 +2,16 @@
   <center class="recipes-head">
     <div class="recipe-titre">
         <h3>Toutes nos recettes</h3>
-      <div class="recipe-link">
-        <p><%= link_to 'Créer une recette', new_recipe_path, remote:true %></p>
-      </div>
     </div>
-    <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
+  </center>
+  <div>
+    <div class="recipe-link">
+        <p><%= link_to 'Créer une recette', new_recipe_path, remote:true, class: 'btn-submit2 btn btn-warning' %></p>
+          <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
       <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
       <input id='sub' style="display: none" type="submit">
     </form>
-  </center>
-  <div>
+      </div>
     <div class="recipes-corps">
       <% @recipes.each do |recipe| %>
           <div class="card">

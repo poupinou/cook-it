@@ -7,11 +7,12 @@
         <p><%= link_to 'retour', admin_path,remote:true  %></p>
       </div>
     </div>
-  	<form  data-remote="true" id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
+
+  </center>
+      <form  data-remote="true" id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
       <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
       <input id='sub' style="display: none" type="submit">
     </form>
-  </center>
   <div class="ingredients-corps">
     <% @ingredients.each do |ingredient| %>
       <div class="card" style="width: 150px; height: 150px; cursor: pointer;">
