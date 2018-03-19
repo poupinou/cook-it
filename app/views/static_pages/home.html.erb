@@ -1,21 +1,72 @@
-<center id="home">
-	<h1>Bienvenue sur Cook'it</h1>
+<div id="home">
+	<div>
+		<div style='text-align:center;margin-top:35px;font-size:3em'>
+			<h1>Bienvenue sur Cook'it</h1>
+		</div>
 
-	<p>profil d'essais:</p>
-	<p>
-		username : a@a.a
-		mdp      : azerty
-	</p>
-		<p>
-		username : b@b.b
-		mdp      : qwerty
-	</p>
-		<p>
-		username : c@c.c
-		mdp      : azerty
-	</p>
-		<p>
-		username : d@d.d
-		mdp      : qwerty
-	</p>
-</center>
+		<div style='text-align:center;font-size:2em'>
+			<p>Choisi tes recettes et génère ta liste de course : gagne du temps !</p>
+		</div>
+
+		<% if user_signed_in? == false %>
+			<div style='text-align:center'>
+				<p><%= link_to 'Inscris-toi et deviens un Cooker', new_user_registration_path, class: 'btn btn-primary' %></p>
+				<p><%= link_to 'Tu es déjà un Cooker ? Log-toi', new_user_session_path, class: 'btn btn-success' %></p>
+			</div>
+		<% end %>
+
+		<% if user_signed_in? %>
+			<div style='text-align:center'>
+				Tu as crée <strong><%= Recipe.where(user_id: current_user.id).count %></strong>
+					<% if Recipe.where(user_id: current_user.id).count <= 1 %>
+						recette.
+					<% else %>
+						recettes.
+					<% end %>
+				Libère ta créativité en <%= link_to 'créant une nouvelle recette.', new_recipe_path, class: 'btn btn-info' %>
+			</div>
+		<% end %>
+	</div>
+
+	<div style='margin-left:35px;margin-top:100px;display:flex;flex-direction:column'>
+		<div>
+			<div class='btn btn-dark btn-lg'>
+				Les dernières recettes ajoutées :
+			</div>
+
+			<div style='display:flex'>
+				<% Recipe.last(10).reverse.each do |recipe| %>
+					<div>
+						<%= link_to( (image_tag recipe.picture, width: '250px', height: '200px'), recipe_path(recipe.id) ) %>
+					</div>
+						<% end %>
+
+			</div>
+		</div>
+
+		<div>
+			<div class='btn btn-dark btn-lg' style='margin-top:50px'>
+				Les recettes les mieux notées :
+			</div>
+
+			<div>
+				<% r_array = []  %>
+				<% Recipe.all.each do |recipe| %>
+					<% if recipe.get_upvotes.size > 0 %>
+						<% r_array << recipe.id %>
+						<% r_array << ( (recipe.get_upvotes.size.to_f) / (recipe.get_upvotes.size.to_f + recipe.get_downvotes.size.to_f) * ( recipe.get_upvotes.size.to_f / 1000.0 )) %>
+					<% end %>
+				<% end %>
+				<% r_array %>
+				<% h = Hash[*r_array] %>
+				<% h_sort = h.sort_by{|k, v| v}.reverse %>
+				<% h_sort.each do |k, v| %>
+					 	<%= link_to( (image_tag Recipe.find(k).picture, width: '250px', height: '200px'), recipe_path(k) ) %>
+					 <% end %>
+				 </p>
+			</div>
+		</div>
+
+	</div>
+
+</div>
