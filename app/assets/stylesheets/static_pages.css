@@ -205,31 +205,28 @@ h3 {
 /************************liste*****/
 
 .liste-g{
-	background-color: black;
 	justify-content: center;
 }
 
 .liste-container{
-	background-color: white;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 .listes{
-	background-color: blue;
 display: flex;
-justify-content: space-around;
+justify-content: center;
 
 }
 
 .liste{
-	background-color: green;
+	background-color: white;
+	margin-top: 200px;
+	width: 300px;
+	box-shadow: 6px 6px 6px black;
 
 
 }
 
-.recettes{
-background-color: red;
-
-}
