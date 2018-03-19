@@ -152,7 +152,7 @@ h3 {
 	flex-direction: column;
 }
 
-.frigo , .liste
+.frigo
 {
 	margin-top: 20%;
 	width: 30%;
@@ -202,4 +202,34 @@ h3 {
 {
 	background-color: #EC5454;
 }
-/*****************************/
+/************************liste*****/
+
+.liste-g{
+	background-color: black;
+	justify-content: center;
+}
+
+.liste-container{
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	justify-content: center;
+}
+.listes{
+	background-color: blue;
+display: flex;
+justify-content: space-around;
+
+}
+
+.liste{
+	background-color: green;
+
+
+}
+
+.recettes{
+background-color: red;
+
+}

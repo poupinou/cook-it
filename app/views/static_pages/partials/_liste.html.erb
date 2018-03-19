@@ -1,27 +1,26 @@
-<div class="profil-g">
+<div class="liste-g">
   <center class="profil-head">
-  	<h1>Ma Liste de Course</h1>
-  	<p>cette page , c'est la tienne prend en soin ;)</p>
+    <h1>Ma Liste de Course</h1>
+    <p>cette page , c'est la tienne prend en soin ;)</p>
   </center>
-
-  <div class="profil-corps">
-  	<center class="liste">
-  		<h1>Ma Liste</h1>
-
-      <h4>Mes recettes sélectionnées</h4>
-        <% @list_user.each do |recipe| %>
-          <p><%= Recipe.find(recipe.recipe_id).name %></p>
-        <% end %>
-      <h4>Mes ingrédients à acheter</h4>
-        <% @list_ing_user.each do |ing| %>
-          <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %>
-        <% end %>
-
-  	</center>
-          <%= form_tag send_sms_path, methode: :post do %>
-          <%= text_field_tag :phone_number %>
-          <%= submit_tag("send by text") %>
+    <div class="liste-container">
+      <div class="listes">
+        <div class="recettes">
+          <h4>Mes recettes sélectionnées</h4>
+          <% @list_user.each do |recipe| %>
+            <p><%= Recipe.find(recipe.recipe_id).name %></p>
           <% end %>
-          <%= link_to 'send by email', send_mail_path %>
+        </div>
+        <div class="liste">
+          <h4>Mes ingrédients à acheter</h4>
+            <% @list_ing_user.each do |ing| %>
+              <p><%= Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
+            <% end %>
+        </div>
+    </div>
+    <div class="envoie" style="height: 800px;">
+          <%= link_to 'send', send_sms_path %>
+          <%= link_to 'send_mail', send_mail_path %>
+    </div>
   </div>
 </div>
