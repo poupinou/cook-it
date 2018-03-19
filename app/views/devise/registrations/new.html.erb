@@ -1,6 +1,6 @@
 <div class="home">
-  <div class="form-total">
-    <div class="form">
+  <div class="form-total" style='margin-top:35px'>
+    <div class="form" style='padding-top:15px'>
       <center><h2>Sign up</h2></center>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
@@ -10,34 +10,34 @@
           <%= f.text_field :username, autofocus: true, autocomplete: "email", class:"form-control" %>
         </div>
 
-        <div class="field">
+        <div class="field" style='margin-top:20px'>
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
         </div>
 
-        <div class="field">
+        <div class="field" style='margin-top:20px'>
           <%= f.label :password %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em style='font-size:0.8em'>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
         </div>
 
-        <div class="field">
+        <div class="field" style='margin-top:20px'>
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Sign up", class:"form-button btn" %>
+        <div class="actions" style='text-align:center;margin-top:20px;margin-bottom:20px'>
+          <%= f.submit "Sign up", class:"btn btn-primary" %>
         </div>
       <% end %>
     </div>
 
-    <div class="form">
+    <div class="form" style='margin-top:35px;text-align:center'>
       <h4>Login</h4>
-      <p>vous possedé déja un compte chez nous ? cliquer ici</p>
-      <center class='btn'><%= render "devise/shared/links" %></center>
+      <p>Vous possedez déja un compte chez nous ?</p>
+      <div style='text-align:center;padding-bottom:15px'><%= link_to 'Login', new_user_session_path, class: 'btn btn-success' %></div>
     </div>
   </div>
 </div>

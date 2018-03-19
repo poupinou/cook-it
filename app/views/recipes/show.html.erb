@@ -15,6 +15,7 @@
       <div class='recipe-show-ing'>
         <div class='recipe-show-list-ing'>
           <h4>Ingrédients</h4>
+          
           <% IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| %>
             <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
           <% end %>

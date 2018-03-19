@@ -1,24 +1,29 @@
-<div class="profil-g">
-  <center class="profil-head">
-  	<h1>Ma Liste de Course</h1>
-  	<p>cette page , c'est la tienne prend en soin ;)</p>
+<div class="liste-g">
+  <center class="liste-head">
+    <h1>Ma Liste de Courses</h1>
+    <p>cette page , c'est la tienne prend en soin ;)</p>
   </center>
-
-  <div class="profil-corps">
+  <div class="liste-corps">
   	<center class="liste">
-  		<h1>Ma Liste de course</h1>
+  		<h1 style="background-color: #91A4D3; border-radius: 5px;">La liste</h1>
 
         <% @list_ing_user.each do |ing| %>
           <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
         <% end %>
 
-      <p><%= button_to 'Annuler ma liste de course', liste_reset_path %></p>
 
   	</center>
+
+     <div class="envoie">
+          <center><h1 style="background-color: #91A4D3; border-radius: 5px; margin-bottom: 10px;">envoyer la liste</h1></center>
           <%= form_tag send_sms_path, methode: :post do %>
           <%= text_field_tag :phone_number %>
           <%= submit_tag("send by text") %>
           <% end %>
-          <%= link_to 'send by email', send_mail_path %>
+
+   
+          <center><%= link_to 'send by email', send_mail_path %></center>
   </div>
+          <p><%= button_to 'Effacer ma liste de course', liste_reset_path %></p>
+
 </div>
