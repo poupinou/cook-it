@@ -55,8 +55,10 @@ class StaticPagesController < ApplicationController
     
     @ingredients = Ingredient.all
     ing_id = params[:ingredient_id]
-    Fridge.create(user_id: current_user.id, ingredient_id: ing_id)
-    
+
+    if Fridge.exists?(user_id: current_user.id, ingredient_id: ing_id) == false
+      Fridge.create(user_id: current_user.id, ingredient_id: ing_id)
+    end
     #AJAX
     respond_to do |f|
       f.js
