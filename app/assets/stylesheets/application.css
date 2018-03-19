@@ -140,3 +140,32 @@ body
 	border-width: 1px;
 	box-shadow: 5px 2px 2px lightgrey;
 }
+
+/**********************about********************************/
+
+.about-corps{
+	display:flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.pictures{
+	display: flex;
+	justify-content: space-around;
+}
+
+.logo{
+	display: flex;
+	align-items: flex-end;
+}
+
+.partenaires{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.logos{
+	display: flex;
+	justify-content: space-around;
+}
