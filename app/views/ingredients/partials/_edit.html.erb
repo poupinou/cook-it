@@ -1,14 +1,15 @@
-<div>
-  <h1>Editer l'ingrédient <%= @ingredient.name %> </h1>
+<div style="height:100%; display: flex; justify-content: center; align-items: center;">
+	<div class="form" style="width:50%;">
+	  <h1>Editer l'ingrédient <%= @ingredient.name %> </h1>
 
-  <%= form_for @ingredient, remote:true  do |ing| %>
-    <p><%= ing.text_field :name, placeholder: 'Nom de l\'ingrédient' %></p>
-    <p><%= ing.text_field :family, placeholder: 'Type de l\'ingrédient' %></p>
-    <p><%= ing.file_field :picture, placeholder: 'URL de l\'ingrédient' %></p>
-    <p><%= ing.text_field :price, placeholder: 'Prix de l\'ingrédient' %></p>
-    <p><%= ing.submit 'Modifier cet ingrédient' %></p>
-  <% end %>
+	  <%= form_for @ingredient, remote:true  do |ing| %>
+	    <p><%= ing.text_field :name, placeholder: 'Nom de l\'ingrédient', class:"form-control" %></p>
+	    <p><%= ing.text_field :family, placeholder: 'Type de l\'ingrédient', class:"form-control" %></p>
+	    <p><%= ing.file_field :picture, placeholder: 'URL de l\'ingrédient', class:"form-control" %></p>
+	    <p><%= ing.text_field :price, placeholder: 'Prix de l\'ingrédient', class:"form-control" %></p>
+	    <p><%= ing.submit 'Modifier cet ingrédient', class:"form-control" %></p>
+	  <% end %>
 
-  <p><%= link_to 'Retour aux ingrédients', ingredients_path ,remote:true %></p>
-
+	  <p><%= link_to 'Retour aux ingrédients', ingredients_path ,remote:true %></p>
+	</div>
 </div>

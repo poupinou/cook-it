@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319114242) do
+ActiveRecord::Schema.define(version: 20180319133732) do
 
   create_table "fridges", force: :cascade do |t|
     t.integer "user_id"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20180319114242) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredientusers", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_ingredientusers_on_ingredient_id"
+    t.index ["user_id"], name: "index_ingredientusers_on_user_id"
   end
 
   create_table "list_ings", force: :cascade do |t|
@@ -70,10 +79,28 @@ ActiveRecord::Schema.define(version: 20180319114242) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
+  create_table "tagrecipes", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_tagrecipes_on_recipe_id"
+    t.index ["tag_id"], name: "index_tagrecipes_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tagusers", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_tagusers_on_tag_id"
+    t.index ["user_id"], name: "index_tagusers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

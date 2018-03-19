@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_one :list
   has_one :frigo
   has_many :recipes
+  has_many :taguser
+  has_many :ingredientuser
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end
