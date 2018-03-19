@@ -11,6 +11,7 @@ end
   devise_for :users
 	resources :recipes
 	resources :ingredients
+  resources :tags
 
 	get 'users/:id', to:'users#show', as: 'profil'
   get 'users' , to:'users#index'
