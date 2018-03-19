@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
 
   has_many :ingredient_to_recipes
   has_many :ingredients, through: :ingredient_to_recipes
+  has_many :tagrecipe
 
   belongs_to :user
   acts_as_votable
