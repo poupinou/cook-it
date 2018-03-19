@@ -11,7 +11,7 @@
         <div class='recipe-show-list-ing'>
           <h4>Ingrédients</h4>
             <% IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| %>
-              <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
+              <p><%= ing.quantity %> <%= ing.unity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
             <% end %>
 
             <%= form_tag add_ing_recipe_path,remote:true, method: 'get' do %>
