@@ -1,14 +1,15 @@
-<center class="frigo">
-	<h1>Mon Frigo</h1>
-
+<div class="frigo">
   <div>
-    <% Fridge.where(user_id: current_user.id).each do |ing| %>
-      <p><%= Ingredient.find(ing.ingredient_id).name %></p>
-    <% end %>
+    <h1>Mon Frigo</h1>
+    <div style="display: flex;flex-wrap: wrap;">
+      <% Fridge.where(user_id: current_user.id).each do |ing| %>
+        <img src=<%= Ingredient.find(ing.ingredient_id).picture_url(:mini) %> width='50px'; height="50px" alt="Card image cap">
+      <% end %>
+    </div>
   </div>
 
   <div>
     <%= button_to 'Trouver des recettes', find_recipe_path %>
-    <%= button_to 'Vider mon frigo', cancel_fridge_path %>
+     <%if Fridge.where(user_id: current_user.id).count > 0 %><%= button_to 'Vider mon frigo', cancel_fridge_path %><% end %>
   </div>
-</center>
+</div>
