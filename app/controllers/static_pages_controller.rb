@@ -30,6 +30,20 @@ class StaticPagesController < ApplicationController
   def frigo
     @ingredients = Ingredient.all
 
+    @value = ""
+
+    ###sert pour le système de filtrage par nom###
+    if params[:nom]
+      tab = []
+      @ingredients.each do |i|
+        if i.name.include?(params[:nom])
+          tab << i
+        end
+      end
+      @ingredients = tab
+      @value = params[:nom]
+    end
+
     #AJAX
     respond_to do |f|
       f.js
@@ -38,25 +52,39 @@ class StaticPagesController < ApplicationController
   end
 
   def add_fridge
+    
+    @ingredients = Ingredient.all
     ing_id = params[:ingredient_id]
     Fridge.create(user_id: current_user.id, ingredient_id: ing_id)
-    redirect_to root_path
+    
+    #AJAX
+    respond_to do |f|
+      f.js
+      f.html
+    end
   end
 
   def find_recipe
-    user = current_user
-    fridge_user = Fridge.where(user_id: user.id)
+    @user = current_user
+    @fridge = Fridge.where(user_id: @user.id)
     @recipe_find = []
 
-    fridge_user.each do |ing|
-      IngredientToRecipe.where(ingredient_id: ing.ingredient_id).each do |recipe|
-        @recipe_find << recipe.recipe_id
+    # On cherche toutes les recettes qui ont au moins un ingredient
+    @fridge.each do |id_ing|
+      IngredientToRecipe.where(ingredient_id: id_ing).each do |id_recipe|
+          @recipe_find << id_recipe.recipe_id
       end
     end
-
-
-
   end
+
+  def cancel_fridge
+    @user = current_user
+    @user_fridge = Fridge.where(user_id: @user.id)
+
+    Fridge.destroy(@user_fridge.ids)
+    redirect_to root_path
+  end
+
 
     def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
       @num = params[:phone_number]

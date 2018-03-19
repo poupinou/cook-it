@@ -1,9 +1,11 @@
 <div>
   <h1>Les recettes que je peux faire</h1>
 
-  <div>
-    <% @recipe_find.each do |r| %>
-      <p><%= link_to Recipe.find(r).name, recipe_path(r) %></p>
-    <% end %>
-  </div>
+  <p>ID des ingrédients du frigo : <%= @fridge.ids %></p>
+  <p>ID des recettes trouvées : <%= @recipe_find %></p>
+
+  <% @recipe_find.each do |recipe| %>
+      <p><%= link_to Recipe.find(recipe).name, recipe_path(recipe) %></p>
+  <% end %>
+
 </div>

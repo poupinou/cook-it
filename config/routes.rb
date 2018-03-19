@@ -40,6 +40,7 @@ end
 
   post '/find_recipe', to: 'static_pages#find_recipe', as: 'find_recipe'
 
+  post '/cancel_fridge', to: 'static_pages#cancel_fridge', as: 'cancel_fridge'
 
 
 

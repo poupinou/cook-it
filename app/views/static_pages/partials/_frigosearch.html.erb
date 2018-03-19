@@ -1,0 +1,18 @@
+<% @ingredients.each do |ingredient| %>
+  <div class="card" style="width: 150px; height: 150px; cursor: pointer;">
+    <img class="card-img-top" src=<%= ingredient.picture_url(:mini) %> alt="Card image cap" style="position: absolute; z-index: 1">
+    <center class="card-body" style="z-index:2">
+    <h5 class="card-title"><%= ingredient.name %></h5>
+    </center>
+    <div class="card-hover">
+      <div class="card-hover-background"></div>
+      <h5 class="card-hover-info"><%= ingredient.name %></h5>
+      <div class="card-hover-link">
+        <%= form_tag add_fridge_path, method: 'post', remote: true do %>
+          <%= hidden_field_tag :ingredient_id, ingredient.id %>
+          <%= submit_tag('Ajouter') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
