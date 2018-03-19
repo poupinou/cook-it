@@ -6,13 +6,8 @@
 
   <div class="profil-corps">
   	<center class="liste">
-  		<h1>Ma Liste</h1>
+  		<h1>Ma Liste de course</h1>
 
-      <h4>Mes recettes sélectionnées</h4>
-        <% @list_user.each do |recipe| %>
-          <p><%= Recipe.find(recipe.recipe_id).name %></p>
-        <% end %>
-      <h4>Mes ingrédients à acheter</h4>
         <% @list_ing_user.each do |ing| %>
           <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
         <% end %>
