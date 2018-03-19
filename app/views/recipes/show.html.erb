@@ -5,19 +5,28 @@
       <div class='recipe-show-head'>
         <%= @recipe.name.capitalize %>
         <span class='recipe-show-info'><%= @recipe.time %> min - <%= @recipe.price  / 100 %>€</span>
+        <div style='background-color:white;border-radius:10px 10px 10px 10px;'>
+          <div class="tags" >
+            <%= render 'tagrecipes/index'%>
+          </div>
+        </div>
       </div>
 
       <div class='recipe-show-ing'>
         <div class='recipe-show-list-ing'>
           <h4>Ingrédients</h4>
-            <% IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| %>
-              <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
-            <% end %>
+          <% IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| %>
+            <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
+          <% end %>
 
-            <%= form_tag add_ing_recipe_path,remote:true, method: 'get' do %>
-              <%= hidden_field_tag(:recipe, @recipe.id) %>
+          <%= form_tag add_ing_recipe_path,remote:true, method: 'get' do %>
+            <%= hidden_field_tag(:recipe, @recipe.id) %>
             <p><%= submit_tag('Modifier les ingrédients', class: 'btn btn-secondary') %></p>
-            <% end %>
+          <% end %>
+          <%= form_tag new_tagrecipe_path, method: 'get' do %>
+            <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+            <p><%= submit_tag('Modifier les tags', class: 'btn btn-secondary') %></p>
+          <% end %>
         </div>
 
           <div class='recipe-show-list-btn-add'>

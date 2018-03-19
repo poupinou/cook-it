@@ -1,0 +1,7 @@
+<div style="display: flex;flex-wrap: wrap; justify-content: center;">
+<% @tagrecipes.each do |t| %>
+		<div style=" margin: 2px">
+					<a class="btn btn-primary" data-remote="true" rel="nofollow" data-method="delete" href=<%= tagrecipe_path(t.id) %>><%= Tag.find_by_id(t.tag_id).name %></a>
+		</div>
+	<% end %>
+</div>

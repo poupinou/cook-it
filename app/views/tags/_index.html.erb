@@ -5,4 +5,5 @@
 		<%= link_to 'Delete', t, method: :delete,remote:true, data: { confirm: "elle n'etais pas digne de confiance de toute façon !"}, class:"btn btn-primary" %>
 	<% end %>
 	<p><%= link_to 'new', new_tag_path, class:"btn btn-success", remote:true %></p>
+	<%= link_to 'return', profil_path(current_user.id), class:"btn btn-sm, btn-secondary" %>
 </center>

@@ -12,6 +12,8 @@ end
 	resources :recipes
 	resources :ingredients
   resources :tags
+  resources :tagusers
+  resources :tagrecipes
 
 	get 'users/:id', to:'users#show', as: 'profil'
   get 'users' , to:'users#index'

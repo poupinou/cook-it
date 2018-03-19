@@ -14,7 +14,7 @@
  *= require_self
  */
 
-a , button
+a , button, .pointeur
 {
 	cursor: pointer;
 	text-decoration: none;

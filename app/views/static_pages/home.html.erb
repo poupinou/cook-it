@@ -34,7 +34,7 @@
 				Les dernières recettes ajoutées :
 			</div>
 
-			<div style='display:flex'>
+			<div style='display:flex; flex-wrap: wrap;'>
 				<% Recipe.last(10).reverse.each do |recipe| %>
 					<div>
 						<%= link_to( (image_tag recipe.picture, width: '250px', height: '200px'), recipe_path(recipe.id) ) %>

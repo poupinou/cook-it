@@ -1,0 +1,7 @@
+<div style="display: flex;flex-wrap: wrap; justify-content: center;">
+<% @tagusers.each do |t| %>
+		<div style="border-width: 1px; border-style: ridge; border-radius: 5px; cursor: pointer;background-color: lightgrey;border-color: grey; margin: 2px">
+					<a class="btn btn-primary" data-remote="true" rel="nofollow" data-method="delete" href=<%= taguser_path(t.id) %>><%= Tag.find_by_id(t.tag_id).name %></a>
+		</div>
+	<% end %>
+</div>

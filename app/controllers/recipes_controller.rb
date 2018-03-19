@@ -65,6 +65,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipe = Recipe.find(params[:id]) #permet la vision total sur une recette
+		@tagrecipes = Tagrecipe.where(recipe_id:@recipe.id) #pour le fonctionnement en Ajax
 	end
 
 	def destroy #AJAX

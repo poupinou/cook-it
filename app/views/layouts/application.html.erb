@@ -17,8 +17,9 @@
   <body>
 
   	<div id ="masterbar-yield"><%= render 'layouts/partials/masterbar' %></div>
-          <center><div style="position: absolute;"><% flash.each do |key, value| %></div>
-        <div style="position: absolute;" class="alert alert-<%= key %>"><%= value %> <% end %></div></center>
+        <% flash.each do |key, value| %>
+          <div style="position: fixed;top: 5%" class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
 
 		<div id ="yield"><%= yield %></div>
 
