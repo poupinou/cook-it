@@ -5,15 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# cette version est une version de gros batards du seed
+
 Ingredient.destroy_all
 
 #légume
-Ingredient.create(name: 'salade', family: 'légume', remote_picture_url:'https://www.academiedugout.fr/images/16397/370-274/ffffff/salade-laitue.jpg?poix=50&poiy=50', price: 1)
-Ingredient.create(name: 'tomate', family: 'légume', remote_picture_url:'https://www.lesfruitsetlegumesfrais.com/_upload/cache/ressources/produits/tomate/tomate_-_copie_346_346_filled.jpg', price: 1)
-Ingredient.create(name: 'oignon', family: 'légume', remote_picture_url:'http://www.rvprimeurs.fr/images/Image/oignon-rouge.jpg', price: 1)
-Ingredient.create(name: 'comcombre', family: 'légume', remote_picture_url:'https://fridg-front.s3.amazonaws.com/media/products/451.jpg', price: 1)
-Ingredient.create(name: 'piment', family: 'légume', remote_picture_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/France-Piment_d%27Espelette-2005-08-05.jpg/1200px-France-Piment_d%27Espelette-2005-08-05.jpg', price: 2)
 
 Ingredient.create(name: 'poivron', family: 'légume', remote_picture_url:'https://glossnroses.files.wordpress.com/2013/01/poivron.jpg', price: 2)
 Ingredient.create(name: 'carotte', family: 'légume', remote_picture_url:'https://www.passeportsante.net/DocumentsProteus/images/legume-avril-carotte.jpg', price: 2)
@@ -30,10 +25,6 @@ Ingredient.create(name: 'champignon', family: 'légume', remote_picture_url:'htt
 Ingredient.create(name: 'aubergine', family: 'légume', remote_picture_url:'http://2.bp.blogspot.com/_-IE4plYWsN4/TRInTAXUrMI/AAAAAAAAAHM/WGc9r04bcNg/s1600/Eggplant.jpg', price: 2)
 
 #fruit
-Ingredient.create(name: 'pêche', family: 'fruit', remote_picture_url:'http://www.aromemarket.com/542/10-ml-arome-peche-fa-peach-flavor.jpg', price: 1)
-Ingredient.create(name: 'poire', family: 'fruit', remote_picture_url:'https://claudiatrupia.files.wordpress.com/2015/01/img_0044.jpg', price: 1)
-Ingredient.create(name: 'figue', family: 'fruit', remote_picture_url:'http://healthychallenges.org/wp-content/uploads/2016/06/Mix-minimum-order-5-Free-Shipping-font-b-Ficus-b-font-carica-Seeds-1-Pack-6.jpg', price: 1)
-Ingredient.create(name: 'fraise', family: 'fruit', remote_picture_url:'http://www.made-in-togo.com/img/uploads/2014/07/FRAISE_TOGO.jpg', price: 1)
 
 Ingredient.create(name: 'framboise', family: 'fruit', remote_picture_url:'http://www.cuisine-de-bebe.com/wp-content/uploads/framboise.jpg', price: 1)
 Ingredient.create(name: 'orange', family: 'fruit', remote_picture_url:'http://images6.fanpop.com/image/photos/34500000/Orange-Fruit-orange-34512922-2738-1825.jpg', price: 1)
@@ -55,13 +46,6 @@ Ingredient.create(name: 'riz', family: 'féculent', remote_picture_url:'http://i
 Ingredient.create(name: 'pates', family: 'féculent', remote_picture_url:'http://www.minceurmoinscher.com/ori-tagliolini-lineadiet-x-7-139.jpg', price: 3)
 Ingredient.create(name: 'vermicelle', family: 'féculent', remote_picture_url:'http://files.kitchenbowl.com/recipe/LgfwvOznK9/step-4/soak-rice-vermicelli-till-soft-about-15--thumb.jpg', price: 3)
 Ingredient.create(name: 'epices', family: 'epices', remote_picture_url:'http://media-cache-ec0.pinimg.com/736x/6a/44/79/6a447915f86669f587b073752650c299.jpg', price: 3)
-
-Ingredient.create(name: 'algue', family: 'féculent', remote_picture_url:'https://www.acteurdurable.org/wp-content/uploads/2009/06/wakame.jpg', price: 3)
-Ingredient.create(name: 'creme fraiche', family: 'laitier', remote_picture_url:'https://www.dairygoodness.ca/var/ezflow_site/storage/images/dairy-goodness/home/recipes/creme-fraiche/8183566-13-eng-CA/creme-fraiche.jpg', price: 3)
-Ingredient.create(name: 'lait', family: 'laitier', remote_picture_url:'http://static.produits-laitiers.com/wp-content/uploads/2013/05/bouteille.jpg', price: 3)
-Ingredient.create(name: 'pain', family: 'féculent', remote_picture_url:'http://www.baeckerei-pass.de/content/produkte/schweizer-brot.png', price: 3)
-Ingredient.create(name: 'gruyère', family: 'féculent', remote_picture_url:'http://images.wisegeek.com/slice-of-gruyere-cheese.jpg', price: 3)
-
 Ingredient.create(name: 'fromage', family: 'laitier', remote_picture_url:'https://upload.wikimedia.org/wikipedia/commons/7/78/Emmental_%28fromage%29_02.jpg', price: 5)
 
 
@@ -80,23 +64,23 @@ Recipe.create(name:'raclette', description:"La raclette (Bratchäs, « fromage �
 
 IngredientToRecipe.create(recipe_id:1, ingredient_id:14 , quantity:4)
 IngredientToRecipe.create(recipe_id:1, ingredient_id:2 , quantity:2)
-IngredientToRecipe.create(recipe_id:1, ingredient_id:29 , quantity:500)
-IngredientToRecipe.create(recipe_id:1, ingredient_id:38 , quantity:400)
+IngredientToRecipe.create(recipe_id:1, ingredient_id:23 , quantity:500)
+IngredientToRecipe.create(recipe_id:1, ingredient_id:21 , quantity:400)
 
 IngredientToRecipe.create(recipe_id:2, ingredient_id:6 , quantity:4)
 IngredientToRecipe.create(recipe_id:2, ingredient_id:2 , quantity:7)
 IngredientToRecipe.create(recipe_id:2, ingredient_id:17 , quantity:50)
-IngredientToRecipe.create(recipe_id:2, ingredient_id:34 , quantity:4)
+IngredientToRecipe.create(recipe_id:2, ingredient_id:20 , quantity:4)
 
-IngredientToRecipe.create(recipe_id:3, ingredient_id:31 , quantity:18)
+IngredientToRecipe.create(recipe_id:3, ingredient_id:9 , quantity:18)
 IngredientToRecipe.create(recipe_id:3, ingredient_id:15 , quantity:6)
 IngredientToRecipe.create(recipe_id:3, ingredient_id:1 , quantity:1)
 IngredientToRecipe.create(recipe_id:3, ingredient_id:4 , quantity:5)
 
-IngredientToRecipe.create(recipe_id:4, ingredient_id:30 , quantity:4)
+IngredientToRecipe.create(recipe_id:4, ingredient_id:14 , quantity:4)
 IngredientToRecipe.create(recipe_id:4, ingredient_id:25 , quantity:2)
 IngredientToRecipe.create(recipe_id:4, ingredient_id:24 , quantity:10)
-IngredientToRecipe.create(recipe_id:4, ingredient_id:39 , quantity:5)
+IngredientToRecipe.create(recipe_id:4, ingredient_id:12 , quantity:5)
 
 IngredientToRecipe.create(recipe_id:5, ingredient_id:23 , quantity:8)
 IngredientToRecipe.create(recipe_id:5, ingredient_id:3 , quantity:2)

@@ -4,9 +4,61 @@
   	<p>cette page , c'est la tienne prend en soin ;)</p>
   </center>
 
-  <div class="profil-corps">
-  	<center class="frigo">
-  		<h1>Mon Frigo</h1>
-  	</center>
+  <div class="fridge-corps">
+  	<div class="frigo">
+      <div>
+        <h1>Mon Frigo</h1>
+        <div style="display: flex;flex-wrap: wrap;">
+          <% Fridge.where(user_id: current_user.id).each do |ing| %>
+            <div class="ingredient-hover">
+              <div class="ingredient-hover-background"><h6 style="color:black"><%= Ingredient.find(ing.ingredient_id).name %></h6></div>
+              <img class="ingredient-hover-img" src=<%= Ingredient.find(ing.ingredient_id).picture_url(:mini) %> width='50px'; height="50px" alt="Card image cap">
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <%= button_to 'Trouver des recettes', find_recipe_path %>
+         <%if Fridge.where(user_id: current_user.id).count > 0 %><%= button_to 'Vider mon frigo', cancel_fridge_path %><% end %>
+      </div>
+  	</div>
   </div>
-</div>
+
+  <div style='margin-top:100px'>
+    <h3>Ajouter un ingédient</h3>
+  </div>
+    <form  data-remote="true" id="form1" action='<%= frigo_path %>' accept-charset="UTF-8" method="get">
+      <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
+      <input id='sub' style="display: none" type="submit">
+    </form>
+  <div class="ingredients-corps">
+    <% @ingredients.each do |ingredient| %>
+      <div class="card" style="width: 150px; height: 150px; cursor: pointer;">
+        <img class="card-img-top" src=<%= ingredient.picture_url(:mini) %> alt="Card image cap" style="position: absolute; z-index: 1">
+        <center class="card-body" style="z-index:2">
+        <h5 class="card-title"><%= ingredient.name %></h5>
+        </center>
+          <div class="card-hover">
+            <div class="card-hover-background"></div>
+            <h5 class="card-hover-info"><%= ingredient.name %></h5>
+            <% if Fridge.exists?(user_id: current_user.id, ingredient_id: ingredient.id) == false %>
+              <div class="card-hover-link">
+                <%= form_tag add_fridge_path,remote: true, method: 'post' do %>
+                  <%= hidden_field_tag :ingredient_id, ingredient.id %>
+                  <%= submit_tag('Ajouter') %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+  <script type="text/javascript">
+ document.getElementById('nom').focus();
+function su()
+{
+  document.getElementById('sub').click();
+}
+</script>

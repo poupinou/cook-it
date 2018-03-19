@@ -26,9 +26,21 @@ end
 
   post '/', to: 'lists#add_to_list', as: 'add_to_list'
 
-  post 'liste2', to: 'static_pages#send_sms', as: 'send_sms'
+
+  post '/liste2', to: 'static_pages#send_sms', as: 'send_sms'
+
 
   get 'liste', to: 'static_pages#send_mail', as: 'send_mail'
+
+  post '/liste3', to: 'lists#reset_list_ing', as: 'liste_reset'
+
+  get '/inbobunwetrust', to: 'users#admin', as: 'god'
+
+  post 'add_fridge', to: 'static_pages#add_fridge', as: 'add_fridge'
+
+  post '/find_recipe', to: 'static_pages#find_recipe', as: 'find_recipe'
+
+  post '/cancel_fridge', to: 'static_pages#cancel_fridge', as: 'cancel_fridge'
 
 
 

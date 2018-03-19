@@ -5,14 +5,14 @@ class StaticPagesController < ApplicationController
   def admin #AJAX
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
   end
 
   def about #AJAX
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
   end
 
@@ -23,16 +23,70 @@ class StaticPagesController < ApplicationController
 
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
   end
 
-  def frigo #AJAX
+  def frigo
+    @ingredients = Ingredient.all
+
+    @value = ""
+
+    ###sert pour le système de filtrage par nom###
+    if params[:nom]
+      tab = []
+      @ingredients.each do |i|
+        if i.name.include?(params[:nom])
+          tab << i
+        end
+      end
+      @ingredients = tab
+      @value = params[:nom]
+    end
+
+    #AJAX
     respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
   end
+
+  def add_fridge
+    
+    @ingredients = Ingredient.all
+    ing_id = params[:ingredient_id]
+
+    if Fridge.exists?(user_id: current_user.id, ingredient_id: ing_id) == false
+      Fridge.create(user_id: current_user.id, ingredient_id: ing_id)
+    end
+    #AJAX
+    respond_to do |f|
+      f.js
+      f.html
+    end
+  end
+
+  def find_recipe
+    @user = current_user
+    @fridge = Fridge.where(user_id: @user.id)
+    @recipe_find = []
+
+    # On cherche toutes les recettes qui ont au moins un ingredient
+    @fridge.each do |id_ing|
+      IngredientToRecipe.where(ingredient_id: id_ing).each do |id_recipe|
+          @recipe_find << id_recipe.recipe_id
+      end
+    end
+  end
+
+  def cancel_fridge
+    @user = current_user
+    @user_fridge = Fridge.where(user_id: @user.id)
+
+    Fridge.destroy(@user_fridge.ids)
+    redirect_to root_path
+  end
+
 
     def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
       @num = params[:phone_number]
@@ -40,9 +94,9 @@ class StaticPagesController < ApplicationController
     @list_ing_user = ListIng.where(user_id: @user.id)
     @arr = []
     @list_ing_user.each do |ing|
-      @arr << Ingredient.find(ing.ingredient_id).name 
-      @arr << ing.quantity 
-        end 
+      @arr << Ingredient.find(ing.ingredient_id).name
+      @arr << ing.quantity
+        end
     account_sid = ENV['TWILIO_ACCOUNT_SID']
 
     auth_token = ENV['TWILIO_AUTH_TOKEN']

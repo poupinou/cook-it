@@ -2,7 +2,14 @@
 #home
 {
 	width: 100%;
+	height: 100%;
 	margin-left: 200px;
+}
+
+.image-mini
+{
+	width: 30px;
+	height:30px;
 }
 
 .recipe-show {
@@ -146,6 +153,59 @@ h3 {
 	justify-content: space-around;
 }
 
+/*Les cartes au survol*/
+.card-hover
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	position: absolute;
+	color: white;
+	width: 100%;
+	height: 100%; 
+	opacity: 0;
+	z-index: 4;
+}
+
+.card-hover-background
+{
+	z-index: 4;
+	position: absolute; 
+	background-color: black;
+	width: 100%;
+	height:100%;
+	opacity: 0.7
+}
+
+.card-hover-link
+{
+	z-index:6 ;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card-hover-info
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index: 5;
+}
+
+.card-hover:hover
+{
+	transition: 1s;
+	opacity: 1;
+}
+
+.card:hover .card-title
+{
+	display: none;
+}
+/****************************************/
+
 .about-corps center
 {
 	display: flex;
@@ -154,14 +214,46 @@ h3 {
 
 .frigo
 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	margin-top: 20%;
-	width: 30%;
+	max-height: 20%;
+	min-width: 300px;
 	border:solid;
 	border-width: 1px;
 	box-shadow: 0px 5px 5px grey;
 	background-color: #EEEEEE;
-	border-radius: 30%;
 	min-height: 400px;
+}
+.ingredient-hover:hover .ingredient-hover-img
+{
+	transition: 1s;
+	width: 100px;
+	height: 100px;
+}
+.ingredient-hover-img
+{
+	transition: 1s;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+}
+.ingredient-hover .ingredient-hover-background
+{
+	position: absolute;
+	display: block;;
+	opacity: 0;
+	width:50px;
+	height: 50px;
+}
+.ingredient-hover:hover .ingredient-hover-background
+{
+	z-index: 5;
+	opacity: 1;
+	transition: 1s;
+	width:100px;
+	height: 100px;
 }
 
 .link-control
@@ -192,41 +284,7 @@ h3 {
 	text-decoration: none;
 	background-color: #569800;
 }
-
-.b:hover
-{
-	background-color: #00A48E;
-}
-
-.r:hover
-{
-	background-color: #EC5454;
-}
-/************************liste*****/
-
-.liste-g{
-	justify-content: center;
-}
-
-.liste-container{
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-.listes{
-display: flex;
-justify-content: center;
-
-}
-
-.liste{
-	background-color: white;
-	margin-top: 200px;
-	width: 300px;
-	box-shadow: 6px 6px 6px black;
+/*****************************/
 
 
-}
 

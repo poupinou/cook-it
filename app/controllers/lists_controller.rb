@@ -16,4 +16,17 @@ class ListsController < ApplicationController
 			end
 		end
 	end
+
+	def reset_list_ing
+		user = current_user
+		list_ing = ListIng.where(user_id: user.id)
+		list_recipe = List.where(user_id: user.id)
+
+		ListIng.destroy(list_ing.ids)
+		#List.destroy(list_recipe.ids)
+
+		redirect_to root_path
+	end
+
+
 end

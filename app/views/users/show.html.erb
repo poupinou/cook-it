@@ -1,15 +1,55 @@
-<div class="home">
-  <div class="profil-g">
-    <center class="profil-head">
+<div id="home">
+  <center>
+  <div style='margin-top:50px;background-color:white;width:400px;border-radius:10px 10px 10px 10px'>
     	<h1>Mon profil</h1>
-    	<p>cette page , c'est la tienne prend en soin ;)</p>
-    </center>
-  	<center class="form">
-  		<h1><%= @user.username %></h1>
-  		<p><%= @user.email %></p>
-  		<%= @user.rights %>
-  		<%= @user.avatar %>
-  	</center>
-    <%= link_to 'edit profil', edit_user_registration_path(current_user.id),class:"masterbar-link"%>
   </div>
+
+  <div style='background-color:white;width:400px;border-radius:10px 10px 10px 10px;font-size:1.5em'>
+    <div>
+      Mon pseudo : <%= @user.username %>
+    </div>
+
+    <div>
+      Mon mail : <%= @user.email %>
+    </div>
+
+    <% if @user.rights == 99 %>
+      <div style='border-top:1px lightgrey solid'>
+        <p><strong>Tu es ADMIN</strong></p>
+      </div>
+    <% end %>
+
+    <div style='padding-bottom:15px;'>
+      <%= link_to 'Editer mon profil', edit_user_registration_path(current_user.id), class: "btn btn-warning"%>
+    </div>
+  </div>
+
+  <div>
+    <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
+      J'ai crée les recettes suivantes :
+    </div>
+    <div style='margin-top:20px;display:flex;justify-content:center'>
+      <% Recipe.where(user_id: @user.id).each do |recipe| %>
+        <div style='padding:10px'>
+          <a href=<%= recipe_path(recipe.id) %>>
+            <img src=<%= recipe.picture %> width='250px' height='250px'></img>
+          </a>
+        </div>
+      <% end %>
+    </div>
+
+    <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
+      J'ai déjà mangé :
+    </div>
+    <div style='margin-top:20px;margin-bottom:20px;display:flex;justify-content:center'>
+      <% List.where(user_id: current_user.id).each do |r| %>
+        <div style='padding:10px'>
+          <a href=<%= recipe_path(r.recipe_id) %>>
+            <img src=<%= Recipe.find(r.recipe_id).picture %> width='250px' height='250px'></img>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  </center>
 </div>

@@ -25,7 +25,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
     version :mini do
-      resize_to_fill(150,150);
+      resize_to_fill(250,250);
     end
 
     version :poster do
