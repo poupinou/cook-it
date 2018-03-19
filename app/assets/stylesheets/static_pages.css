@@ -218,6 +218,7 @@ h3 {
 	justify-content: space-between;
 
 	height: 600px;
+	overflow: scroll;
 	width: 40%;
 	box-shadow: 6px 6px 6px #996752;
 	background-image: url("frigo.jpg");
