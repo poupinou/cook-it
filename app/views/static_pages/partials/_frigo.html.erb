@@ -3,27 +3,26 @@
   	<h1>Mon Frigo</h1>
   	<p>cette page , c'est la tienne prend en soin ;)</p>
   </center>
-
-  <div class="fridge-corps">
-  	<div class="frigo">
-      <div>
-        <div style="display: flex;flex-wrap: wrap;">
-          <% Fridge.where(user_id: current_user.id).each do |ing| %>
-            <div class="ingredient-hover">
-              <div class="ingredient-hover-background"><h6 style="color:black"><%= Ingredient.find(ing.ingredient_id).name %></h6></div>
-              <img class="ingredient-hover-img" src=<%= Ingredient.find(ing.ingredient_id).picture_url(:mini) %> width='50px'; height="50px" alt="Card image cap">
-            </div>
-          <% end %>
+  <center class="fridge-total">
+    <div class="fridge-corps">
+    	<div class="frigo">
+        <div>
+          <div style="display: flex;flex-wrap: wrap;">
+            <% Fridge.where(user_id: current_user.id).each do |ing| %>
+              <div class="ingredient-hover">
+                <div class="ingredient-hover-background"><h6 style="color:black"><%= Ingredient.find(ing.ingredient_id).name %></h6></div>
+                <img class="ingredient-hover-img" src=<%= Ingredient.find(ing.ingredient_id).picture_url(:mini) %> width='50px'; height="50px" alt="Card image cap">
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-
-      <div>
-        <%= button_to 'Trouver des recettes', find_recipe_path %>
-         <%if Fridge.where(user_id: current_user.id).count > 0 %><%= button_to 'Vider mon frigo', cancel_fridge_path %><% end %>
-      </div>
-  	</div>
-  </div>
-
+    	</div>
+    </div>
+    <center>
+      <%= button_to 'Trouver des recettes', find_recipe_path, class: 'btn-submit btn btn-warning' %>
+      <%if Fridge.where(user_id: current_user.id).count > 0 %><%= button_to 'Vider mon frigo', cancel_fridge_path, class: 'btn-submit btn btn-danger' %><% end %>     
+    </center>
+  </center>
   <div style='margin-top:100px'>
     <h3>Ajouter un ingédient</h3>
   </div>
