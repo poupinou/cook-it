@@ -1,6 +1,5 @@
 <div class="frigo">
   <div>
-    <h1>Mon Frigo</h1>
     <div style="display: flex;flex-wrap: wrap;">
       <% Fridge.where(user_id: current_user.id).each do |ing| %>
         <div class="ingredient-hover">
