@@ -40,7 +40,9 @@
       <img src='<%= @recipe.picture_url(:poster) %>' class='recipe-show-picture'></img>
 
       <div class='recipe-show-list-btn-add'>
-        <div class="recipe-show-vote">
+        <div class="recipe-show-vote vote">
+
+          <!-- Si l'user est connecté -->
           <% if user_signed_in? %>
             <%= link_to like_recipe_path(@recipe), method: :put, remote:true do %>
               <%= image_tag 'thumbs_up-64.png' %>
@@ -52,6 +54,17 @@
               <%= @recipe.get_downvotes.size %>
             <% end %>
           <% end %>
+
+          <!-- Si l'user n'est pas connecté -->
+          <% if user_signed_in? == false %>
+            <a data-toggle="modal" data-target="#exampleModal">
+              <%= image_tag 'thumbs_up-64.png' %>
+              <%= @recipe.get_upvotes.size %>
+
+              <%= image_tag 'thumbs_down-64.png' %>
+              <%= @recipe.get_downvotes.size %>
+            </a>
+          <% end %>
         </div>
 
         <div class='recipe-show-btn'>
@@ -61,6 +74,14 @@
                 <%= hidden_field_tag(:recipe_id, @recipe.id) %>
                 <%= submit_tag('Ajouter à ma liste', class: 'btn btn-primary') %>
               <% end %>
+            </div>
+          <% end %>
+
+          <% if user_signed_in? == false %>
+            <div style='margin-bottom:10px;'>
+              <a data-toggle="modal" data-target="#exampleModal">
+                <%= submit_tag('Ajouter à ma liste', class: 'btn btn-primary') %>
+              </a>
             </div>
           <% end %>
 
@@ -77,18 +98,29 @@
         </div>
       </div>
     </div>
-</div>
-
-
-
-
   </div>
 
 
 
 
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Connecte toi!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <%= render "layouts/partials/log_message" %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<!--<div id='calendar-container'>
-  <div id='calendar'></div>
-</div> -->
