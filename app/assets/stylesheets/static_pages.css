@@ -26,6 +26,7 @@ Recipe show
 	border-radius: 15px 15px 15px 15px;
 	flex-wrap: wrap;
 	margin: 35px;
+	padding-bottom: 30px;
 }
 
 .recipe-show-btn {
@@ -36,6 +37,7 @@ Recipe show
 .recipe-show-description {
 	padding-left: 15px;
 	white-space: pre-line;
+	border-left: 1px black solid;
 }
 
 .recipe-show-head {
@@ -76,8 +78,8 @@ Recipe show
 }
 
 .recipe-show-list-ing {
-	border-right: 1px black solid;
 	padding-right: 15px;
+	min-width: 250px;
 }
 
 .recipe-show-picture {

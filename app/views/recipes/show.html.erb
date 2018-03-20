@@ -18,13 +18,15 @@
             <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
           <% end %>
 
-          <%= form_tag add_ing_recipe_path,remote:true, method: 'get' do %>
-            <%= hidden_field_tag(:recipe, @recipe.id) %>
-            <p><%= submit_tag('Modifier les ingrédients', class: 'btn btn-secondary') %></p>
-          <% end %>
-          <%= form_tag new_tagrecipe_path, method: 'get' do %>
-            <%= hidden_field_tag(:recipe_id, @recipe.id) %>
-            <p><%= submit_tag('Modifier les tags', class: 'btn btn-secondary') %></p>
+          <% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && current_user.id == @recipe.user_id ) %>
+            <%= form_tag add_ing_recipe_path,remote:true, method: 'get' do %>
+              <%= hidden_field_tag(:recipe, @recipe.id) %>
+              <p><%= submit_tag('Modifier les ingrédients', class: 'btn btn-secondary') %></p>
+            <% end %>
+            <%= form_tag new_tagrecipe_path, method: 'get' do %>
+              <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+              <p><%= submit_tag('Modifier les tags', class: 'btn btn-secondary') %></p>
+            <% end %>
           <% end %>
         </div>
 
