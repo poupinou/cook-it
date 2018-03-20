@@ -91,6 +91,10 @@ Recipe show
 	max-width: 400px;
 }
 
+.recipe-show-tag {
+
+}
+
 .recipe-show-vote {
 	margin-bottom: 20px;
 }

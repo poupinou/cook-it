@@ -1,7 +1,9 @@
 class TagsController < ApplicationController
-	
+
 	def index
 			@tags = Tag.all
+			@recipe = Recipe.find(params[:id])
+			@user = current_user
 	end
 
 	def new #AJAX
@@ -9,19 +11,19 @@ class TagsController < ApplicationController
 
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
 	def create
 		@tag = Tag.new(tag_params)
 		@tag.save
-		
+
 		@tags = Tag.all # pour le fonctionnement en ajax
 
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -30,7 +32,7 @@ class TagsController < ApplicationController
 
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -41,7 +43,7 @@ class TagsController < ApplicationController
 		@tags = Tag.all # pour le fonctionnement en ajax
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 
@@ -52,7 +54,7 @@ class TagsController < ApplicationController
 
 		respond_to do |f|
       f.js
-      f.html 
+      f.html
     end
 	end
 

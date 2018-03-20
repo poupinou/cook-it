@@ -1,7 +1,11 @@
-<div style="display: flex;flex-wrap: wrap; justify-content: center;">
+<div style="display: flex;flex-wrap: wrap; justify-content: left;">
 <% @tagrecipes.each do |t| %>
 		<div style=" margin: 2px">
-					<a class="btn btn-primary" data-remote="true" rel="nofollow" data-method="delete" href=<%= tagrecipe_path(t.id) %>><%= Tag.find_by_id(t.tag_id).name %></a>
+			<% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && @recipe.user_id == current_user.id) %>
+					<a class="btn btn-success" data-remote="true" rel="nofollow" data-method="delete" href=<%= tagrecipe_path(t.id) %>><%= Tag.find_by_id(t.tag_id).name %></a>
+			<% else %>
+					<div class='btn btn-success'><%= Tag.find_by_id(t.tag_id).name %></div>
+			<% end %>
 		</div>
 	<% end %>
 </div>

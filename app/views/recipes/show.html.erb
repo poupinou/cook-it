@@ -6,7 +6,7 @@
         <%= @recipe.name.capitalize %>
         <span class='recipe-show-info'><%= @recipe.time %> min - <%= @recipe.price  / 100 %>€</span>
         <div style='background-color:white;border-radius:10px 10px 10px 10px;'>
-          <div class="tags" >
+          <div class="recipe-show-tag" >
             <%= render 'tagrecipes/index'%>
           </div>
         </div>
