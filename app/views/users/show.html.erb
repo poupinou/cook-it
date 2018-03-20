@@ -1,85 +1,85 @@
-<div id="home">
-  <center>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-        <div style='width: 25%;margin-top:50px;border-radius:10px 10px 10px 10px; display: flex; flex-direction: column;'>
+
+<center>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+      <div style='width: 25%;margin-top:50px;border-radius:10px 10px 10px 10px; display: flex; flex-direction: column;'>
+      </div>
+    <div>
+      <div style='margin-top:50px;background-color:white;width:400px;border-radius:10px 10px 10px 10px'>
+        	<h1>Mon profil</h1>
+      </div>
+
+      <div style='background-color:white;width:400px;border-radius:10px 10px 10px 10px;font-size:1.5em'>
+        <div>
+          Mon pseudo : <%= @user.username %>
         </div>
-      <div>
-        <div style='margin-top:50px;background-color:white;width:400px;border-radius:10px 10px 10px 10px'>
-          	<h1>Mon profil</h1>
+
+        <div>
+          Mon mail : <%= @user.email %>
         </div>
 
-        <div style='background-color:white;width:400px;border-radius:10px 10px 10px 10px;font-size:1.5em'>
-          <div>
-            Mon pseudo : <%= @user.username %>
+        <% if @user.rights == 99 %>
+          <div style='border-top:1px lightgrey solid'>
+            <p><strong>Tu es ADMIN</strong></p>
           </div>
+        <% end %>
 
-          <div>
-            Mon mail : <%= @user.email %>
-          </div>
+        <div style='padding-bottom:15px;'>
+          <%= link_to 'Editer mon profil', edit_user_registration_path(current_user.id), class: "btn btn-warning"%>
+        </div>
+      </div>
+    </div>
+    <div style='width: 25%; margin-top:50px; display: flex; flex-direction: column;'>
 
+      <div style='background-color:white;border-radius:10px 10px 10px 10px; margin-bottom: 10px'>
+          <h1>Mes tags</h1>
           <% if @user.rights == 99 %>
             <div style='border-top:1px lightgrey solid'>
-              <p><strong>Tu es ADMIN</strong></p>
+              <%= link_to 'Show tags', tags_path,class:"btn btn-sm, btn-info"%>
             </div>
           <% end %>
-
-          <div style='padding-bottom:15px;'>
-            <%= link_to 'Editer mon profil', edit_user_registration_path(current_user.id), class: "btn btn-warning"%>
-          </div>
-        </div>
       </div>
-      <div style='width: 25%; margin-top:50px; display: flex; flex-direction: column;'>
 
-        <div style='background-color:white;border-radius:10px 10px 10px 10px; margin-bottom: 10px'>
-            <h1>Mes tags</h1>
-            <% if @user.rights == 99 %>
-              <div style='border-top:1px lightgrey solid'>
-                <%= link_to 'Show tags', tags_path,class:"btn btn-sm, btn-info"%>
-              </div>
-            <% end %>
+      <div style='background-color:white;border-radius:10px 10px 10px 10px;'>
+        <div class="tags" >
+          <%= render 'tagusers/index'%>
         </div>
 
-        <div style='background-color:white;border-radius:10px 10px 10px 10px;'>
-          <div class="tags" >
-            <%= render 'tagusers/index'%>
-          </div>
-
-          <div style='padding-bottom:15px;'>
-            <%= link_to 'ajouter un tag', new_taguser_path,remote: true, class:"btn btn-sm btn-warning"%>
-          </div>
-          <div class="new-tag">
-            
-          </div>
+        <div style='padding-bottom:15px;'>
+          <%= link_to 'ajouter un tag', new_taguser_path,remote: true, class:"btn btn-sm btn-warning"%>
+        </div>
+        <div class="new-tag">
+          
         </div>
       </div>
     </div>
+  </div>
 
-    <div>
-      <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
-        J'ai crée les recettes suivantes :
-      </div>
-      <div style='margin-top:20px;display:flex;justify-content:center'>
-        <% Recipe.where(user_id: @user.id).each do |recipe| %>
-          <div style='padding:10px'>
-            <a href=<%= recipe_path(recipe.id) %>>
-              <img src=<%= recipe.picture %> width='250px' height='250px'></img>
-            </a>
-          </div>
-        <% end %>
-      </div>
-
-      <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
-        J'ai déjà mangé :
-      </div>
-      <div style='margin-top:20px;margin-bottom:20px;display:flex;justify-content:center'>
-        <% List.where(user_id: current_user.id).each do |r| %>
-          <div style='padding:10px'>
-            <a href=<%= recipe_path(r.recipe_id) %>>
-              <img src=<%= Recipe.find(r.recipe_id).picture %> width='250px' height='250px'></img>
-            </a>
-          </div>
-        <% end %>
-      </div>
+  <div>
+    <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
+      J'ai crée les recettes suivantes :
     </div>
-  </center>
-</div>
+    <div style='margin-top:20px;display:flex;justify-content:center'>
+      <% Recipe.where(user_id: @user.id).each do |recipe| %>
+        <div style='padding:10px'>
+          <a href=<%= recipe_path(recipe.id) %>>
+            <img src=<%= recipe.picture %> width='250px' height='250px'></img>
+          </a>
+        </div>
+      <% end %>
+    </div>
+
+    <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
+      J'ai déjà mangé :
+    </div>
+    <div style='margin-top:20px;margin-bottom:20px;display:flex;justify-content:center'>
+      <% List.where(user_id: current_user.id).each do |r| %>
+        <div style='padding:10px'>
+          <a href=<%= recipe_path(r.recipe_id) %>>
+            <img src=<%= Recipe.find(r.recipe_id).picture %> width='250px' height='250px'></img>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</center>
+

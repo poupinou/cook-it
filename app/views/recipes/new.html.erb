@@ -1,6 +1,6 @@
 <div style="height:100%; display: flex; justify-content: center; align-items: center;">
   <div class="form" style="width: 50%;">
-    <h1>Modifier la recette</h1>
+    <h1>Ajouter une recette</h1>
 
     <%= form_for @recipe, remote:true do |rec| %>
          <%= rec.hidden_field :user_id, value: @user.id %>
@@ -10,8 +10,12 @@
       <p><%= rec.text_field :time, placeholder: 'Temps de préparation', class:"form-control" %></p>
       <p><%= rec.text_field :price, placeholder: 'Prix moyen', class:"form-control" %></p>
 
-      <p><%= rec.submit 'Modifier la recette', class:"form-control" %></p>
+      <p><%= rec.submit 'Ajouter cette recette', class:"form-control" %></p>
     <% end %>
-     <p><%= link_to 'Retour aux recettes', recipes_path ,remote:true %></p>
+     <p><%= link_to 'Retour aux recettes', recipes_path %></p>
   </div>
 </div>
+
+
+
+

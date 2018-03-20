@@ -2,7 +2,7 @@
 	<div class="form" style="width:50%;">
 	  <h1>Ajouter un ingrédient</h1>
 
-	  <%= form_for @ingredient,remote:true do |ing| %>
+	  <%= form_for @ingredient  do |ing| %>
 	    <p><%= ing.text_field :name, placeholder: 'Nom de l\'ingrédient', class:"form-control" %></p>
 	    <p><%= ing.text_field :family, placeholder: 'Famille de l\'ingrédient', class:"form-control" %></p>
 	    <p><%= ing.file_field :picture, placeholder: 'URL de l\'ingrédient', class:"form-control" %></p>
@@ -10,6 +10,6 @@
 
 	    <p><%= ing.submit 'Ajouter cet ingrédient' %></p>
 	  <% end %>
-	  <p><%= link_to 'Retour aux ingrédients', ingredients_path ,remote:true %></p>
+	  <p><%= link_to 'Retour aux ingrédients', ingredients_path %></p>
 	</div>
 </div>

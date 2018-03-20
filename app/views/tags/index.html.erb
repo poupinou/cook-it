@@ -1,20 +1,22 @@
-<div id="home">
-	<% if user_signed_in? %>
-	  <% if current_user.rights == 99 %>
-			<center>
-				<% @tags.each do |t| %>
-					<div class="form"><%= t.name %></div>
-					<%= link_to 'Edit', edit_tag_path(t.id), remote:true ,class:"btn btn-secondary" %>
-					<%= link_to 'Delete', t, method: :delete,remote:true, data: { confirm: "elle n'etais pas digne de confiance de toute façon !"}, class:"btn btn-primary" %>
-				<% end %>
-				<p><%= link_to 'new', new_tag_path, class:"btn btn-success", remote:true%></p>
-			</center>
-		<% else %>
-			<p class="text-center">Vous ne devriez pas être ici</p>
-		<% end %>
+
+<% if user_signed_in? %>
+  <% if current_user.rights == 99 %>
+		<center>
+			<% @tags.each do |t| %>
+				<div class="form"><%= t.name %></div>
+				<%= link_to 'Edit', edit_tag_path(t.id), remote:true ,class:"btn btn-secondary" %>
+				<%= link_to 'Delete', t, method: :delete,remote:true, data: { confirm: "elle n'etais pas digne de confiance de toute façon !"}, class:"btn btn-primary" %>
+			<% end %>
+			<p><%= link_to 'new', new_tag_path, class:"btn btn-success", remote:true%></p>
+		</center>
 	<% else %>
 		<p class="text-center">Vous ne devriez pas être ici</p>
 	<% end %>
+<% else %>
+	<p class="text-center">Vous ne devriez pas être ici</p>
+<% end %>
 
-	<center><%= link_to 'return', profil_path(current_user.id), class:"btn btn-sm, btn-secondary" %></center>
-</div>
+<%if user_signed_in? %><center><%= link_to 'return', profil_path(current_user.id), class:"btn btn-sm, btn-secondary" %></center>
+<% else %>
+<center><%= link_to 'return',root_path, class:"btn btn-sm, btn-secondary" %>
+<% end %></center>

@@ -25,34 +25,24 @@ class RecipesController < ApplicationController
 
 	def new #AJAX
 		if user_signed_in?
-		@user = current_user # on pointe
-		@recipe = Recipe.new #on prépare la création
-	else 
-		redirect_to logyou_path
-	end
+			@user = current_user # on pointe
+			@recipe = Recipe.new #on prépare la création
+		else 
+			redirect_to logyou_path
+		end
 	end
 
-	def create #AJAX
+	def create
 		@user = current_user #on pointe
 		@recipe = Recipe.new(recipes_params)# on crée avec les paramètre rentré
 		@recipe.save #on sauve
 
-		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
-
-    respond_to do |f| #AJAX mon ami
-      f.js
-      f.html
-    end
+		redirect_to @recipe
 	end
 
-	def edit #AJAX
+	def edit
 		@user = current_user #on pointe
 		@recipe = Recipe.find(params[:id]) #on pointe
-
-		respond_to do |f|
-      f.js
-      f.html
-    end
 	end
 
 	def update #AJAX
@@ -60,11 +50,7 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.find(params[:id]) #on pointe
 		@recipe.update(recipes_params) #on met à jour
 
-		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
-		respond_to do |f|
-      f.js
-      f.html
-    end
+		redirect_to @recipe
 	end
 
 	def show

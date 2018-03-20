@@ -23,28 +23,19 @@ class IngredientsController < ApplicationController
     end
 	end
 
-	def new #AJAX
+	def new
 		@ingredient = Ingredient.new #génération d'un ingrédient pour le form for
-
-		respond_to do |f|
-      f.js
-      f.html 
-    end
 	end
 
-	def create #AJAX
+	def create
 
 		@ingredient = Ingredient.new(ingredients_params) #génération avec les paramètre autorisé
 		@ingredient.save #on sauvegarde
 
-		@ingredients = Ingredient.all #besoin pour le fonctionnement e AJAX
-		respond_to do |f|
-      f.js
-      f.html 
-    end
+		redirect_to ingredients_path
 	end
 
-	def edit #AJAX
+	def edit
 		@ingredient = Ingredient.find(params[:id]) #on viens chercher l'élement à modifier
 
 		respond_to do |f|
@@ -53,15 +44,11 @@ class IngredientsController < ApplicationController
     end
 	end
 
-	def update #AJAX
+	def update
 		@ingredient = Ingredient.find(params[:id]) #on viens chercher l'élement à modifier
 		@ingredient.update(ingredients_params) #on sauve
 
-		@ingredients = Ingredient.all #besoin pour le fonctionnement e AJAX
-		respond_to do |f|
-      f.js
-      f.html 
-    end
+		redirect_to ingredients_path
 	end
 
 	def destroy
