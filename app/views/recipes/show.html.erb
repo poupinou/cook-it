@@ -14,8 +14,6 @@
 
       <div class='recipe-show-ing'>
         <div class='recipe-show-list-ing'>
-          <h4>Ingrédients</h4>
-          
           <% IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| %>
             <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
           <% end %>
@@ -30,52 +28,54 @@
           <% end %>
         </div>
 
-          <div class='recipe-show-list-btn-add'>
-            <div class="vote">
-              <% if user_signed_in? %>
-                <%= link_to like_recipe_path(@recipe), method: :put, remote:true do %>
-                  <%= image_tag 'thumbs_up-64.png' %>
-                  <%= @recipe.get_upvotes.size %>
-                <% end %>
-
-                <%= link_to dislike_recipe_path(@recipe), method: :put, remote:true do %>
-                  <%= image_tag 'thumbs_down-64.png' %>
-                  <%= @recipe.get_downvotes.size %>
-                <% end %>
-              <% end %>
-            </div>
-
-            <div class='recipe-show-btn'>
-              <% if user_signed_in? %>
-                <div style='margin-bottom:10px;'>
-                  <%= form_tag add_to_list_path, method: 'post' do %>
-                    <%= hidden_field_tag(:recipe_id, @recipe.id) %>
-                    <%= submit_tag('Ajouter à ma liste', class: 'btn btn-primary') %>
-                  <% end %>
-                </div>
-              <% end %>
-
-              <% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && @recipe.user_id == current_user.id ) %>
-                <div class='btn-edit-delete'>
-                  <div style='margin-right:20px'>
-                    <%= button_to 'Edit', edit_recipe_path(@recipe.id), class: 'btn btn-warning', remote:true %>
-                  </div>
-                  <div>
-                    <%= link_to 'Delete', @recipe, class: 'btn btn-danger', remote:true,method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
+        <div class='recipe-show-description'>
+          <%= @recipe.description %>
+        </div>
       </div>
 
-      <div class='recipe-show-description'>
-        <%= @recipe.description %>
-      </div>
+
     </div>
 
     <div class='recipe-show-right'>
       <img src='<%= @recipe.picture_url(:poster) %>' class='recipe-show-picture'></img>
+
+      <div class='recipe-show-list-btn-add'>
+        <div class="recipe-show-vote">
+          <% if user_signed_in? %>
+            <%= link_to like_recipe_path(@recipe), method: :put, remote:true do %>
+              <%= image_tag 'thumbs_up-64.png' %>
+              <%= @recipe.get_upvotes.size %>
+            <% end %>
+
+            <%= link_to dislike_recipe_path(@recipe), method: :put, remote:true do %>
+              <%= image_tag 'thumbs_down-64.png' %>
+              <%= @recipe.get_downvotes.size %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class='recipe-show-btn'>
+          <% if user_signed_in? %>
+            <div style='margin-bottom:10px;'>
+              <%= form_tag add_to_list_path, method: 'post' do %>
+                <%= hidden_field_tag(:recipe_id, @recipe.id) %>
+                <%= submit_tag('Ajouter à ma liste', class: 'btn btn-primary') %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && @recipe.user_id == current_user.id ) %>
+            <div class='btn-edit-delete'>
+              <div style='margin-right:20px'>
+                <%= link_to 'Edit', edit_recipe_path(@recipe.id), class: 'btn btn-warning', remote:true %>
+              </div>
+              <div>
+                <%= link_to 'Delete', @recipe, class: 'btn btn-danger', remote:true, method: :delete, data: { confirm: 'Non sérieux elle te plait pas ?' } %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 </div>
 
