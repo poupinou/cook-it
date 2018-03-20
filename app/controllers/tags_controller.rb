@@ -2,7 +2,6 @@ class TagsController < ApplicationController
 
 	def index
 			@tags = Tag.all
-			@recipe = Recipe.find(params[:id])
 			@user = current_user
 	end
 

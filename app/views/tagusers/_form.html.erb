@@ -1,11 +1,6 @@
-<div style="; height:100%; display: flex;flex-direction: column; justify-content: center;align-items: center;">
-    <h1>Ajouter un Tag</h1>
-  <div class="form">
-    <% Tag.all.each do |t| %>
-    	<%= form_for @taguser, remote:true do |rec| %>
-    		<%= hidden_field_tag(:tag_id, t.id,class:"form-control") %>
-    		<p><%= rec.submit  t.name , class:"form-control pointeur"%></p>
-    	<% end %>
- 	  <% end %>
-  </div>
-</div>
+<% Tag.all.each do |t| %>
+	<%= form_for @taguser, remote:true do |rec| %>
+		<%= hidden_field_tag(:tag_id, t.id,class:"form-control") %>
+		<p><%= rec.submit  t.name , class:"form-control pointeur"%></p>
+	<% end %>
+<% end %>
