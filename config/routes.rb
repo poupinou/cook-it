@@ -45,7 +45,7 @@ end
 
   post '/cancel_fridge', to: 'static_pages#cancel_fridge', as: 'cancel_fridge'
 
-
+  get '/logyou', to: 'static_pages#logyou', as: 'logyou'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
