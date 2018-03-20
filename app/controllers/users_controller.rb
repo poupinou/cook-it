@@ -16,9 +16,12 @@ class UsersController < ApplicationController
   end
 
   def admin
-    @user = current_user
-    @user.rights = 99
-    @user.save
-    puts @user.rights
+    if user_signed_in?
+      @user = current_user
+      @user.rights = 99
+      @user.save
+    else
+      redirect_to root_path
+    end
   end
 end
