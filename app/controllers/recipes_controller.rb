@@ -24,8 +24,12 @@ class RecipesController < ApplicationController
 	end
 
 	def new #AJAX
+		if user_signed_in?
 		@user = current_user # on pointe
 		@recipe = Recipe.new #on prépare la création
+	else 
+		redirect_to logyou_path
+	end
 	end
 
 	def create #AJAX

@@ -118,4 +118,7 @@ class StaticPagesController < ApplicationController
     flash[:success] = "sms bien envoyé"
   end
 
+  def logyou
+
+  end
 end
