@@ -21,13 +21,11 @@
           <div style="position: fixed;top: 5%" class="alert alert-<%= key %>"><%= value %></div>
         <% end %>
 
-		<div id ="yield"><%= yield %></div>
-
-    <%= stylesheet_link_tag "fullcalendar.css" %>       
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js'></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+		<div id ="yield">
+      <div id='home'>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
 
@@ -45,7 +43,7 @@
     menu.style.display = "block";
     back.style.display = "block";
   }
-  
+
 
   window.addEventListener('resize', function() {
   if(window.innerWidth<680) {
