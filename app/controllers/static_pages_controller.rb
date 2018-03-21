@@ -52,7 +52,7 @@ class StaticPagesController < ApplicationController
   end
 
   def add_fridge
-    
+
     @ingredients = Ingredient.all
     ing_id = params[:ingredient_id]
 
@@ -69,14 +69,36 @@ class StaticPagesController < ApplicationController
   def find_recipe
     @user = current_user
     @fridge = Fridge.where(user_id: @user.id)
-    @recipe_find = []
+    @fridge_ing = []
+    @recipes = Recipe.all
+    @recipe_hash = {}
+    @recipe_find = {}
 
-    # On cherche toutes les recettes qui ont au moins un ingredient
-    @fridge.each do |id_ing|
-      IngredientToRecipe.where(ingredient_id: id_ing).each do |id_recipe|
-          @recipe_find << id_recipe.recipe_id
+    # On récupère les ID des ingrédients du frigo
+    @fridge.each do |fridge_ing|
+      @fridge_ing << fridge_ing.ingredient_id
+    end
+
+    @recipes.each do |recipe|
+      @ing = []
+      IngredientToRecipe.where(recipe_id: recipe.id).each do |ing_recipe|
+        @ing << ing_recipe.ingredient_id
+      end
+      @recipe_hash[recipe.id] = @ing
+    end
+
+    @recipe_hash.each do |r, ing|
+      if (ing&@fridge_ing).count > 0
+        @recipe_find[r] = (ing&@fridge_ing).count
       end
     end
+
+    @r_final = Hash[@recipe_find.sort_by{|k, v| v}.reverse]
+
+
+
+
+
   end
 
   def cancel_fridge
