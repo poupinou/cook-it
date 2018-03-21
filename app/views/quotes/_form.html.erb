@@ -1,8 +1,10 @@
-<div class="form" style="width: 50%;">
-  <%= form_for @quote, remote:true do |rec| %>
-    <p></p>
-    <p><%= rec.text_field :corps, placeholder: 'Citation', class:"form-control" %></p>
-    <p><%= rec.text_field :source, placeholder: 'Source', class:"form-control" %></p>
-    <p><%= rec.submit 'Ajouter une Citation', class:"form-control", remote:true %></p>
-  <% end %>
+<div class="form2">
+	<div class="form" style="width: 50%;">
+	  <%= form_for @quote, remote:true do |rec| %>
+	    <p></p>
+	    <p><%= rec.text_field :corps, placeholder: 'Citation', class:"form-control" %></p>
+	    <p><%= rec.text_field :source, placeholder: 'Source', class:"form-control" %></p>
+	    <p><%= rec.submit 'Ajouter une Citation', class:"form-control", remote:true %></p>
+	  <% end %>
+	</div>
 </div>

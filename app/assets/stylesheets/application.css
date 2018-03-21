@@ -141,6 +141,8 @@ body
 	box-shadow: 5px 2px 2px lightgrey;
 }
 
+
+
 /**********************about********************************/
 
 .about-corps{
@@ -188,6 +190,7 @@ body
 /*****************citations************************/
 
 .citation{
+	padding-top: 10px;
 
 }
 

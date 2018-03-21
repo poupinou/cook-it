@@ -41,7 +41,7 @@
             <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap"/>
             <div class="card-hover">
               <a href=<%= recipe_path(recipe.id) %> class="card-hover-background"></a>
-              <div class='recipe-show-info btn-info'><h6><%= recipe.time %> min - <%= recipe.price  / 100 %>€</h6></div>
+              <div class='recipe-show-info btn-info'><h6><%= recipe.time %> min</h6></div>
               <h3 class="card-hover-info"><a href=<%= recipe_path(recipe.id) %> style="text-decoration: none; color:white"><%= recipe.name %></a></h3>
               <div class="card-hover-info">
                 <div class='recipe-show-head'>
