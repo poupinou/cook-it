@@ -49,7 +49,7 @@
     <div class="recipes-corps">
       <% @recipes.each do |recipe| %>
           <div class="card">
-            <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap"/>
+            <% if recipe.picture_url %><img class="card-img-top" src=<%= recipe.picture_url(:mini) %> width="250px" height="250px"/><% else %><%= image_tag('logo.png' ,size: "250x250") %><% end %>
             <div class="card-hover">
               <a href=<%= recipe_path(recipe.id) %> class="card-hover-background"></a>
               <div class='recipe-show-info btn-info'><h6><%= recipe.time %> min</h6></div>

@@ -40,8 +40,7 @@
     </div>
 
     <div class='recipe-show-right'>
-      <img src='<%= @recipe.picture_url(:poster) %>' class='recipe-show-picture'></img>
-
+      <% if @recipe.picture_url %><img class="recipe-show-picture" src=<%= @recipe.picture_url(:poster) %> width="250px" height="250px"/><% else %><%= image_tag('logo.png' ,size: "250x250", class:"recipe-show-picture") %><% end %>
       <div class='recipe-show-list-btn-add'>
         <div class="recipe-show-vote vote">
 
