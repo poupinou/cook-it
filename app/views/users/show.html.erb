@@ -7,6 +7,8 @@
             <h1>Citations</h1>
               <div style='border-top:1px lightgrey solid'>
                 <%= link_to 'Citations', quotes_path, class:"btn btn-sm, btn-info"%>
+                          <%= link_to 'ajouter une citation', new_quote_path,remote: true, class:"btn btn-sm btn-warning"%>
+
               </div>
             </div>
           <% end %>

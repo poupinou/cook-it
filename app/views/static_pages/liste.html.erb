@@ -15,8 +15,8 @@
           <center><h1 style="background-color: #6A789B; border-radius: 5px; margin-bottom: 10px;">envoyer la liste</h1>
           <%= form_tag send_sms_path, methode: :post do %>
           <%= text_field_tag :phone_number %>
-          <%= submit_tag("send by text") %>
+          <%= submit_tag("Envoyer par texto") %>
           <% end %></center>
-          <center><%= button_to 'send by email', send_mail_path, class: 'btn btn-success' %></center>
+          <center><%= button_to 'Envoyer par email', send_mail_path, class: 'btn btn-success' %></center>
   </div>
 </div>
