@@ -169,3 +169,10 @@ body
 	display: flex;
 	justify-content: space-around;
 }
+
+/********************flash*****************************/
+
+.flash{
+	display: flex;
+	justify-content: center;
+}
