@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319161253) do
+ActiveRecord::Schema.define(version: 20180321090000) do
 
   create_table "fridges", force: :cascade do |t|
     t.integer "user_id"
@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 20180319161253) do
     t.integer "recipe_id"
     t.index ["recipe_id"], name: "index_lists_on_recipe_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.string "corps"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recipes", force: :cascade do |t|
