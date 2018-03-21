@@ -7,12 +7,11 @@
       <p><%= rec.text_field :name, placeholder: 'Nom de la recette', class:"form-control" %></p>
       <p><%= rec.text_area :description, placeholder: 'Description de la recette', class:"form-control" %></p>
       <p><%= rec.file_field :picture, placeholder: 'URL de la recette', class:"form-control" %></p>
-      <p><%= rec.text_field :time, placeholder: 'Temps de préparation', class:"form-control" %></p>
-      <p><%= rec.text_field :price, placeholder: 'Prix moyen', class:"form-control" %></p>
+      <p><%= rec.text_field :time, placeholder: 'Temps de préparation (min)', class:"form-control" %></p>
 
-      <p><%= rec.submit 'Ajouter cette recette', class:"form-control" %></p>
+      <p><%= rec.submit 'Ajouter cette recette', class:"form-control btn btn-warning" %></p>
     <% end %>
-     <p><%= link_to 'Retour aux recettes', recipes_path %></p>
+     <p><%= link_to 'Retour aux recettes', recipes_path, class:"btn btn-secondary" %></p>
   </div>
 </div>
 

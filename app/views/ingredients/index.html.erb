@@ -17,8 +17,10 @@
           <div class="card-hover-background"></div>
           <h5 class="card-hover-info"><%= ingredient.name %></h5>
           <div class="card-hover-link">
-            <%= link_to 'Edit', edit_ingredient_path(ingredient.id),class:"btn btn-secondary btn-sm card-link" %>
-            <%= link_to 'Delete', ingredient, method: :delete,remote:true, data: { confirm: 'Certain ?'}, class:"btn btn-primary btn-sm card-link" %>
+            <center>
+              <%= link_to 'Edit', edit_ingredient_path(ingredient.id),class:"btn btn-secondary btn-sm card-link" %>
+              <%= link_to 'Delete', ingredient, method: :delete,remote:true, data: { confirm: 'Certain ?'}, class:"btn btn-primary btn-sm card-link" %>
+            </center>
           </div>
           <div class="card-hover-info">
             <div><%= ingredient.family %></div>

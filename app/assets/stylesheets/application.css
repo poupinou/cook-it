@@ -184,3 +184,19 @@ body
 	align-items: center;
 
 }
+
+/*****************citations************************/
+
+.citation{
+
+}
+
+.corps{
+	font-weight: bold;
+
+}
+
+.source{
+	font-style: italic;
+
+}
