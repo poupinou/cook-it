@@ -11,7 +11,9 @@
        <% end %>
   	</center>
         <p><%= link_to 'ajoute une recette' ,recipes_path, class:"btn btn-warning" %></p>
-        <p><%= button_to 'Effacer ma liste de course', liste_reset_path, class: 'btn-submit btn btn-danger' %></p>
+        <% if @list_ing_user.count > 0 %>
+          <p><%= button_to 'Effacer ma liste de course', liste_reset_path, class: 'btn-submit btn btn-danger' %></p>
+        <% end %>
       <div class="envoie">
         <center><h1 style="background-color: #6A789B; border-radius: 5px; margin-bottom: 10px;">envoyer la liste</h1>
         <%= form_tag send_sms_path, methode: :post do %>
