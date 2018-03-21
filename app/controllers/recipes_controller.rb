@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
 		if user_signed_in?
 			@user = current_user # on pointe
 			@recipe = Recipe.new #on prépare la création
-		else 
+		else
 			redirect_to logyou_path
 		end
 	end
@@ -96,7 +96,7 @@ class RecipesController < ApplicationController
 	def post_add_ing_recipe #AJAX
 		@recipe = Recipe.find(params[:recipe])
 		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
-		IngredientToRecipe.create(recipe_id: params[:recipe], ingredient_id: params[:ingredient], quantity: params[:quantity])
+		IngredientToRecipe.create(recipe_id: params[:recipe], ingredient_id: params[:ingredient], quantity: params[:quantity], unity: params[:unity])
 
 		respond_to do |f|
       f.js

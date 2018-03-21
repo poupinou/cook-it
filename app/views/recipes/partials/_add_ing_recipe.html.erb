@@ -8,7 +8,7 @@
     </div>
     <form  data-remote="true" id="form1" action='<%= add_ing_recipe_path %>' accept-charset="UTF-8" method="get">
       <input id='recipe' name="recipe" type="hidden" value=<%= @recipe.id %>>
-      <input id='nom' name="nom" placeholder="Rechercher" 
+      <input id='nom' name="nom" placeholder="Rechercher"
       onkeyup="su()">
       <input id='sub' style="display: none" type="submit">
     </form>
@@ -45,11 +45,16 @@
           <center class="card-body" style="z-index:2">
           <h5><%= ing.name %></h5>
           </center>
-          <div style="z-index:2 ; display: flex; justify-content: center;opacity: 0.9; align-items: end;">
+          <div style="z-index:2 ; display: flex; flex-direction: row; justify-content: center;opacity: 0.9; align-items: end;">
             <%= hidden_field_tag(:recipe, @recipe.id) %>
             <%= hidden_field_tag(:ingredient, ing.id) %>
-            <%= text_field_tag(:quantity,'' ,class:"controlw") %>
-            <%= submit_tag('Ajouter',class:"btn-primary card-link")%>
+            <div>
+              <%= text_field_tag(:quantity,'', placeholder: 'quant', class:"controlw") %>
+              <%= text_field_tag(:unity,'', placeholder: 'unit', class:"controlw") %>
+            </div>
+            <div>
+              <%= submit_tag('Ajouter',class:"btn-primary card-link")%>
+            </div>
           </div>
         </div>
       <% end %>
