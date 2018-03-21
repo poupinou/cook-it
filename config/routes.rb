@@ -42,6 +42,8 @@ end
   get '/inbobunwetrust', to: 'users#admin', as: 'god'
 
   post 'add_fridge', to: 'static_pages#add_fridge', as: 'add_fridge'
+  
+  delete 'delete_fridge/:id', to: 'static_pages#destroy_fridge', as: 'delete_fridge'
 
   post '/find_recipe', to: 'static_pages#find_recipe', as: 'find_recipe'
 

@@ -7,16 +7,17 @@
           <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
         <% end %>
        <% if @list_ing_user.count == 0 %>
-         <p><%= link_to 'ajoute une recette' ,recipes_path, class:"btn btn-warning" %></p>
+        <br><br>
        <% end %>
   	</center>
-      <p><%= button_to 'Effacer ma liste de course', liste_reset_path, class: 'btn-submit btn btn-danger' %></p>
-     <div class="envoie">
-          <center><h1 style="background-color: #6A789B; border-radius: 5px; margin-bottom: 10px;">envoyer la liste</h1>
-          <%= form_tag send_sms_path, methode: :post do %>
-          <%= text_field_tag :phone_number %>
-          <%= submit_tag("send by text") %>
-          <% end %></center>
-          <center><%= button_to 'send by email', send_mail_path, class: 'btn btn-success' %></center>
-  </div>
+        <p><%= link_to 'ajoute une recette' ,recipes_path, class:"btn btn-warning" %></p>
+        <p><%= button_to 'Effacer ma liste de course', liste_reset_path, class: 'btn-submit btn btn-danger' %></p>
+      <div class="envoie">
+        <center><h1 style="background-color: #6A789B; border-radius: 5px; margin-bottom: 10px;">envoyer la liste</h1>
+        <%= form_tag send_sms_path, methode: :post do %>
+        <%= text_field_tag :phone_number %>
+        <%= submit_tag("send by text") %>
+        <% end %></center>
+        <center><%= button_to 'send by email', send_mail_path, class: 'btn btn-success' %></center>
+      </div>
 </div>

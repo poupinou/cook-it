@@ -5,10 +5,12 @@
         <div>
           <div style="display: flex;flex-wrap: wrap;">
             <% Fridge.where(user_id: current_user.id).each do |ing| %>
-              <div class="ingredient-hover">
-                <div class="ingredient-hover-background"><h6 style="color:black"><%= Ingredient.find(ing.ingredient_id).name %></h6></div>
-                <img class="ingredient-hover-img" src=<%= Ingredient.find(ing.ingredient_id).picture_url(:mini) %> width='50px'; height="50px" alt="Card image cap">
-              </div>
+              <a  data-method ="delete" data-remote="true" href="<%= delete_fridge_path(ing.id) %>" >
+                <div class="ingredient-hover">
+                  <div class="ingredient-hover-background"><h6 style="color:black"><%= Ingredient.find(ing.ingredient_id).name %></h6></div>
+                  <img class="ingredient-hover-img" src=<%= Ingredient.find(ing.ingredient_id).picture_url(:mini) %> width='50px'; height="50px" alt="Card image cap">
+                </div>
+              </a>
             <% end %>
           </div>
         </div>
