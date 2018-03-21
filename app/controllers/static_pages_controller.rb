@@ -27,7 +27,7 @@ class StaticPagesController < ApplicationController
     else
       redirect_to new_user_session_path
     end
-    
+
     respond_to do |f|
       f.js
       f.html
@@ -57,11 +57,20 @@ class StaticPagesController < ApplicationController
       redirect_to new_user_session_path
     end
 
+<<<<<<< HEAD
       #AJAX
       respond_to do |f|
         f.js
         f.html
       end
+=======
+    #AJAX
+    respond_to do |f|
+      f.js
+      f.html
+    end
+
+>>>>>>> seb_3_find
   end
 
   def add_fridge
@@ -84,8 +93,9 @@ class StaticPagesController < ApplicationController
     @fridge = Fridge.where(user_id: @user.id)
     @fridge_ing = []
     @recipes = Recipe.all
-    @recipe_hash = {}
-    @recipe_find = {}
+    @recipe_hash = {} # key: id des recipes / value: array des ingrédients de chaque recette
+    @recipe_find = {} # key: id des recipes / value: nombre d'ingrédient commun entre le frigo et les recettes
+    @recipe_find_2 = {}
 
     # On récupère les ID des ingrédients du frigo
     @fridge.each do |fridge_ing|
@@ -106,7 +116,13 @@ class StaticPagesController < ApplicationController
       end
     end
 
-    @r_final = Hash[@recipe_find.sort_by{|k, v| v}.reverse]
+    @r_final = Hash[@recipe_find.sort_by{|k, v| v}.reverse] # tri des recettes en fonction du nombre d'aliments en commun
+
+    @recipe_find.each do |k, v|
+      @recipe_find_2[k] = v.to_f / Recipe.find(k).ingredients.count * 100
+    end
+
+    @r_final_2 = Hash[@recipe_find_2.sort_by{|k, v| v}.reverse]
 
 
 
