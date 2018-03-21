@@ -1,3 +1,4 @@
+<% if Quote.all.count > 0 %>
 <% @quote = Quote.all.shuffle.first %>
 <div><p><%= @quote.corps %></p></div>
 <div><p><%= @quote.source %></p></div>
