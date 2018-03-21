@@ -1,17 +1,36 @@
 <div>
   <center>
     <div style='width:500px'>
-      <h1 style='margin-top:35px;background-color:white;border-radius:5px 5px 5px 5px;padding:10px;'>Recettes que je peux faire</h1>
-    </div>
-
-    <div>
-      <% @r_final.each do |k, v| %>
-        <p>Matching : <%= @fridge_ing.count.to_f / Recipe.find(k).ingredients.count.to_f * 100 %> %</p>
-        <a href=<%= recipe_path(k) %>><img src=<%=Recipe.find(k).picture %> style='width:450px;height:450px'></img></a>
-      <% end %>
+      <h1 style='margin-top:35px;background-color:white;border-radius:5px 5px 5px 5px;padding:10px;'>Recette(s) trouvée(s)</h1>
     </div>
   </center>
 
+  <div style='display:flex;flex-direction:column;margin-left:35px;margin-top:50px;'>
+    <div style='background-color:white;width:600px;border-radius:5px 5px 5px 5px;padding:10px;font-size:1.5em'>
+      Les recettes pour vider ton frigo au max
+    </div>
 
+    <div style='display:flex;margin-top:15px'>
+      <% @r_final.each do |k, v| %>
+      <div style='display:flex;flex-direction:column'>
+        <div style='width:200px;background-color:#d2ffdc;padding-left:5px;font-size:0.8em'>Ingrédient(s) consommé(s) : <%= v %>/<%= @fridge_ing.count %></div>
+        <div><a href=<%= recipe_path(k) %>><img src=<%=Recipe.find(k).picture %> style='width:250px;height:250px'></img></a></div>
+      </div>
+      <% end %>
+    </div>
 
-</div>
+    <div style='background-color:white;width:600px;border-radius:5px 5px 5px 5px;padding:10px;font-size:1.5em;margin-top:50px'>
+      Les recettes qui matchent le mieux avec ton frigo
+    </div>
+
+    <div style='display:flex;margin-top:15px'>
+      <% @r_final_2.each do |k, v| %>
+        <div style='display:flex;flex-direction:column'>
+          <div style='width:100px;background-color:#d2ffdc;padding-left:5px;font-size:0.8em'>Match : <%= v %>%</div>
+          <div><a href=<%= recipe_path(k) %>><img src=<%=Recipe.find(k).picture %> style='width:250px;height:250px'></img></a></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
