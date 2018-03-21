@@ -13,7 +13,7 @@
     <div style='display:flex;margin-top:15px'>
       <% @r_final.each do |k, v| %>
       <div style='display:flex;flex-direction:column'>
-        <div style='width:200px;background-color:#d2ffdc;padding-left:5px;font-size:0.8em'>Ingrédient(s) consommé(s) : <%= v %>/<%= @fridge_ing.count %></div>
+        <div style='width:235px;background-color:#d2ffdc;padding-left:5px;font-size:0.8em'>Ingrédient(s) consommé(s) : <%= v %>/<%= @fridge_ing.count %></div>
         <div><a href=<%= recipe_path(k) %>><img src=<%=Recipe.find(k).picture %> style='width:250px;height:250px'></img></a></div>
       </div>
       <% end %>
@@ -26,7 +26,7 @@
     <div style='display:flex;margin-top:15px'>
       <% @r_final_2.each do |k, v| %>
         <div style='display:flex;flex-direction:column'>
-          <div style='width:100px;background-color:#d2ffdc;padding-left:5px;font-size:0.8em'>Match : <%= v %>%</div>
+          <div style='width:235px;background-color:#d2ffdc;padding-left:5px;font-size:0.8em'>Match : <%= v %>%</div>
           <div><a href=<%= recipe_path(k) %>><img src=<%=Recipe.find(k).picture %> style='width:250px;height:250px'></img></a></div>
         </div>
       <% end %>
