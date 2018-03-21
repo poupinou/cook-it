@@ -12,7 +12,7 @@ class ListsController < ApplicationController
 				list.quantity += ing.quantity # et on augmente la quantité
 				list.save
 			else
-				ListIng.create(user_id: @user.id, ingredient_id: ing.ingredient_id, quantity: ing.quantity) # sinon n la créer
+				ListIng.create(user_id: @user.id, ingredient_id: ing.ingredient_id, quantity: ing.quantity, unity: ing.unity) # sinon n la créer
 			end
 		end
 	end

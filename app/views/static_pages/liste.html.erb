@@ -4,7 +4,7 @@
   		<h1 style="background-color: #6A789B; border-radius: 5px;">La liste</h1>
 
         <% @list_ing_user.each do |ing| %>
-          <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
+          <p><%= ing.quantity %> <%= ing.unity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
         <% end %>
        <% if @list_ing_user.count == 0 %>
         <br><br>
