@@ -15,7 +15,7 @@
       <div class='recipe-show-ing'>
         <div class='recipe-show-list-ing'>
           <% IngredientToRecipe.where(recipe_id: @recipe.id).each do |ing| %>
-            <p><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
+            <p><%= ing.quantity %> <%= ing.unity %> <%= Ingredient.find(ing.ingredient_id).name %></p>
           <% end %>
 
           <% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && current_user.id == @recipe.user_id ) %>

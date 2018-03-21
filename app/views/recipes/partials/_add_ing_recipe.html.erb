@@ -1,17 +1,17 @@
 <div class="ingredients-g">
-  <center class="ingredients-head">
+  <center>
     <div class="ingredient-titre">
       <h3><%= @recipe.name %></h3>
-      <div class="ingredient-link">
-        <p><%= link_to 'retour', recipe_path(@recipe.id) %></p>
-      </div>
     </div>
-    <form  data-remote="true" id="form1" action='<%= add_ing_recipe_path %>' accept-charset="UTF-8" method="get">
-      <input id='recipe' name="recipe" type="hidden" value=<%= @recipe.id %>>
-      <input id='nom' name="nom" placeholder="Rechercher" 
-      onkeyup="su()">
-      <input id='sub' style="display: none" type="submit">
-    </form>
+    <div class="ingredient-link">
+      <p><%= link_to 'retour', recipe_path(@recipe.id), class:"btn btn-warning" %></p>
+      <form  data-remote="true" id="form1" action='<%= add_ing_recipe_path %>' accept-charset="UTF-8" method="get">
+        <input id='recipe' name="recipe" type="hidden" value=<%= @recipe.id %>>
+        <input id='nom' name="nom" placeholder="Rechercher" 
+        onkeyup="su()">
+        <input id='sub' style="display: none" type="submit">
+      </form>
+    </div>
   </center>
   <center>
     <h1>Ajouter des ingrédient à la recette </h1>
