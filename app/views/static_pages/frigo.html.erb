@@ -16,7 +16,7 @@
     </div>
     <center>
       <%= button_to 'Trouver des recettes', find_recipe_path, class: 'btn-submit btn btn-warning' %>
-      <%if Fridge.where(user_id: current_user.id).count > 0 %><%= button_to 'Vider mon frigo', cancel_fridge_path, class: 'btn-submit btn btn-danger' %><% end %>     
+      <%if Fridge.where(user_id: current_user.id).count > 0 %><%= button_to 'Vider mon frigo', cancel_fridge_path,remote:true, class: 'btn-submit btn btn-danger' %><% end %>     
     </center>
   </center>
   <div style='margin-top:100px'>

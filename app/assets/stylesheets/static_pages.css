@@ -364,5 +364,10 @@ h3 {
 	position: absolute;
 	width: 280px;
 	max-height: 200px;
+	overflow: hidden;
+}
+
+.new-tag:hover
+{
 	overflow: scroll;
 }

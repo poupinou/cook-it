@@ -36,7 +36,7 @@ class StaticPagesController < ApplicationController
     if params[:nom]
       tab = []
       @ingredients.each do |i|
-        if i.name.include?(params[:nom])
+        if i.name.downcase.include?(params[:nom].downcase)
           tab << i
         end
       end
@@ -106,7 +106,6 @@ class StaticPagesController < ApplicationController
     @user_fridge = Fridge.where(user_id: @user.id)
 
     Fridge.destroy(@user_fridge.ids)
-    redirect_to root_path
   end
 
 
