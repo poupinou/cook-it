@@ -97,6 +97,7 @@ class StaticPagesController < ApplicationController
       @arr << Ingredient.find(ing.ingredient_id).name
       @arr << ing.quantity
         end
+      @liste = @arr.to_s
     account_sid = ENV['TWILIO_ACCOUNT_SID']
 
     auth_token = ENV['TWILIO_AUTH_TOKEN']
@@ -105,7 +106,7 @@ class StaticPagesController < ApplicationController
     client.api.account.messages.create(
   from: '+33644602942',
   to: "#{@num}",
-  body: "#{@arr}")
+  body: "#{@liste}")
 
   redirect_to root_path
   flash[:success] = "sms bien envoyé"
