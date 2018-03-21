@@ -17,31 +17,47 @@ class StaticPagesController < ApplicationController
   end
 
   def liste #AJAX
-    @user = current_user #user actuel
-    @list_user = List.where(user_id: @user.id) #pointe sur les recettes de notre utilisateur
-    @list_ing_user = ListIng.where(user_id: @user.id) #pointe sur les ingrédient présent dans la liste de notre utilisateur
-
+    if user_signed_in? #on vient vérifier si l'utilisateur est connecté
+      @user = current_user #user actuel
+      @list_user = List.where(user_id: @user.id) #pointe sur les recettes de notre utilisateur
+      @list_ing_user = ListIng.where(user_id: @user.id) #pointe sur les ingrédient présent dans la liste de notre utilisateur
+      if current_user != User.find(params[:id]) #on vient vérifier que le user ciblé est bien celui connecté
+        redirect_to root_path
+      end
+    else
+      redirect_to new_user_session_path
+    end
+    
     respond_to do |f|
       f.js
       f.html
     end
+
   end
 
   def frigo
-    @ingredients = Ingredient.all
+    if user_signed_in? #on vient vérifier si l'utilisateur est connecté
+      @ingredients = Ingredient.all
 
-    @value = ""
+      @value = ""
 
-    ###sert pour le système de filtrage par nom###
-    if params[:nom]
-      tab = []
-      @ingredients.each do |i|
-        if i.name.include?(params[:nom])
-          tab << i
+      ###sert pour le système de filtrage par nom###
+      if params[:nom]
+        tab = []
+        @ingredients.each do |i|
+            if i.name.include?(params[:nom])
+              tab << i
+            end
         end
+        @ingredients = tab
+        @value = params[:nom]
       end
-      @ingredients = tab
-      @value = params[:nom]
+      if current_user != User.find(params[:id]) #on vient vérifier que le user ciblé est bien celui connecté
+        redirect_to root_path
+      end
+
+    else
+      redirect_to new_user_session_path
     end
 
     #AJAX
@@ -49,6 +65,7 @@ class StaticPagesController < ApplicationController
       f.js
       f.html
     end
+  
   end
 
   def add_fridge
