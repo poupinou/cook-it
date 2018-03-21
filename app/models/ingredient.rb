@@ -8,6 +8,4 @@ class Ingredient < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   validates :family, presence: true
-
-  validates :price, presence: true
 end

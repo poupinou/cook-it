@@ -34,10 +34,14 @@
         <input id='sub' style="display: none" type="submit">
       </form>
     </div>
-    <center style="display: flex ; justify-content: center">
+    <center style="display: flex ; justify-content: center; flex-wrap: wrap;">
+        <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
+          <button class="btn btn-info" type="button" onclick="su2('0')">Toutes nos recettes</button>
+          <input id='0' style="display: none" type="submit">
+        </form>
         <% Tag.all.each do |t| %>
         <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
-            <button class="btn btn-info" type="button" name="tag" value="<%= t.id %>" onclick="su2(<%= t.id %>)"><%= t.name %></button>
+            <button class="btn btn-info" style="margin-bottom: 5px;" type="button" name="tag" value="<%= t.id %>" onclick="su2(<%= t.id %>)"><%= t.name %></button>
             <input id='<%= t.id %>' style="display: none" type="submit">
         </form>
         <% end %>
