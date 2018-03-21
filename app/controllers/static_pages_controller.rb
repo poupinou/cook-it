@@ -38,34 +38,30 @@ class StaticPagesController < ApplicationController
   def frigo
     if user_signed_in? #on vient vérifier si l'utilisateur est connecté
       @ingredients = Ingredient.all
-
       @value = ""
-
       ###sert pour le système de filtrage par nom###
       if params[:nom]
         tab = []
         @ingredients.each do |i|
-            if i.name.include?(params[:nom])
-              tab << i
-            end
+          if i.name.downcase.include?(params[:nom].downcase)
+            tab << i
+          end
+          @ingredients = tab
+          @value = params[:nom]
         end
-        @ingredients = tab
-        @value = params[:nom]
+        if current_user != User.find(params[:id]) #on vient vérifier que le user ciblé est bien celui connecté
+          redirect_to root_path
+        end
       end
-      if current_user != User.find(params[:id]) #on vient vérifier que le user ciblé est bien celui connecté
-        redirect_to root_path
-      end
-
     else
       redirect_to new_user_session_path
     end
 
-    #AJAX
-    respond_to do |f|
-      f.js
-      f.html
-    end
-  
+      #AJAX
+      respond_to do |f|
+        f.js
+        f.html
+      end
   end
 
   def add_fridge
@@ -121,9 +117,8 @@ class StaticPagesController < ApplicationController
   def cancel_fridge
     @user = current_user
     @user_fridge = Fridge.where(user_id: @user.id)
-
+    @ingredients = Ingredient.all
     Fridge.destroy(@user_fridge.ids)
-    redirect_to root_path
   end
 
 

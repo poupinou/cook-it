@@ -6,6 +6,9 @@
         <% @list_ing_user.each do |ing| %>
           <p><%=@text =  Ingredient.find(ing.ingredient_id).name %> - <%= ing.quantity %></p>
         <% end %>
+       <% if @list_ing_user.count == 0 %>
+         <p><%= link_to 'ajoute une recette' ,recipes_path, class:"btn btn-warning" %></p>
+       <% end %>
   	</center>
       <p><%= button_to 'Effacer ma liste de course', liste_reset_path, class: 'btn-submit btn btn-danger' %></p>
      <div class="envoie">
