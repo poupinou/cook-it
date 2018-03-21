@@ -27,7 +27,7 @@
               <%= hidden_field_tag(:recipe_id, @recipe.id) %>
               <p><%= submit_tag('Modifier les tags', class: 'btn btn-secondary') %></p>
             <% end %>
-            <div class="tagrecipe" style="display: flex;position: absolute;"></div>
+            <div class="tagrecipe" style="display: flex;flex-wrap: wrap; max-width: 300px ; max-height: 500px ; overflow: scroll;"></div>
           <% end %>
         </div>
 

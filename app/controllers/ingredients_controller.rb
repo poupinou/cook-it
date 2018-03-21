@@ -3,6 +3,7 @@ class IngredientsController < ApplicationController
 	def index #AJAX
 		if user_signed_in? && current_user.rights == 99 #on vient vérifier si l'utilisateur est connecté et s'il est admin 
 			@ingredients = Ingredient.all
+			@ingredients = @ingredients.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
 			@value = ""
 
 		###sert pour le système de filtrage par nom###
@@ -64,6 +65,7 @@ class IngredientsController < ApplicationController
 		Ingredient.destroy(params[:id]) #on viens detruire l'élément selectionné
 
 		@ingredients = Ingredient.all #besoin pour le fonctionnement e AJAX
+		@ingredients = @ingredients.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
 		respond_to do |f|
       f.js
       f.html 

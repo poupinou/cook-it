@@ -1,4 +1,4 @@
-<% Tag.all.each do |t| %>
+<% Tag.all.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}.each do |t| %>
 	<%= form_for @taguser, remote:true do |rec| %>
 		<%= hidden_field_tag(:tag_id, t.id,class:"form-control") %>
 		<p><%= rec.submit  t.name , class:"form-control pointeur"%></p>

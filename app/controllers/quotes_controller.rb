@@ -2,6 +2,7 @@ class QuotesController < ApplicationController
 
 	def index
 			@quotes = Quote.all
+			@quotes = @quotes.sort{|x,y| [x.corps.downcase, x.id] <=> [y.corps.downcase, y.id]}
 			@user = current_user
 	end
 

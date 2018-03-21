@@ -6,7 +6,7 @@
           <div style='background-color:white;border-radius:10px 10px 10px 10px; margin-bottom: 10px'>
             <h1>Citations</h1>
               <div style='border-top:1px lightgrey solid'>
-                <%= link_to 'Citations', quotes_path, class:"btn btn-sm, btn-info"%>
+                <%= link_to 'Citations', quotes_path, class:"btn btn-sm btn-info"%>
                           <%= link_to 'ajouter une citation', new_quote_path,remote: true, class:"btn btn-sm btn-warning"%>
 
               </div>
@@ -68,7 +68,7 @@
     <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
       J'ai crée les recettes suivantes :
     </div>
-    <div style='margin-top:20px;display:flex;justify-content:center'>
+    <div style='margin-top:20px;display:flex;justify-content:center; flex-wrap: wrap;'>
       <% Recipe.where(user_id: @user.id).each do |recipe| %>
         <div style='padding:10px'>
           <a href=<%= recipe_path(recipe.id) %>>
@@ -81,7 +81,7 @@
     <div style='width:400px;background-color:white;margin-top:35px;border-radius:10px 10px 10px 10px'>
       J'ai déjà mangé :
     </div>
-    <div style='margin-top:20px;margin-bottom:20px;display:flex;justify-content:center'>
+    <div style='margin-top:20px;margin-bottom:20px;display:flex;justify-content:center; flex-wrap: wrap;'>
       <% List.where(user_id: current_user.id).each do |r| %>
         <div style='padding:10px'>
           <a href=<%= recipe_path(r.recipe_id) %>>

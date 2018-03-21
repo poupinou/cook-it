@@ -38,6 +38,7 @@ class StaticPagesController < ApplicationController
   def frigo
     if user_signed_in? #on vient vérifier si l'utilisateur est connecté
       @ingredients = Ingredient.all
+      @ingredients = @ingredients.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
       @value = ""
       ###sert pour le système de filtrage par nom###
       if params[:nom]
@@ -67,6 +68,7 @@ class StaticPagesController < ApplicationController
   def add_fridge
 
     @ingredients = Ingredient.all
+    @ingredients = @ingredients.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
     ing_id = params[:ingredient_id]
 
     if Fridge.exists?(user_id: current_user.id, ingredient_id: ing_id) == false
@@ -126,6 +128,7 @@ class StaticPagesController < ApplicationController
 
     @user_fridge = Fridge.where(user_id: current_user.id)
     @ingredients = Ingredient.all
+    @ingredients = @ingredients.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
     #AJAX
     respond_to do |f|
       f.js

@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
 
 	def index #AJAX
 		@recipes = Recipe.all #permet une vision total sur tous les ingrédients
+		@recipes = @recipes.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
+		@tags = Tag.all.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
 		###sert pour le système de filtrage par nom###
 		@value = ""
 		if params[:nom]
@@ -23,6 +25,7 @@ class RecipesController < ApplicationController
 				tab << Recipe.find_by_id(j)
 			end
 			@recipes = tab
+			@tagrecipes = @tagrecipes.sort{|x,y| [Tag.find_by_id(x.tag_id).name.downcase, Tag.find_by_id(x.tag_id).id] <=> [Tag.find_by_id(y.tag_id).name.downcase, Tag.find_by_id(y.tag_id).id]}
 		end
 		##############################################
 		respond_to do |f|#AJAX mon ami
@@ -71,6 +74,7 @@ class RecipesController < ApplicationController
 		recipe.destroy
 
 		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
+		@recipes = @recipes.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
 		respond_to do |f|#AJAX mon ami
       f.js
       f.html
@@ -80,8 +84,9 @@ class RecipesController < ApplicationController
 	def add_ing_recipe #AJAX
 		@recipe = Recipe.find(params[:recipe]) #on viens réupéré la recette ciblé
 		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id) #ainsi que tous les ingrédient de cette recette
-
+		@recipe_ing = @recipe_ing.sort{|x,y| [Ingredient.find_by_id(x.ingredient_id).name.downcase, Ingredient.find(x.ingredient_id).id] <=> [Ingredient.find_by_id(y.ingredient_id).name.downcase, Ingredient.find(y.ingredient_id).id]}
 		@ingredients = Ingredient.all #besoin pour le fonctionnement en AJAX
+		@ingredients = @ingredients.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
 		@value = "" #valeur par default (importante)
 		###sert pour le système de filtrage par nom###
 		if params[:nom]
@@ -102,10 +107,10 @@ class RecipesController < ApplicationController
 	end
 
 	def post_add_ing_recipe #AJAX
-		@recipe = Recipe.find(params[:recipe])
-		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
+		@recipe = Recipe.find(params[:recipe])		
 		IngredientToRecipe.create(recipe_id: params[:recipe], ingredient_id: params[:ingredient], quantity: params[:quantity], unity: params[:unity])
-
+		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
+		@recipe_ing = @recipe_ing.sort{|x,y| [Ingredient.find_by_id(x.ingredient_id).name.downcase, Ingredient.find(x.ingredient_id).id] <=> [Ingredient.find_by_id(y.ingredient_id).name.downcase, Ingredient.find(y.ingredient_id).id]}
 		respond_to do |f|
       f.js
       f.html
@@ -113,11 +118,11 @@ class RecipesController < ApplicationController
 	end
 
 	def destroy_ing_recipe #AJAX
-		@recipe = Recipe.find(params[:recipe])
-		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
+		@recipe = Recipe.find(params[:recipe])		
 		@ingredient = Ingredient.find(params[:ingredient])
 		@recipe.ingredients.delete(params[:ingredient])
-
+		@recipe_ing = IngredientToRecipe.where(recipe_id: @recipe.id)
+		@recipe_ing = @recipe_ing.sort{|x,y| [Ingredient.find_by_id(x.ingredient_id).name.downcase, Ingredient.find(x.ingredient_id).id] <=> [Ingredient.find_by_id(y.ingredient_id).name.downcase, Ingredient.find(y.ingredient_id).id]}
 		respond_to do |f|
       f.js
       f.html

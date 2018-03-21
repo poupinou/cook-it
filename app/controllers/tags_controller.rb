@@ -2,6 +2,7 @@ class TagsController < ApplicationController
 
 	def index
 			@tags = Tag.all
+			@tags = @tags.sort{|x,y| [x.name.downcase, x.id] <=> [y.name.downcase, y.id]}
 			@user = current_user
 	end
 
