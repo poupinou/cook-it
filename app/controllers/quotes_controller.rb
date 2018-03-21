@@ -5,6 +5,10 @@ class QuotesController < ApplicationController
 			@user = current_user
 	end
 
+	def show
+		@quote = Quote.find(params[:id])
+	end
+
 	def new #AJAX
 		@quote = Quote.new()
 
