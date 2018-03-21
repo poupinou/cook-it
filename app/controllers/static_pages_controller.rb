@@ -167,12 +167,8 @@ class StaticPagesController < ApplicationController
 
   def send_mail
     UserMailer.list_email(current_user).deliver_now
-    flash[:success] = "sms bien envoyé"
     redirect_to root_path
-    flash[:success] = "sms bien envoyé"
+    flash[:success] = "email bien envoyé"
   end
 
-  def logyou
-
-  end
 end
