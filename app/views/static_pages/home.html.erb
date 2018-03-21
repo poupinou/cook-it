@@ -36,10 +36,10 @@
 			<div style='display:flex; flex-wrap: wrap;'>
 				<% Recipe.last(10).reverse.each do |recipe| %>
 				  <div class="card">
-				    <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap"/>
+				    <% if recipe.picture_url %><img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap"/><% end %>
 				    <div class="card-hover">
 				      <a href=<%= recipe_path(recipe.id) %> class="card-hover-background"></a>
-				      <div class='recipe-show-info btn-info'><h6><%= recipe.time %> min - <%= recipe.price  / 100 %>€</h6></div>
+				      <div class='recipe-show-info btn-info'><% if recipe.time %><h6><%= recipe.time %> min<% end %> - <% if recipe.price %><%= recipe.price  / 100 %>€<% end %></h6></div>
 				      <h3 class="card-hover-info"><a href=<%= recipe_path(recipe.id) %> style="text-decoration: none; color:white"><%= recipe.name %></a></h3>
 				      <div class="card-hover-info">
 				        <div class='recipe-show-head'>
@@ -88,11 +88,12 @@
 				<% h = Hash[*r_array] %>
 				<% h_sort = h.sort_by{|k, v| v}.reverse %>
 				<% h_sort.each do |k, v| %>
+				<div style ="display: flex;flex-wrap: wrap;">
 				  <div class="card" style="max-width: 250px">
-				    <img class="card-img-top" src=<%= Recipe.find_by_id(k).picture_url(:mini) %> alt="Card image cap"/>
+				   <% if Recipe.find_by_id(k).picture_url %><img class="card-img-top" src=<%= Recipe.find_by_id(k).picture_url(:mini) %> alt="Card image cap"/><% end %>
 				    <div class="card-hover">
 				      <a href=<%= recipe_path(Recipe.find(k).id) %> class="card-hover-background"></a>
-				      <div class='recipe-show-info btn-info'><h6><%= Recipe.find(k).time %> min - <%= Recipe.find(k).price  / 100 %>€</h6></div>
+				      <div class='recipe-show-info btn-info'><% if Recipe.find(k).time %><h6><%= Recipe.find(k).time %> min<% end %> - <% if Recipe.find(k).price %><%= Recipe.find(k).price  / 100 %>€<% end %></h6></div>
 				      <h3 class="card-hover-info"><a href=<%= recipe_path(Recipe.find(k).id) %> style="text-decoration: none; color:white"><%= Recipe.find(k).name %></a></h3>
 				      <div class="card-hover-info">
 				        <div class='recipe-show-head'>
@@ -121,6 +122,7 @@
 				    </div>
 				  </div>
 				<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
