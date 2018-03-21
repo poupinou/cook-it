@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
 
 	def index #AJAX
 		@recipes = Recipe.all #permet une vision total sur tous les ingrédients
-
 		###sert pour le système de filtrage par nom###
 		@value = ""
 		if params[:nom]
@@ -16,7 +15,16 @@ class RecipesController < ApplicationController
 			@value = params[:nom]
 		end
 		##############################################
-
+		###sert pour le système de filtrage par tag###
+		if params[:tag]
+			tab = []
+			@tagrecipes = Tagrecipe.where(tag_id: params[:tag])
+			@tagrecipes.each do |j|
+				tab << Recipe.find_by_id(j)
+			end
+			@recipes = tab
+		end
+		##############################################
 		respond_to do |f|#AJAX mon ami
       f.js
       f.html

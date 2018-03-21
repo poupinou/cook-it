@@ -33,8 +33,15 @@
         <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
         <input id='sub' style="display: none" type="submit">
       </form>
-
     </div>
+    <center style="display: flex ; justify-content: center">
+        <% Tag.all.each do |t| %>
+        <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
+            <button class="btn btn-info" type="button" name="tag" value="<%= t.id %>" onclick="su2(<%= t.id %>)"><%= t.name %></button>
+            <input id='<%= t.id %>' style="display: none" type="submit">
+        </form>
+        <% end %>
+    </center>
     <div class="recipes-corps">
       <% @recipes.each do |recipe| %>
           <div class="card">
@@ -79,5 +86,10 @@ document.getElementById('nom').focus();
 function su()
 {
   document.getElementById('sub').click();
+}
+
+function su2(id)
+{
+  document.getElementById(id).click();
 }
 </script>
