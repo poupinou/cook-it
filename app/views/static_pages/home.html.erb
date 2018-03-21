@@ -33,14 +33,41 @@
 			<div class='btn btn-dark btn-lg'>
 				Les dernières recettes ajoutées :
 			</div>
-
 			<div style='display:flex; flex-wrap: wrap;'>
 				<% Recipe.last(10).reverse.each do |recipe| %>
-					<div class='home-recipe'>
-						<%= link_to( (image_tag recipe.picture, width: '250px', height: '200px'), recipe_path(recipe.id) ) %>
-					</div>
-						<% end %>
-
+				  <div class="card">
+				    <img class="card-img-top" src=<%= recipe.picture_url(:mini) %> alt="Card image cap"/>
+				    <div class="card-hover">
+				      <a href=<%= recipe_path(recipe.id) %> class="card-hover-background"></a>
+				      <div class='recipe-show-info btn-info'><h6><%= recipe.time %> min - <%= recipe.price  / 100 %>€</h6></div>
+				      <h3 class="card-hover-info"><a href=<%= recipe_path(recipe.id) %> style="text-decoration: none; color:white"><%= recipe.name %></a></h3>
+				      <div class="card-hover-info">
+				        <div class='recipe-show-head'>
+				        </div>
+				      </div>
+				      <div class="card-hover-link">
+				        <div>
+				          <% if user_signed_in? %>
+				            <%= form_tag add_to_list_path, method: 'post' do %>
+				              <%= hidden_field_tag(:recipe_id, recipe.id) %>
+				              <%= submit_tag('Ajouter à ma liste', class: 'btn-submit btn btn-primary btn-sm') %>
+				            <% end %>
+				          <% else %>
+				            <a data-toggle="modal" data-target="#exampleModal">
+				              <%= submit_tag 'Ajouter à ma liste', class: 'btn btn-primary' %>
+				            </a>
+				          <% end %>
+				        </div>
+				        <div style="display: flex;">
+				          <% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && recipe.user_id == current_user.id ) %>
+				            <%= link_to 'Edit', edit_recipe_path(recipe.id), class: 'btn-submit2 btn btn-warning btn-sm'%>
+				            <%= button_to 'Delete', recipe, remote:true,method: :delete, class: 'btn-submit2 btn btn-danger btn-sm', data: { confirm: 'Non sérieux elle te plait pas ?' } %>
+				          <% end %>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				<% end %>
 			</div>
 		</div>
 
@@ -61,10 +88,59 @@
 				<% h = Hash[*r_array] %>
 				<% h_sort = h.sort_by{|k, v| v}.reverse %>
 				<% h_sort.each do |k, v| %>
-					 	<%= link_to( (image_tag Recipe.find(k).picture, width: '250px', height: '200px'), recipe_path(k) ) %>
-					 <% end %>
-				 </p>
+				  <div class="card" style="max-width: 250px">
+				    <img class="card-img-top" src=<%= Recipe.find_by_id(k).picture_url(:mini) %> alt="Card image cap"/>
+				    <div class="card-hover">
+				      <a href=<%= recipe_path(Recipe.find(k).id) %> class="card-hover-background"></a>
+				      <div class='recipe-show-info btn-info'><h6><%= Recipe.find(k).time %> min - <%= Recipe.find(k).price  / 100 %>€</h6></div>
+				      <h3 class="card-hover-info"><a href=<%= recipe_path(Recipe.find(k).id) %> style="text-decoration: none; color:white"><%= Recipe.find(k).name %></a></h3>
+				      <div class="card-hover-info">
+				        <div class='recipe-show-head'>
+				        </div>
+				      </div>
+				      <div class="card-hover-link">
+				        <div>
+				          <% if user_signed_in? %>
+				            <%= form_tag add_to_list_path, method: 'post' do %>
+				              <%= hidden_field_tag(:recipe_id, Recipe.find(k).id) %>
+				              <%= submit_tag('Ajouter à ma liste', class: 'btn-submit btn btn-primary btn-sm') %>
+				            <% end %>
+				          <% else %>
+				            <a data-toggle="modal" data-target="#exampleModal">
+				              <%= submit_tag 'Ajouter à ma liste', class: 'btn btn-primary' %>
+				            </a>
+				          <% end %>
+				        </div>
+				        <div style="display: flex;">
+				          <% if ( user_signed_in? && current_user.rights == 99 ) || ( user_signed_in? && Recipe.find(k).user_id == current_user.id ) %>
+				            <%= link_to 'Edit', edit_recipe_path(Recipe.find(k).id), class: 'btn-submit2 btn btn-warning btn-sm'%>
+				            <%= button_to 'Delete', Recipe.find(k), remote:true,method: :delete, class: 'btn-submit2 btn btn-danger btn-sm', data: { confirm: 'Non sérieux elle te plait pas ?' } %>
+				          <% end %>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				<% end %>
 			</div>
 		</div>
-
 	</div>
+
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connecte toi!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <%= render "layouts/partials/log_message" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

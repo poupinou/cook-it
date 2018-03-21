@@ -23,10 +23,11 @@
               <%= hidden_field_tag(:recipe, @recipe.id) %>
               <p><%= submit_tag('Modifier les ingrédients', class: 'btn btn-secondary') %></p>
             <% end %>
-            <%= form_tag new_tagrecipe_path, method: 'get' do %>
+            <%= form_tag new_tagrecipe_path, method: 'get',remote:true do %>
               <%= hidden_field_tag(:recipe_id, @recipe.id) %>
               <p><%= submit_tag('Modifier les tags', class: 'btn btn-secondary') %></p>
             <% end %>
+            <div class="tagrecipe" style="display: flex;position: absolute;"></div>
           <% end %>
         </div>
 

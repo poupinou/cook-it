@@ -19,6 +19,8 @@ class TagrecipesController < ApplicationController
 	end
 
 	def destroy #AJAX
+		@recipe = Recipe.find_by_id(Tagrecipe.find(params[:id]).recipe_id)
+		@tagrecipes = Tagrecipe.where(recipe_id: @recipe.id)
 		Tagrecipe.destroy(params[:id])
 
 		respond_to do |f|

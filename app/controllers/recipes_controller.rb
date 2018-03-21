@@ -63,7 +63,6 @@ class RecipesController < ApplicationController
 		recipe.destroy
 
 		@recipes = Recipe.all #besoin pour le fonctionnement en ajax
-
 		respond_to do |f|#AJAX mon ami
       f.js
       f.html
