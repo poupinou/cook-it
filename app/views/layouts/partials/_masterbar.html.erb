@@ -25,6 +25,8 @@
 
 			<% if user_signed_in? && current_user.rights == 99 %>
 				<li><%= link_to 'Ingrédient', ingredients_path,class:"masterbar-link" %></li>
+				<li><%= link_to 'Tags', tags_path,class:"masterbar-link" %></li>
+				<li><%= link_to 'Citation', quotes_path,class:"masterbar-link" %></li>
 			<% end %>
 
 			<% r = Recipe.all.shuffle.first %>

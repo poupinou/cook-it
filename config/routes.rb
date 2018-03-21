@@ -14,6 +14,7 @@ end
   resources :tags
   resources :tagusers
   resources :tagrecipes
+  resources :quotes
 
 	get 'users/:id', to:'users#show', as: 'profil'
   get 'users' , to:'users#index'
