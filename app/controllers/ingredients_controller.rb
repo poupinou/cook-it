@@ -9,7 +9,7 @@ class IngredientsController < ApplicationController
 		if params[:nom]
 			tab = []
 			@ingredients.each do |i|
-				if i.name.include?(params[:nom])
+				if i.name.downcase.include?(params[:nom].downcase)
 					tab << i
 				end
 			end
