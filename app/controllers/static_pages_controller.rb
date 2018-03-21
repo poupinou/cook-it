@@ -57,20 +57,11 @@ class StaticPagesController < ApplicationController
       redirect_to new_user_session_path
     end
 
-<<<<<<< HEAD
       #AJAX
       respond_to do |f|
         f.js
         f.html
       end
-=======
-    #AJAX
-    respond_to do |f|
-      f.js
-      f.html
-    end
-
->>>>>>> seb_3_find
   end
 
   def add_fridge
@@ -132,7 +123,7 @@ class StaticPagesController < ApplicationController
 
   def destroy_fridge
      Fridge.destroy(params[:id])
-    
+
     @user_fridge = Fridge.where(user_id: current_user.id)
     @ingredients = Ingredient.all
     #AJAX
