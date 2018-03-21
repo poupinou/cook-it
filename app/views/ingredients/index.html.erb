@@ -1,6 +1,6 @@
 <div class="ingredients-g">
       <div class="ingredient-link">
-        <p><%= button_to 'Ajouter', new_ingredient_path, class: 'btn-submit btn btn-warning' %></p>
+        <p><%= link_to 'Ajouter', new_ingredient_path, class: 'btn-submit btn btn-warning' %></p>
       <form  data-remote="true" id="form1" action='<%= ingredients_path %>' accept-charset="UTF-8" method="get">
       <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
       <input id='sub' style="display: none" type="submit">

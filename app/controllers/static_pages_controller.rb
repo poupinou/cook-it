@@ -114,6 +114,18 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def destroy_fridge
+     Fridge.destroy(params[:id])
+    
+    @user_fridge = Fridge.where(user_id: current_user.id)
+    @ingredients = Ingredient.all
+    #AJAX
+    respond_to do |f|
+      f.js
+      f.html
+    end
+  end
+
   def cancel_fridge
     @user = current_user
     @user_fridge = Fridge.where(user_id: @user.id)
