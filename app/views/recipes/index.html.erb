@@ -32,11 +32,13 @@
     </div>
   </div>
 </div>
+
     <% end %>
       <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
         <input id='nom' name="nom" placeholder="Rechercher" onkeyup="su()">
         <input id='sub' style="display: none" type="submit">
       </form>
+
     </div>
     <div class="recipes-corps">
       <% @recipes.each do |recipe| %>
