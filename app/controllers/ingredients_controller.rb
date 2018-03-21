@@ -1,26 +1,34 @@
 class IngredientsController < ApplicationController
 
 	def index #AJAX
-
-		@ingredients = Ingredient.all
-		@value = ""
+		if user_signed_in? && current_user.rights == 99 #on vient vérifier si l'utilisateur est connecté et s'il est admin 
+			@ingredients = Ingredient.all
+			@value = ""
 
 		###sert pour le système de filtrage par nom###
+
 		if params[:nom]
 			tab = []
 			@ingredients.each do |i|
 				if i.name.downcase.include?(params[:nom].downcase)
 					tab << i
 				end
+				@ingredients = tab
+				@value = params[:nom]
 			end
-			@ingredients = tab
-			@value = params[:nom]
-		end
+		else
+			if user_signed_in?
+      			redirect_to root_path
+      		else
+      			redirect_to new_user_session_path
+      		end
+    	end
+
 		##############################################
-    respond_to do |f|
-      f.js
-      f.html 
-    end
+	    respond_to do |f|
+	      f.js
+	      f.html 
+	    end
 	end
 
 	def new

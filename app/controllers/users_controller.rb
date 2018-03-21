@@ -13,6 +13,14 @@ class UsersController < ApplicationController
   end
 
   def index #on sais pas encore ce que c'est mais c'est là au cas ou =)
+    if user_signed_in? && current_user.rights == 99 #on vient vérifier si l'utilisateur est connecté et s'il est admin 
+    else
+      if user_signed_in?
+        redirect_to root_path
+      else
+        redirect_to new_user_session_path
+      end
+    end
   end
 
   def admin
