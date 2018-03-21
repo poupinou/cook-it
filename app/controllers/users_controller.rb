@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-  	if user_signed_in? #on viens vérifier si l'utilisateur est connété
+  	if user_signed_in? #on vient vérifier si l'utilisateur est connecté
   		@user = User.find(params[:id]) #on viens récupéré le user ciblé par l'événement
       @tagusers = Taguser.where(user_id: current_user.id)
   		if current_user != @user #on viens vérifier que le user ciblé est bien celui connecté
