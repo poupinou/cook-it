@@ -3,7 +3,7 @@
     <% if recipe.picture_url %><img class="card-img-top" src=<%= recipe.picture_url(:mini) %> width="250px" height="250px"/><% else %><%= image_tag('logo.png' ,size: "250x250") %><% end %>
     <div class="card-hover">
       <a href=<%= recipe_path(recipe.id) %> class="card-hover-background"></a>
-      <div class='recipe-show-info btn-info'><h6><%= recipe.time %> min - <%= recipe.price  / 100 %>€</h6></div>
+      <div class='recipe-show-info btn-info'><% if recipe.time %><h6><%= recipe.time %> min<% end %> - <% if recipe.price %><%= recipe.price  / 100 %>€</h6><% end %></div>
       <h3 class="card-hover-info"><a href=<%= recipe_path(recipe.id) %> style="text-decoration: none; color:white"><%= recipe.name %></a></h3>
       <div class="card-hover-info">
         <div class='recipe-show-head'>

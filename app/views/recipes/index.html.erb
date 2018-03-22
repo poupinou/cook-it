@@ -41,7 +41,8 @@
         </form>
         <% @tags.each do |t| %>
         <form  data-remote="true" id="form1" action='<%= recipes_path %>' accept-charset="UTF-8" method="get">
-            <button class="btn btn-info" style="margin-bottom: 5px;" type="button" name="tag" value="<%= t.id %>" onclick="su2(<%= t.id %>)"><%= t.name %></button>
+          <input class="btn btn-info" type="button" value="<%= t.name %>" onclick="su2(<%= t.id %>)">
+            <input style="margin-bottom: 5px;" type="hidden" name="tag" value="<%= t.id %>">
             <input id='<%= t.id %>' style="display: none" type="submit">
         </form>
         <% end %>

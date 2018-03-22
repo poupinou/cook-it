@@ -36,7 +36,7 @@
 			<div style='display:flex; flex-wrap: wrap;'>
 				<% Recipe.last(10).reverse.each do |recipe| %>
 				  <div class="card">
-				    <% if recipe.picture_url %><img class="card-img-top" src=<%= recipe.picture_url(:mini) %> width="250px" height="250px"/><% else %><%= image_tag('logo.png' ,size: "250x250") %><% end %>
+				    <% if recipe.picture_url %><img class="card-img-top" src=<%= recipe.picture_url(:mini) %> width="250px" height="250px"><% else %><%= image_tag('logo.png' ,size: "250x250") %><% end %>
 				    <div class="card-hover">
 				      <a href=<%= recipe_path(recipe.id) %> class="card-hover-background"></a>
 				      <div class='recipe-show-info btn-info'><% if recipe.time %><h6><%= recipe.time %> min<% end %> - <% if recipe.price %><%= recipe.price  / 100 %>€<% end %></h6></div>
