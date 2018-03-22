@@ -145,11 +145,6 @@ class StaticPagesController < ApplicationController
 
 
     def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
- 
-      if @num == nil 
-        redirect_to liste_path(current_user.id)
-        flash[:danger] = "inscris ton numéro dans le champ"
-      else
       @num = params[:phone_number]
       @user = current_user
     @list_ing_user = ListIng.where(user_id: @user.id)
@@ -158,6 +153,10 @@ class StaticPagesController < ApplicationController
       @arr << Ingredient.find(ing.ingredient_id).name
       @arr << ing.quantity
         end
+        if @num == nil 
+        redirect_to liste_path(current_user.id)
+        flash[:danger] = "inscris ton numéro dans le champ"
+      else
       @liste = @arr.to_s
     account_sid = ENV['TWILIO_ACCOUNT_SID']
 
