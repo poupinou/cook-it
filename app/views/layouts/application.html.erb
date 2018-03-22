@@ -24,7 +24,7 @@
         <div class="head">
           <%= render "/quotes/header" %>
         </div>
-        <div class="flash"><% flash.each do |key, value| %>
+        <div class="flash" id='flash'><% flash.each do |key, value| %>
             <div  class="alert alert-<%= key %>"><%= value %></div>
             <% end %>
           </div>
@@ -82,4 +82,18 @@
       back.style.display = "none";
     }
   }
+</script>
+
+<script type="text/javascript">
+  t = document.getElementById("flash")
+
+    setTimeout( hide, 3000);
+
+    function hide()
+    {
+       with (t.style) {
+         transition = '1s';
+             opacity = 0;
+       }
+    }
 </script>

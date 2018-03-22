@@ -15,6 +15,9 @@ class ListsController < ApplicationController
 				ListIng.create(user_id: @user.id, ingredient_id: ing.ingredient_id, quantity: ing.quantity, unity: ing.unity) # sinon n la créer
 			end
 		end
+
+		flash[:success] = 'Recette ajoutée à votre liste de course ;)'
+		redirect_to request.referrer
 	end
 
 	def reset_list_ing
