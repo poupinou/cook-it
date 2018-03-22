@@ -145,6 +145,11 @@ class StaticPagesController < ApplicationController
 
 
     def send_sms #permet d'envoyer des méssages wow c'est trop bien!!!!!!
+ 
+      if @num == nil 
+        redirect_to liste_path(current_user.id)
+        flash[:danger] = "inscris ton numéro dans le champ"
+      else
       @num = params[:phone_number]
       @user = current_user
     @list_ing_user = ListIng.where(user_id: @user.id)
@@ -163,9 +168,9 @@ class StaticPagesController < ApplicationController
   from: '+33644602942',
   to: "#{@num}",
   body: "#{@liste}")
-
   redirect_to root_path
   flash[:success] = "sms bien envoyé"
+end
   end
 
   def send_mail
