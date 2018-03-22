@@ -11,6 +11,8 @@ class ListsController < ApplicationController
 				list = ListIng.find_by(user_id: @user.id, ingredient_id: ing.ingredient_id) #on pointe dessus
 				list.quantity += ing.quantity # et on augmente la quantité
 				list.save
+				redirect_to
+				flash[:success] = "mjnbôjub"
 			else
 				ListIng.create(user_id: @user.id, ingredient_id: ing.ingredient_id, quantity: ing.quantity, unity: ing.unity) # sinon n la créer
 			end
