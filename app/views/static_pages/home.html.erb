@@ -87,8 +87,9 @@
 				<% r_array %>
 				<% h = Hash[*r_array] %>
 				<% h_sort = h.sort_by{|k, v| v}.reverse %>
-				<% h_sort.each do |k, v| %>
 				<div style ="display: flex;flex-wrap: wrap;">
+				<% h_sort.each do |k, v| %>
+
 				  <div class="card" style="max-width: 250px">
 				   <% if Recipe.find_by_id(k).picture_url %><img class="card-img-top" src=<%= Recipe.find_by_id(k).picture_url(:mini) %> width="250px" height="250px"/><% else %><%= image_tag('logo.png' ,size: "250x250") %><% end %>
 				    <div class="card-hover">
